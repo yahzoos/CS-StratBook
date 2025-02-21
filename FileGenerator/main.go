@@ -9,14 +9,6 @@ import (
 	"unicode"
 )
 
-//func removeLeadingDigits(slice []string) []string {
-//	result := make([]string, len(slice))
-//	for i, str := range slice {
-//		result[i] = removeFirstDigits(str)
-//	}
-//	return result
-//}
-
 func removeFirstDigits(s string) string {
 	for i, r := range s {
 		if !unicode.IsDigit(r) {
@@ -51,37 +43,42 @@ func main() {
 
 	//Creates new []string containing all of file1Split and the MapAnnotationNode 0 and onwards of file2Split
 	bigout := append(file1Split, file2Split[1:]...)
+	//DEBUG bigout - convert to single string, then to byte, then output to file.
 	//bigoutstring := strings.Join(bigout, ", ")
 	//bigoutbyte := []byte(bigoutstring)
 	//os.WriteFile("bigout.debug.txt", bigoutbyte, 0644)
 
+	//init nil variables to assign later in the for loop
 	var start string
 	var end string
+	// index value for the MapAnnotationNode number
 	var mapindex int = 0
+	//Take the combine output from the two files and separate out the first section and save as start
 	for i := range bigout {
-		//fmt.Println(i, bigout[i])
 		if i == 0 {
 			start = bigout[i]
 		} else {
+			//Cut the leading digits from each string
 			modifiedSlice := removeFirstDigits(bigout[i])
+			//add the mapindex number to the beginning of each string
 			modifiedSlice = strconv.Itoa(mapindex) + modifiedSlice
+			//add "MapAnnotationNode" to the beginning of each string
 			line1 := "MapAnnotationNode" + modifiedSlice
+			//append each string to eachother in order
 			end = end + line1
 			mapindex++
 		}
 	}
+	//DEBUG
 	//fmt.Printf("Start is: \n%v\n\n\nThe Resto of it is\n%v", start, end)
 	//fmt.Printf("%v", bigout[2])
 
+	//Putting it all together, need first index (start), end contains all of the MapAnnotationNodes with corrected order
 	newfile := start + end + "}"
+	//Write to standard out
 	fmt.Printf("%v", newfile)
+	//convert to byte and write to text file.
 	newfilebyte := []byte(newfile)
 	os.WriteFile("newfile.txt", newfilebyte, 0644)
 
 }
-
-//Keep to write to a file.
-//	d := fmt.Append(file1Text, file2Text)
-//fmt.Printf("Debug File1:\n %s\n\n\n\nDebug File2:\n %s", file1Text, file2Text)
-//os.WriteFile("file1Text.debug.txt", file1TextStr, 0644)
-//os.WriteFile("file2Text.debug.txt", file2TextStr, 0644)
