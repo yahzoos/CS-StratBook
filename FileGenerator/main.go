@@ -1,113 +1,87 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
+	"log"
 	"os"
-	"regexp"
 	"strconv"
 	"strings"
+	"unicode"
 )
 
-func main() {
-	// Input files and output file
-	file1 := "CTAntient.txt"
-	file2 := "T_Antient.txt"
-	outputFile := "merged.txt"
+//func removeLeadingDigits(slice []string) []string {
+//	result := make([]string, len(slice))
+//	for i, str := range slice {
+//		result[i] = removeFirstDigits(str)
+//	}
+//	return result
+//}
 
-	// Read both files
-	content1, err := readFile(file1)
-	if err != nil {
-		fmt.Println("Error reading file1:", err)
-		return
-	}
-	content2, err := readFile(file2)
-	if err != nil {
-		fmt.Println("Error reading file2:", err)
-		return
-	}
-
-	// Find the highest existing node index in file1
-	maxIndex := findMaxNodeIndex(content1)
-
-	// Adjust indices in file2 and merge
-	adjustedContent2 := adjustNodeIndices(content2, maxIndex+1)
-	mergedContent := content1 + "\n" + adjustedContent2
-
-	// Write to new output file
-	err = writeFile(outputFile, mergedContent)
-	if err != nil {
-		fmt.Println("Error writing merged file:", err)
-	} else {
-		fmt.Println("Merged file created successfully:", outputFile)
-	}
-}
-
-// readFile reads the content of a file and returns it as a string
-func readFile(filename string) (string, error) {
-	file, err := os.Open(filename)
-	if err != nil {
-		return "", err
-	}
-	defer file.Close()
-
-	var content strings.Builder
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		content.WriteString(scanner.Text() + "\n")
-	}
-
-	return content.String(), scanner.Err()
-}
-
-// findMaxNodeIndex finds the highest node index in the given content
-func findMaxNodeIndex(content string) int {
-	re := regexp.MustCompile(`MapAnnotationNode(\d+)`)
-	matches := re.FindAllStringSubmatch(content, -1)
-
-	maxIndex := -1
-	for _, match := range matches {
-		if len(match) > 1 {
-			index, err := strconv.Atoi(match[1])
-			if err == nil && index > maxIndex {
-				maxIndex = index
-			}
+func removeFirstDigits(s string) string {
+	for i, r := range s {
+		if !unicode.IsDigit(r) {
+			return s[i:]
 		}
 	}
-	return maxIndex
+	return ""
 }
 
-// adjustNodeIndices renumbers the node indices and maintains relative order
-func adjustNodeIndices(content string, startIndex int) string {
-	re := regexp.MustCompile(`MapAnnotationNode(\d+)`)
-	referenceMap := make(map[string]string)
-	nodeCounter := startIndex
-
-	// Replace node indices with new ones
-	adjustedContent := re.ReplaceAllStringFunc(content, func(match string) string {
-		oldIndex := match[len("MapAnnotationNode"):]
-		newIndex := strconv.Itoa(nodeCounter)
-		referenceMap[oldIndex] = newIndex
-		nodeCounter++
-		return "MapAnnotationNode" + newIndex
-	})
-
-	// Replace references to old indices
-	for oldIndex, newIndex := range referenceMap {
-		adjustedContent = strings.ReplaceAll(adjustedContent, oldIndex, newIndex)
-	}
-
-	return adjustedContent
-}
-
-// writeFile writes a string to a file
-func writeFile(filename, content string) error {
-	file, err := os.Create(filename)
+func main() {
+	//Read file1.txt and file2.txt using os.ReadFile
+	file1Text, err := os.ReadFile("CTAntient.txt")
 	if err != nil {
-		return err
+		log.Fatal(err)
 	}
-	defer file.Close()
+	file2Text, err := os.ReadFile("T_Antient.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	_, err = file.WriteString(content)
-	return err
+	// Convert from type byte[] to string
+	file1TextStr1 := string(file1Text)
+	file2TextStr2 := string(file2Text)
+
+	// remove last } before splitting
+	file1TextStr := strings.TrimRight(file1TextStr1, "}")
+	file2TextStr := strings.TrimRight(file2TextStr2, "}")
+
+	//Split the files. "Map AnnotationNode" gets 'deleted'. [0] is the text before map index0, [1] is map index0, [2] is map index1...etc
+	file1Split := strings.Split(file1TextStr, "MapAnnotationNode")
+	file2Split := strings.Split(file2TextStr, "MapAnnotationNode")
+
+	//Creates new []string containing all of file1Split and the MapAnnotationNode 0 and onwards of file2Split
+	bigout := append(file1Split, file2Split[1:]...)
+	//bigoutstring := strings.Join(bigout, ", ")
+	//bigoutbyte := []byte(bigoutstring)
+	//os.WriteFile("bigout.debug.txt", bigoutbyte, 0644)
+
+	var start string
+	var end string
+	var mapindex int = 0
+	for i := range bigout {
+		//fmt.Println(i, bigout[i])
+		if i == 0 {
+			start = bigout[i]
+		} else {
+			modifiedSlice := removeFirstDigits(bigout[i])
+			modifiedSlice = strconv.Itoa(mapindex) + modifiedSlice
+			line1 := "MapAnnotationNode" + modifiedSlice
+			end = end + line1
+			mapindex++
+		}
+	}
+	//fmt.Printf("Start is: \n%v\n\n\nThe Resto of it is\n%v", start, end)
+	//fmt.Printf("%v", bigout[2])
+
+	newfile := start + end + "}"
+	fmt.Printf("%v", newfile)
+	newfilebyte := []byte(newfile)
+	os.WriteFile("newfile.txt", newfilebyte, 0644)
+
 }
+
+//Keep to write to a file.
+//	d := fmt.Append(file1Text, file2Text)
+//fmt.Printf("Debug File1:\n %s\n\n\n\nDebug File2:\n %s", file1Text, file2Text)
+//os.WriteFile("file1Text.debug.txt", file1TextStr, 0644)
+//os.WriteFile("file2Text.debug.txt", file2TextStr, 0644)
