@@ -19,66 +19,51 @@ func removeFirstDigits(s string) string {
 }
 
 func main() {
-	//Read file1.txt and file2.txt using os.ReadFile
-	file1Text, err := os.ReadFile("CTAntient.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	file2Text, err := os.ReadFile("T_Antient.txt")
-	if err != nil {
-		log.Fatal(err)
+
+	if len(os.Args) < 2 {
+		log.Fatal("Usage: go run main.go <file1.txt> <file2.txt> ... <fileN.txt>")
 	}
 
-	// Convert from type byte[] to string
-	file1TextStr1 := string(file1Text)
-	file2TextStr2 := string(file2Text)
-
-	// remove last } before splitting
-	file1TextStr := strings.TrimRight(file1TextStr1, "}")
-	file2TextStr := strings.TrimRight(file2TextStr2, "}")
-
-	//Split the files. "Map AnnotationNode" gets 'deleted'. [0] is the text before map index0, [1] is map index0, [2] is map index1...etc
-	file1Split := strings.Split(file1TextStr, "MapAnnotationNode")
-	file2Split := strings.Split(file2TextStr, "MapAnnotationNode")
-
-	//Creates new []string containing all of file1Split and the MapAnnotationNode 0 and onwards of file2Split
-	bigout := append(file1Split, file2Split[1:]...)
-	//DEBUG bigout - convert to single string, then to byte, then output to file.
-	//bigoutstring := strings.Join(bigout, ", ")
-	//bigoutbyte := []byte(bigoutstring)
-	//os.WriteFile("bigout.debug.txt", bigoutbyte, 0644)
-
-	//init nil variables to assign later in the for loop
+	var bigout []string
 	var start string
-	var end string
-	// index value for the MapAnnotationNode number
-	var mapindex int = 0
-	//Take the combine output from the two files and separate out the first section and save as start
-	for i := range bigout {
+	mapindex := 0
+
+	for i, fileName := range os.Args[1:] {
+		// Read file
+		fileText, err := os.ReadFile(fileName)
+		if err != nil {
+			log.Fatalf("Error reading file %s: %v", fileName, err)
+		}
+
+		// Convert from []byte to string and remove last '}'
+		fileTextStr := strings.TrimRight(string(fileText), "}")
+
+		// Split the files at "MapAnnotationNode"
+		fileSplit := strings.Split(fileTextStr, "MapAnnotationNode")
+
+		// Store the first section separately (only from the first file)
 		if i == 0 {
-			start = bigout[i]
-		} else {
-			//Cut the leading digits from each string
-			modifiedSlice := removeFirstDigits(bigout[i])
-			//add the mapindex number to the beginning of each string
+			start = fileSplit[0]
+		}
+
+		// Append MapAnnotationNode entries, renumbering them
+		for j := 1; j < len(fileSplit); j++ {
+			modifiedSlice := removeFirstDigits(fileSplit[j])
 			modifiedSlice = strconv.Itoa(mapindex) + modifiedSlice
-			//add "MapAnnotationNode" to the beginning of each string
-			line1 := "MapAnnotationNode" + modifiedSlice
-			//append each string to eachother in order
-			end = end + line1
+			line := "MapAnnotationNode" + modifiedSlice
+			bigout = append(bigout, line)
 			mapindex++
 		}
 	}
-	//DEBUG
-	//fmt.Printf("Start is: \n%v\n\n\nThe Resto of it is\n%v", start, end)
-	//fmt.Printf("%v", bigout[2])
 
-	//Putting it all together, need first index (start), end contains all of the MapAnnotationNodes with corrected order
-	newfile := start + end + "}"
-	//Write to standard out
-	fmt.Printf("%v", newfile)
-	//convert to byte and write to text file.
-	newfilebyte := []byte(newfile)
-	os.WriteFile("newfile.txt", newfilebyte, 0644)
+	// Merge everything
+	newfile := start + strings.Join(bigout, "") + "}"
 
+	// Write output to file
+	outputFile := "merged.txt"
+	if err := os.WriteFile(outputFile, []byte(newfile), 0644); err != nil {
+		log.Fatalf("Error writing to file %s: %v", outputFile, err)
+	}
+
+	fmt.Println("Merged file created successfully:", outputFile)
 }
