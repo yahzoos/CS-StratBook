@@ -1,6 +1,8 @@
 package main
 
+//Usage: go run main.go -o OutPutfile.txt <file1.txt> <file2.txt> ... <fileN.txt>
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -20,15 +22,21 @@ func removeFirstDigits(s string) string {
 
 func main() {
 
-	if len(os.Args) < 2 {
-		log.Fatal("Usage: go run main.go <file1.txt> <file2.txt> ... <fileN.txt>")
+	// Define an output file flag
+	outputFile := flag.String("o", "merged.txt", "Specify the output file name")
+	flag.Parse() //Parse command-line arguments
+
+	// Get the input files from arguments
+	inputFiles := flag.Args()
+	if len(inputFiles) < 2 {
+		log.Fatal("Usage: go run main.go -o OutPutfile.txt <file1.txt> <file2.txt> ... <fileN.txt>")
 	}
 
 	var bigout []string
 	var start string
 	mapindex := 0
 
-	for i, fileName := range os.Args[1:] {
+	for i, fileName := range inputFiles {
 		// Read file
 		fileText, err := os.ReadFile(fileName)
 		if err != nil {
@@ -48,20 +56,23 @@ func main() {
 
 		// Append MapAnnotationNode entries, renumbering them
 		for j := 1; j < len(fileSplit); j++ {
+			// Remove the leading numbers (the ones that where behind MapAnootationNode before it was removed by the split)
 			modifiedSlice := removeFirstDigits(fileSplit[j])
+			// Add the map index number to the begining of each slice
 			modifiedSlice = strconv.Itoa(mapindex) + modifiedSlice
+			// Add the text "MapAnnotationNode" infront of the new number and slice
 			line := "MapAnnotationNode" + modifiedSlice
+			// Append each fixed slice to bigout
 			bigout = append(bigout, line)
 			mapindex++
 		}
 	}
 
-	// Merge everything
+	// Merge everything, Use the beginning of file 1, the bigout containing the fixed MapAnnotationNodes and add a trailing }
 	newfile := start + strings.Join(bigout, "") + "}"
 
 	// Write output to file
-	outputFile := "merged.txt"
-	if err := os.WriteFile(outputFile, []byte(newfile), 0644); err != nil {
+	if err := os.WriteFile(*outputFile, []byte(newfile), 0644); err != nil {
 		log.Fatalf("Error writing to file %s: %v", outputFile, err)
 	}
 
