@@ -146,9 +146,6 @@ func saveMetadata(metadata AnnotationMetadata) error {
 	if err != nil {
 		return fmt.Errorf("error marshaling JSON: %v", err)
 	}
-	//#######################
-	//TODO: currently outputs to local direcotry not path. metaFilePath was set to metadata.FileName + ".json", which created a .txt.json file
-	//I want it to still output to the correct path, but just with the name metadata.NadeName
 	metaFilePath := metadata.NadeName + ".json"
 	err = os.WriteFile(metaFilePath, jsonData, 0644)
 	if err != nil {
@@ -230,14 +227,19 @@ func main() {
 		}
 
 		// Extract map name from txt file using regex
-		var re = regexp.MustCompile(`de_\w+`)
-		mapName := re.FindString(string(fileText))
+		var mapNameRegex = regexp.MustCompile(`de_\w+`)
+		mapName := mapNameRegex.FindString(string(fileText))
 		fmt.Println("DEBUG MAPNAME:", mapName)
+
+		// Extract nadeType from txt file "GrenadeType" field
+		var nadeTypeRegex = regexp.MustCompile(`GrenadeType = "([^"]+)"`)
+		nadeType := nadeTypeRegex.FindStringSubmatch(string(fileText))
+		fmt.Println("DEBUG NADETYPE:", nadeType[1])
 
 		// Get user input for metadata fields
 		//nadeName := promptFreeText("Required - Write a short Name of the grenade", true)
 		description := promptFreeText("Required - Write a description of the purpose of the grenade", true)
-		nadeType := promptUser("Required - What is the nade type? (flash, smoke, molotov, he_grenade)", allowedNadeTypes, true)
+		//nadeType := promptUser("Required - What is the nade type? (flash, smoke, molotov, he_grenade)", allowedNadeTypes, true)
 		side := promptUser("Optional - What is the side? (T/CT)", allowedSides, false)
 		siteLocation := promptUser("Optional - What site does it land at? (A/B/Mid)", allowedSiteLocations, false)
 
@@ -250,7 +252,7 @@ func main() {
 			Description:  description,
 			MapName:      mapName,
 			Side:         side,
-			NadeType:     nadeType,
+			NadeType:     nadeType[1],
 			SiteLocation: siteLocation,
 		}
 
