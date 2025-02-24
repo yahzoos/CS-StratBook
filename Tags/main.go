@@ -20,9 +20,9 @@ var allowedSiteLocations = map[string]bool{"A": true, "B": true, "MID": true, ""
 type AnnotationMetadata struct {
 	FileName     string `json:"file_name"`
 	FilePath     string `json:"file_path"`
-	ImagePath    string `json:"image_path`
-	NadeName     string `json:"nade_name`
-	Description  string `json:"description`
+	ImagePath    string `json:"image_path"`
+	NadeName     string `json:"nade_name"`
+	Description  string `json:"description"`
 	MapName      string `json:"map_name"`
 	Side         string `json:"side,omitempty"`
 	NadeType     string `json:"nade_type"`
