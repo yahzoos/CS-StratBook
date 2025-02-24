@@ -1,0 +1,11 @@
+{
+  "file_name": "T2MidFlash1.txt",
+  "file_path": "Sample\\T2MidFlash1\\T2MidFlash1.txt",
+  "ImagePath": "Sample\\T2MidFlash1\\T2MidFlash1.png",
+  "NadeName": "T2MidFlash1",
+  "Description": "Part of a mid take, flashes opponets pushing through red room or peaking mid from cave/jaguar. Does not get the very close positions well.",
+  "map_name": "de_ancient",
+  "side": "T",
+  "nade_type": "flash",
+  "site_location": "MID"
+}

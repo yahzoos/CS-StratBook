@@ -1,0 +1,11 @@
+{
+  "file_name": "T2Sandwich_Fast.txt",
+  "file_path": "Sample\\T2Sandwich_Fast\\T2Sandwich_Fast.txt",
+  "ImagePath": "Sample\\T2Sandwich_Fast\\T2Sandwich_Fast.png",
+  "NadeName": "T2Sandwich_Fast",
+  "Description": "Quickly smoke sandwich from T spawn. Should bloom before you get to A main.",
+  "map_name": "de_train",
+  "side": "T",
+  "nade_type": "smoke",
+  "site_location": "A"
+}

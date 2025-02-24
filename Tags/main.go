@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 	//"regexp"
 	//"strings"
 )
@@ -280,4 +281,14 @@ func main() {
 	}
 
 	fmt.Println("JSON files merged successfully into", jsonoutputFile)
+
+	// Moves jsonfiles from current directory to their "Parent Directory" Currently Hardcoded to "Sample"
+	//TODO Find a way to change "Sample" to be dynamic - or accept that it should just be local\ when run (need to change dirpath to \local)
+	for i := range jsonfiles {
+		src := jsonfiles[i]
+		rip := strings.TrimSuffix(jsonfiles[i], ".json")
+		dst := filepath.Join("Sample", rip, src)
+		fmt.Printf("Moving %v to %v\n", src, dst)
+		os.Rename(src, dst)
+	}
 }
