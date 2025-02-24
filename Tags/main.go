@@ -1,24 +1,22 @@
 package main
 
 import (
-	//"bufio"
+	"bufio"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
-	//"regexp"
-	//"strings"
 )
 
-/*
 // Allowed values for validation
 var allowedSides = map[string]bool{"T": true, "CT": true, "": true}
 var allowedNadeTypes = map[string]bool{"flash": true, "smoke": true, "molotov": true, "he_grenade": true}
 var allowedSiteLocations = map[string]bool{"A": true, "B": true, "MID": true, "": true}
-*/
+
 // Metadata struct
 type AnnotationMetadata struct {
 	FileName     string `json:"file_name"`
@@ -32,7 +30,6 @@ type AnnotationMetadata struct {
 	SiteLocation string `json:"site_location,omitempty"`
 }
 
-/*
 // Struct to store text file and image file paths
 type FileInfo struct {
 	TxtPath    string
@@ -161,7 +158,6 @@ func saveMetadata(metadata AnnotationMetadata) error {
 	fmt.Printf("Metadata saved: %s\n", metaFilePath)
 	return nil
 }
-*/
 
 // GetJSONFiles retrieves all .json files from the current directory
 func GetJSONFiles() ([]string, error) {
@@ -216,54 +212,54 @@ func MergeJSONFiles(filePaths []string, outputFilePath string) error {
 }
 
 func main() {
-	/*	paths, err := GetFilePaths()
+	paths, err := GetFilePaths()
+	if err != nil {
+		log.Fatalf("Failed to get file paths: %v", err)
+	}
+
+	for baseName, fileInfo := range paths {
+		fmt.Printf("\nGenerating Metadata for %s\n", baseName)
+
+		fmt.Printf("DEBUG: fileName is %v\n Dir is: %v\n", baseName, filepath.Dir(fileInfo.TxtPath))
+
+		// Get map name from text file
+		// Read file
+		fileText, err := os.ReadFile(fileInfo.TxtPath)
 		if err != nil {
-			log.Fatalf("Failed to get file paths: %v", err)
+			log.Fatalf("Error reading file %s: %v", fileInfo.TxtPath, err)
 		}
 
-		for baseName, fileInfo := range paths {
-			fmt.Printf("\nGenerating Metadata for %s\n", baseName)
+		// Extract map name from txt file using regex
+		var re = regexp.MustCompile(`de_\w+`)
+		mapName := re.FindString(string(fileText))
+		fmt.Println("DEBUG MAPNAME:", mapName)
 
-			fmt.Printf("DEBUG: fileName is %v\n Dir is: %v\n", baseName, filepath.Dir(fileInfo.TxtPath))
+		// Get user input for metadata fields
+		//nadeName := promptFreeText("Required - Write a short Name of the grenade", true)
+		description := promptFreeText("Required - Write a description of the purpose of the grenade", true)
+		nadeType := promptUser("Required - What is the nade type? (flash, smoke, molotov, he_grenade)", allowedNadeTypes, true)
+		side := promptUser("Optional - What is the side? (T/CT)", allowedSides, false)
+		siteLocation := promptUser("Optional - What site does it land at? (A/B/Mid)", allowedSiteLocations, false)
 
-			// Get map name from text file
-			// Read file
-			fileText, err := os.ReadFile(fileInfo.TxtPath)
-			if err != nil {
-				log.Fatalf("Error reading file %s: %v", fileInfo.TxtPath, err)
-			}
-
-			// Extract map name from txt file using regex
-			var re = regexp.MustCompile(`de_\w+`)
-			mapName := re.FindString(string(fileText))
-			fmt.Println("DEBUG MAPNAME:", mapName)
-
-			// Get user input for metadata fields
-			//nadeName := promptFreeText("Required - Write a short Name of the grenade", true)
-			description := promptFreeText("Required - Write a description of the purpose of the grenade", true)
-			nadeType := promptUser("Required - What is the nade type? (flash, smoke, molotov, he_grenade)", allowedNadeTypes, true)
-			side := promptUser("Optional - What is the side? (T/CT)", allowedSides, false)
-			siteLocation := promptUser("Optional - What site does it land at? (A/B/Mid)", allowedSiteLocations, false)
-
-			// Create metadata struct
-			metadata := AnnotationMetadata{
-				FileName:     baseName + ".txt",
-				FilePath:     fileInfo.TxtPath,
-				ImagePath:    fileInfo.PngPath,
-				NadeName:     fileInfo.ParentPath,
-				Description:  description,
-				MapName:      mapName,
-				Side:         side,
-				NadeType:     nadeType,
-				SiteLocation: siteLocation,
-			}
-
-			// Save metadata as JSON
-			if err := saveMetadata(metadata); err != nil {
-				fmt.Println("Error saving metadata:", err)
-			}
+		// Create metadata struct
+		metadata := AnnotationMetadata{
+			FileName:     baseName + ".txt",
+			FilePath:     fileInfo.TxtPath,
+			ImagePath:    fileInfo.PngPath,
+			NadeName:     fileInfo.ParentPath,
+			Description:  description,
+			MapName:      mapName,
+			Side:         side,
+			NadeType:     nadeType,
+			SiteLocation: siteLocation,
 		}
-	*/
+
+		// Save metadata as JSON
+		if err := saveMetadata(metadata); err != nil {
+			fmt.Println("Error saving metadata:", err)
+		}
+	}
+
 	// Get all JSON files dynamically
 	jsonfiles, err := GetJSONFiles()
 	if err != nil {
