@@ -1,21 +1,23 @@
 package main
 
 import (
-	"bufio"
+	//"bufio"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
-	"regexp"
-	"strings"
+	//"regexp"
+	//"strings"
 )
 
+/*
 // Allowed values for validation
 var allowedSides = map[string]bool{"T": true, "CT": true, "": true}
 var allowedNadeTypes = map[string]bool{"flash": true, "smoke": true, "molotov": true, "he_grenade": true}
 var allowedSiteLocations = map[string]bool{"A": true, "B": true, "MID": true, "": true}
-
+*/
 // Metadata struct
 type AnnotationMetadata struct {
 	FileName     string `json:"file_name"`
@@ -29,6 +31,7 @@ type AnnotationMetadata struct {
 	SiteLocation string `json:"site_location,omitempty"`
 }
 
+/*
 // Struct to store text file and image file paths
 type FileInfo struct {
 	TxtPath    string
@@ -157,53 +160,124 @@ func saveMetadata(metadata AnnotationMetadata) error {
 	fmt.Printf("Metadata saved: %s\n", metaFilePath)
 	return nil
 }
+*/
+
+// GetJSONFiles retrieves all .json files from the current directory
+func GetJSONFiles() ([]string, error) {
+	var jsonFiles []string
+
+	// Read all files in the current directory
+	files, err := os.ReadDir(".")
+	if err != nil {
+		return nil, fmt.Errorf("failed to read directory: %v", err)
+	}
+
+	// Filter for .json files
+	for _, file := range files {
+		if !file.IsDir() && filepath.Ext(file.Name()) == ".json" && file.Name() != "tags.json" {
+			jsonFiles = append(jsonFiles, file.Name())
+		}
+	}
+
+	return jsonFiles, nil
+}
+
+// MergeJSONFiles merges multiple JSON files into a single JSON file
+func MergeJSONFiles(filePaths []string, outputFilePath string) error {
+	var mergedAnnotations []AnnotationMetadata
+
+	for _, filePath := range filePaths {
+		data, err := ioutil.ReadFile(filePath)
+		if err != nil {
+			return fmt.Errorf("failed to read file %s: %v", filePath, err)
+		}
+
+		var annotation AnnotationMetadata
+		if err := json.Unmarshal(data, &annotation); err != nil {
+			return fmt.Errorf("failed to unmarshal JSON data from file %s: %v", filePath, err)
+		}
+
+		mergedAnnotations = append(mergedAnnotations, annotation)
+	}
+
+	mergedData := map[string]interface{}{"nades": mergedAnnotations}
+
+	mergedJSON, err := json.MarshalIndent(mergedData, "", "  ")
+	if err != nil {
+		return fmt.Errorf("failed to marshal merged JSON: %v", err)
+	}
+
+	if err := os.WriteFile(outputFilePath, mergedJSON, 0644); err != nil {
+		return fmt.Errorf("failed to write merged JSON to file %s: %v", outputFilePath, err)
+	}
+
+	return nil
+}
 
 func main() {
-	paths, err := GetFilePaths()
-	if err != nil {
-		log.Fatalf("Failed to get file paths: %v", err)
-	}
-
-	for baseName, fileInfo := range paths {
-		fmt.Printf("\nGenerating Metadata for %s\n", baseName)
-
-		fmt.Printf("DEBUG: fileName is %v\n Dir is: %v\n", baseName, filepath.Dir(fileInfo.TxtPath))
-
-		// Get map name from text file
-		// Read file
-		fileText, err := os.ReadFile(fileInfo.TxtPath)
+	/*	paths, err := GetFilePaths()
 		if err != nil {
-			log.Fatalf("Error reading file %s: %v", fileInfo.TxtPath, err)
+			log.Fatalf("Failed to get file paths: %v", err)
 		}
 
-		// Extract map name from txt file using regex
-		var re = regexp.MustCompile(`de_\w+`)
-		mapName := re.FindString(string(fileText))
-		fmt.Println("DEBUG MAPNAME:", mapName)
+		for baseName, fileInfo := range paths {
+			fmt.Printf("\nGenerating Metadata for %s\n", baseName)
 
-		// Get user input for metadata fields
-		//nadeName := promptFreeText("Required - Write a short Name of the grenade", true)
-		description := promptFreeText("Required - Write a description of the purpose of the grenade", true)
-		nadeType := promptUser("Required - What is the nade type? (flash, smoke, molotov, he_grenade)", allowedNadeTypes, true)
-		side := promptUser("Optional - What is the side? (T/CT)", allowedSides, false)
-		siteLocation := promptUser("Optional - What site does it land at? (A/B/Mid)", allowedSiteLocations, false)
+			fmt.Printf("DEBUG: fileName is %v\n Dir is: %v\n", baseName, filepath.Dir(fileInfo.TxtPath))
 
-		// Create metadata struct
-		metadata := AnnotationMetadata{
-			FileName:     baseName + ".txt",
-			FilePath:     fileInfo.TxtPath,
-			ImagePath:    fileInfo.PngPath,
-			NadeName:     fileInfo.ParentPath,
-			Description:  description,
-			MapName:      mapName,
-			Side:         side,
-			NadeType:     nadeType,
-			SiteLocation: siteLocation,
+			// Get map name from text file
+			// Read file
+			fileText, err := os.ReadFile(fileInfo.TxtPath)
+			if err != nil {
+				log.Fatalf("Error reading file %s: %v", fileInfo.TxtPath, err)
+			}
+
+			// Extract map name from txt file using regex
+			var re = regexp.MustCompile(`de_\w+`)
+			mapName := re.FindString(string(fileText))
+			fmt.Println("DEBUG MAPNAME:", mapName)
+
+			// Get user input for metadata fields
+			//nadeName := promptFreeText("Required - Write a short Name of the grenade", true)
+			description := promptFreeText("Required - Write a description of the purpose of the grenade", true)
+			nadeType := promptUser("Required - What is the nade type? (flash, smoke, molotov, he_grenade)", allowedNadeTypes, true)
+			side := promptUser("Optional - What is the side? (T/CT)", allowedSides, false)
+			siteLocation := promptUser("Optional - What site does it land at? (A/B/Mid)", allowedSiteLocations, false)
+
+			// Create metadata struct
+			metadata := AnnotationMetadata{
+				FileName:     baseName + ".txt",
+				FilePath:     fileInfo.TxtPath,
+				ImagePath:    fileInfo.PngPath,
+				NadeName:     fileInfo.ParentPath,
+				Description:  description,
+				MapName:      mapName,
+				Side:         side,
+				NadeType:     nadeType,
+				SiteLocation: siteLocation,
+			}
+
+			// Save metadata as JSON
+			if err := saveMetadata(metadata); err != nil {
+				fmt.Println("Error saving metadata:", err)
+			}
 		}
-
-		// Save metadata as JSON
-		if err := saveMetadata(metadata); err != nil {
-			fmt.Println("Error saving metadata:", err)
-		}
+	*/
+	// Get all JSON files dynamically
+	jsonfiles, err := GetJSONFiles()
+	if err != nil {
+		log.Fatalf("Error getting JSON files: %v", err)
 	}
+
+	if len(jsonfiles) == 0 {
+		log.Fatal("No JSON files found in the current directory.")
+	}
+
+	jsonoutputFile := "tags.json"
+
+	if err := MergeJSONFiles(jsonfiles, jsonoutputFile); err != nil {
+		log.Fatalf("Error merging JSON files: %v", err)
+	}
+
+	fmt.Println("JSON files merged successfully into", jsonoutputFile)
 }
