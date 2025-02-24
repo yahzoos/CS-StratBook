@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -181,7 +180,7 @@ func MergeJSONFiles(filePaths []string, outputFilePath string) error {
 	var mergedAnnotations []AnnotationMetadata
 
 	for _, filePath := range filePaths {
-		data, err := ioutil.ReadFile(filePath)
+		data, err := os.ReadFile(filePath)
 		if err != nil {
 			return fmt.Errorf("failed to read file %s: %v", filePath, err)
 		}
