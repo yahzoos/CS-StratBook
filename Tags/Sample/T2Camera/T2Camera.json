@@ -1,0 +1,11 @@
+{
+  "file_name": "T2Camera.txt",
+  "file_path": "Sample\\T2Camera\\T2Camera.txt",
+  "ImagePath": "Sample\\T2Camera\\T2Camera.png",
+  "NadeName": "T2Camera",
+  "Description": "Smokes Camera from T Spawn",
+  "map_name": "de_train",
+  "side": "T",
+  "nade_type": "smoke",
+  "site_location": "A"
+}
