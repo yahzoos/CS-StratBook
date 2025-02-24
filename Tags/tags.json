@@ -1,0 +1,92 @@
+{
+  "nades": [
+    {
+      "file_name": "A_Main2E_Box.txt",
+      "file_path": "Sample\\A_Main2E_Box\\A_Main2E_Box.txt",
+      "image_path": "Sample\\A_Main2E_Box\\A_Main2E_Box.png",
+      "nade_name": "A_Main2E_Box",
+      "description": "molly out ebox and close to red train from a main",
+      "map_name": "de_train",
+      "side": "T",
+      "nade_type": "molotov",
+      "site_location": "A"
+    },
+    {
+      "file_name": "A_Main2NextToPop.txt",
+      "file_path": "Sample\\A_Main2NextToPop\\A_Main2NextToPop.txt",
+      "image_path": "Sample\\A_Main2NextToPop\\A_Main2NextToPop.png",
+      "nade_name": "A_Main2NextToPop",
+      "description": "molly out the position next to the boxes next to popdog and part of ebox",
+      "map_name": "de_train",
+      "side": "T",
+      "nade_type": "molotov",
+      "site_location": "A"
+    },
+    {
+      "file_name": "CT2BMain.txt",
+      "file_path": "Sample\\CT2BMain\\CT2BMain.txt",
+      "image_path": "Sample\\CT2BMain\\CT2BMain.png",
+      "nade_name": "CT2BMain",
+      "description": "smokes out the upper part of b main from ct spawn",
+      "map_name": "de_ancient",
+      "side": "CT",
+      "nade_type": "smoke",
+      "site_location": "B"
+    },
+    {
+      "file_name": "T2Camera.txt",
+      "file_path": "Sample\\T2Camera\\T2Camera.txt",
+      "image_path": "Sample\\T2Camera\\T2Camera.png",
+      "nade_name": "T2Camera",
+      "description": "Smoke Camera from T Spawn",
+      "map_name": "de_train",
+      "side": "T",
+      "nade_type": "smoke",
+      "site_location": "A"
+    },
+    {
+      "file_name": "T2MidFlash1.txt",
+      "file_path": "Sample\\T2MidFlash1\\T2MidFlash1.txt",
+      "image_path": "Sample\\T2MidFlash1\\T2MidFlash1.png",
+      "nade_name": "T2MidFlash1",
+      "description": "Part of Mid take, flashes mid early from spawn. Will blind anyone coming out of RedRoom or Jaguar. Will get part of the cubie, will not get anyone close to elbow",
+      "map_name": "de_ancient",
+      "side": "T",
+      "nade_type": "flash",
+      "site_location": "MID"
+    },
+    {
+      "file_name": "T2MidFlash2.txt",
+      "file_path": "Sample\\T2MidFlash2\\T2MidFlash2.txt",
+      "image_path": "Sample\\T2MidFlash2\\T2MidFlash2.png",
+      "nade_name": "T2MidFlash2",
+      "description": "part of mid take, will blind enemies closer to elbow than the first flash",
+      "map_name": "de_ancient",
+      "side": "T",
+      "nade_type": "flash",
+      "site_location": "MID"
+    },
+    {
+      "file_name": "T2Sandwich_Fast.txt",
+      "file_path": "Sample\\T2Sandwich_Fast\\T2Sandwich_Fast.txt",
+      "image_path": "Sample\\T2Sandwich_Fast\\T2Sandwich_Fast.png",
+      "nade_name": "T2Sandwich_Fast",
+      "description": "smoke sandwich from t spawn. Should land before you get to a main.",
+      "map_name": "de_train",
+      "side": "T",
+      "nade_type": "smoke",
+      "site_location": "A"
+    },
+    {
+      "file_name": "T2SpawnRedRoom.txt",
+      "file_path": "Sample\\T2SpawnRedRoom\\T2SpawnRedRoom.txt",
+      "image_path": "Sample\\T2SpawnRedRoom\\T2SpawnRedRoom.png",
+      "nade_name": "T2SpawnRedRoom",
+      "description": "smoke out red room from t spawn",
+      "map_name": "de_ancient",
+      "side": "T",
+      "nade_type": "smoke",
+      "site_location": "MID"
+    }
+  ]
+}

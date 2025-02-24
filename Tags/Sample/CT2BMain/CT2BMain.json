@@ -1,0 +1,11 @@
+{
+  "file_name": "CT2BMain.txt",
+  "file_path": "Sample\\CT2BMain\\CT2BMain.txt",
+  "image_path": "Sample\\CT2BMain\\CT2BMain.png",
+  "nade_name": "CT2BMain",
+  "description": "smokes out the upper part of b main from ct spawn",
+  "map_name": "de_ancient",
+  "side": "CT",
+  "nade_type": "smoke",
+  "site_location": "B"
+}
