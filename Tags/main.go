@@ -145,9 +145,6 @@ func saveMetadata(metadata AnnotationMetadata) error {
 	if err != nil {
 		return fmt.Errorf("error marshaling JSON: %v", err)
 	}
-	//#######################
-	//TODO: currently outputs to local direcotry not path. metaFilePath was set to metadata.FileName + ".json", which created a .txt.json file
-	//I want it to still output to the correct path, but just with the name metadata.NadeName
 	metaFilePath := metadata.NadeName + ".json"
 	err = os.WriteFile(metaFilePath, jsonData, 0644)
 	if err != nil {
