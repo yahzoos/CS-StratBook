@@ -1,0 +1,11 @@
+{
+  "file_name": "T2MidFlash1.txt",
+  "file_path": "Sample\\T2MidFlash1\\T2MidFlash1.txt",
+  "image_path": "Sample\\T2MidFlash1\\T2MidFlash1.png",
+  "nade_name": "T2MidFlash1",
+  "description": "Part of Mid take, flashes mid early from spawn. Will blind anyone coming out of RedRoom or Jaguar. Will get part of the cubie, will not get anyone close to elbow",
+  "map_name": "de_ancient",
+  "side": "T",
+  "nade_type": "flash",
+  "site_location": "MID"
+}

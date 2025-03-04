@@ -1,0 +1,11 @@
+{
+  "file_name": "T2SpawnRedRoom.txt",
+  "file_path": "Sample\\T2SpawnRedRoom\\T2SpawnRedRoom.txt",
+  "image_path": "Sample\\T2SpawnRedRoom\\T2SpawnRedRoom.png",
+  "nade_name": "T2SpawnRedRoom",
+  "description": "smoke out red room from t spawn",
+  "map_name": "de_ancient",
+  "side": "T",
+  "nade_type": "smoke",
+  "site_location": "MID"
+}

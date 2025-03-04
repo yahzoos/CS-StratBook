@@ -159,6 +159,8 @@ func main() {
 }
 
 func createUI(metadata []Metadata) {
+	var filteredNades []Metadata
+
 	myApp := app.New()
 	myWindow := myApp.NewWindow("Choice Widgets")
 
@@ -224,22 +226,56 @@ func createUI(metadata []Metadata) {
 	///Begin Top Right///
 	var topright *container.Scroll // Declare first
 	var fileNamedata = [][]string{[]string{"Name", "Side", "Type", "Site", "Description"}, []string{"", "", "", "", ""}}
+	selectedRow := -1
+	selectedImage := canvas.NewImageFromFile("") // Placeholder Image
+	selectedImage.FillMode = canvas.ImageFillContain
+
 	list := widget.NewTable(
 		func() (int, int) {
 			return len(fileNamedata), len(fileNamedata[0])
 		},
 		func() fyne.CanvasObject {
-			return widget.NewLabel("wide content")
+			return widget.NewLabel("")
 		},
 		func(i widget.TableCellID, o fyne.CanvasObject) {
-			o.(*widget.Label).SetText(fileNamedata[i.Row][i.Col])
+			label := o.(*widget.Label)
+			label.SetText(fileNamedata[i.Row][i.Col])
+			if i.Row == selectedRow {
+				label.TextStyle.Bold = true
+				//label.Color = color.RGBA{R: 100, G: 100, B: 255, A: 255} // Blue highlight
+			} else {
+				label.TextStyle.Bold = false
+				//label.Color = theme.ColorNameForeground
+			}
+			label.Refresh()
+
 		})
+
+	var bottomright *canvas.Image
+	// Row Selection Handler
+	list.OnSelected = func(id widget.TableCellID) {
+		log.Println("Selected Row:", id.Row)                      // Log the row index
+		log.Println("Filtered Nades Length:", len(filteredNades)) // Log length of filteredNades
+		if id.Row < 1 {                                           // Skip header row - made less than 1 to avoid app crash when the selector is somehow negative??
+			return
+		}
+		selectedRow = id.Row
+		list.Refresh()
+
+		// Update Image
+		selectedNade := filteredNades[id.Row-1] // Offset for header row
+		bottomright.File = selectedNade.ImagePath
+		log.Println("Image Path:", bottomright.File)
+		log.Println("SelectedNade:", filteredNades[id.Row-1])
+		bottomright.Refresh()
+		//bottomright.Refresh()
+	}
 
 	filterButton := widget.NewButton("Apply Filters", func() {
 		// Reset slice
 		fileNamedata = fileNamedata[:1]
 		log.Println("Filters:", filters)
-		filteredNades := FilterMetadata(metadata, filters)
+		filteredNades = FilterMetadata(metadata, filters)
 		// Log results
 		log.Println("Filtered Results:")
 		for _, nade := range filteredNades {
@@ -247,6 +283,7 @@ func createUI(metadata []Metadata) {
 			newslice := []string{nade.NadeName, nade.Side, nade.NadeType, nade.SiteLocation, nade.Description}
 			fileNamedata = append(fileNamedata, newslice)
 		}
+		selectedRow = -1
 		// Refresh table data
 		list.Refresh()
 
@@ -261,9 +298,11 @@ func createUI(metadata []Metadata) {
 
 	topleft := container.NewVBox(selectedmap, side, nade, site, filterButton)
 	//var topright = list
+	recalculateColumnWidths(list, fileNamedata)
 	topright = container.NewHScroll(list)
 	bottomleft := canvas.NewText("BottomLeft", color.White)
-	bottomright := canvas.NewText("BottomRight", color.White)
+	bottomright = canvas.NewImageFromFile("824b59e61f741306ea141553900d18f4ff4e49c1_full.jpg")
+	bottomright.FillMode = canvas.ImageFillContain
 
 	grid := container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
 	myWindow.SetContent(grid)
