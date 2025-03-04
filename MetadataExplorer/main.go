@@ -13,6 +13,7 @@ import (
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
+	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -221,40 +222,72 @@ func createUI(metadata []Metadata) {
 	//
 
 	///Begin Top Right///
-	var data = []string{"FileName"}
-	list := widget.NewList(
-		func() int {
-			return len(data)
+	var topright *container.Scroll // Declare first
+	var fileNamedata = [][]string{[]string{"Name", "Side", "Type", "Site", "Description"}, []string{"", "", "", "", ""}}
+	list := widget.NewTable(
+		func() (int, int) {
+			return len(fileNamedata), len(fileNamedata[0])
 		},
 		func() fyne.CanvasObject {
-			return widget.NewLabel("template")
+			return widget.NewLabel("wide content")
 		},
-		func(i widget.ListItemID, o fyne.CanvasObject) {
-			o.(*widget.Label).SetText(data[i])
+		func(i widget.TableCellID, o fyne.CanvasObject) {
+			o.(*widget.Label).SetText(fileNamedata[i.Row][i.Col])
 		})
 
 	filterButton := widget.NewButton("Apply Filters", func() {
 		// Reset slice
-		data = data[:1]
+		fileNamedata = fileNamedata[:1]
 		log.Println("Filters:", filters)
 		filteredNades := FilterMetadata(metadata, filters)
 		// Log results
 		log.Println("Filtered Results:")
 		for _, nade := range filteredNades {
 			log.Println(nade.NadeName, "-", nade.NadeType, "-", nade.SiteLocation)
-			data = append(data, nade.FileName)
+			newslice := []string{nade.NadeName, nade.Side, nade.NadeType, nade.SiteLocation, nade.Description}
+			fileNamedata = append(fileNamedata, newslice)
 		}
+		// Refresh table data
 		list.Refresh()
+
+		// Resize Columns dynamically
+		recalculateColumnWidths(list, fileNamedata)
+
+		// Refresh container to update UI
+		topright.Refresh()
 	})
 
 	///Begin Bottom Right///
 
 	topleft := container.NewVBox(selectedmap, side, nade, site, filterButton)
-	var topright = list
+	//var topright = list
+	topright = container.NewHScroll(list)
 	bottomleft := canvas.NewText("BottomLeft", color.White)
 	bottomright := canvas.NewText("BottomRight", color.White)
 
 	grid := container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
 	myWindow.SetContent(grid)
 	myWindow.ShowAndRun()
+}
+
+// Function to dynamically set column widths based on content
+func recalculateColumnWidths(table *widget.Table, data [][]string) {
+	colWidths := make([]float32, len(data[0]))
+
+	dummyLabel := widget.NewLabel("") // Used to measure text size
+
+	// Determine max width for each column
+	for _, row := range data {
+		for colIdx, text := range row {
+			size := fyne.MeasureText(text, theme.TextSize(), dummyLabel.TextStyle)
+			if size.Width > colWidths[colIdx] {
+				colWidths[colIdx] = size.Width
+			}
+		}
+	}
+
+	// Apply new column widths
+	for i, width := range colWidths {
+		table.SetColumnWidth(i, width+20) // Add padding for spacing
+	}
 }
