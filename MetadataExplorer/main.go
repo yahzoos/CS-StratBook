@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
@@ -49,42 +50,6 @@ func LoadMetadata(filePath string) ([]Metadata, error) {
 	return wrapper.Nades, nil // Return the nades slice where var[i].FileName would be the file_name of the ith index from the variable assigned to the output of the function.
 }
 
-// FilterMetadata filters the metadata based on user inputs
-func FilterMetadata(metadata []Metadata, mapName string, side []string, nadeTypes []string, siteLocations []string, searchText string) []Metadata {
-	var results []Metadata
-
-	for _, entry := range metadata {
-		// Ensure map_name is required
-		if !strings.EqualFold(entry.MapName, mapName) {
-			continue
-		}
-
-		// Optional filters: Side, Nade Type, Site Location
-		if len(side) > 0 && !containsIgnoreCase(side, entry.Side) {
-			continue
-		}
-		if len(nadeTypes) > 0 && !containsIgnoreCase(nadeTypes, entry.NadeType) {
-			continue
-		}
-		if len(siteLocations) > 0 && !containsIgnoreCase(siteLocations, entry.SiteLocation) {
-			continue
-		}
-
-		// Text search (case-insensitive, partial match)
-		if searchText != "" {
-			if !strings.Contains(strings.ToLower(entry.NadeName), strings.ToLower(searchText)) &&
-				!strings.Contains(strings.ToLower(entry.Description), strings.ToLower(searchText)) {
-				continue
-			}
-		}
-
-		// If all filters passed, add to results
-		results = append(results, entry)
-	}
-
-	return results
-}
-
 // containsIgnoreCase checks if a slice contains a value (case-insensitive)
 func containsIgnoreCase(slice []string, item string) bool {
 	for _, v := range slice {
@@ -111,6 +76,61 @@ func generateMaps(metadata []Metadata) []string {
 
 	}
 	return uniqueMaps
+}
+
+// FilterOptions holds the selected user filters
+type FilterOptions struct {
+	MapPick  string
+	T        bool
+	CT       bool
+	Smokes   bool
+	Flashes  bool
+	Molotovs bool
+	HEs      bool
+	ASite    bool
+	BSite    bool
+	MidSite  bool
+}
+
+var filters = FilterOptions{}
+
+// FilterMetadata filters the metadata based on user-selected options
+func FilterMetadata(metadata []Metadata, filters FilterOptions) []Metadata {
+	var filtered []Metadata
+
+	for _, nade := range metadata {
+		// Check Map Name (Required)
+		if strings.ToLower(nade.MapName) != strings.ToLower(filters.MapPick) {
+			continue
+		}
+
+		// Check Side (T, CT) - Include all if neither is selected
+		if (filters.T || filters.CT) && !((filters.T && nade.Side == "T") || (filters.CT && nade.Side == "CT")) {
+			continue
+		}
+
+		// Check Nade Type - Include all if none are selected
+		if (filters.Smokes || filters.Flashes || filters.Molotovs || filters.HEs) &&
+			!((filters.Smokes && nade.NadeType == "smoke") ||
+				(filters.Flashes && nade.NadeType == "flash") ||
+				(filters.Molotovs && nade.NadeType == "molotov") ||
+				(filters.HEs && nade.NadeType == "he_grenade")) {
+			continue
+		}
+
+		// Check Site Location - Include all if none are selected
+		if (filters.ASite || filters.BSite || filters.MidSite) &&
+			!((filters.ASite && nade.SiteLocation == "A") ||
+				(filters.BSite && nade.SiteLocation == "B") ||
+				(filters.MidSite && nade.SiteLocation == "MID")) {
+			continue
+		}
+
+		// Passed all filters
+		filtered = append(filtered, nade)
+	}
+
+	return filtered
 }
 
 // Main function
@@ -141,10 +161,12 @@ func createUI(metadata []Metadata) {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("Choice Widgets")
 
+	///Begin Top Left///
 	//generate dropdown button with unique map names from metadata
 	u := generateMaps(metadata)
 	selectMap := widget.NewSelect(u, func(mappick string) {
 		log.Println("Select set to", mappick)
+		filters.MapPick = mappick
 	})
 	selectedmap := container.NewVBox(selectMap)
 	//
@@ -152,10 +174,12 @@ func createUI(metadata []Metadata) {
 	// create checkboxes for T or CT side. if t or ct true it was checked
 	tSidebox := widget.NewCheck("T", func(t bool) {
 		log.Println("Check set to", t)
+		filters.T = t
 	})
 
 	ctSidebox := widget.NewCheck("CT", func(ct bool) {
 		log.Println("Check set to", ct)
+		filters.CT = ct
 	})
 	side := container.New(layout.NewGridLayout(4), tSidebox, ctSidebox)
 	//
@@ -163,15 +187,19 @@ func createUI(metadata []Metadata) {
 	// create checkboxes for nade types
 	smokeSidebox := widget.NewCheck("Smoke", func(smoke bool) {
 		log.Println("Check set to", smoke)
+		filters.Smokes = smoke
 	})
 	flashSidebox := widget.NewCheck("Flash", func(flash bool) {
 		log.Println("Check set to", flash)
+		filters.Flashes = flash
 	})
 	molotovSidebox := widget.NewCheck("Molotov", func(molotov bool) {
 		log.Println("Check set to", molotov)
+		filters.Molotovs = molotov
 	})
 	heSidebox := widget.NewCheck("HE_Grenade", func(he_grenade bool) {
 		log.Println("Check set to", he_grenade)
+		filters.HEs = he_grenade
 	})
 	nade := container.New(layout.NewGridLayout(4), smokeSidebox, flashSidebox, molotovSidebox, heSidebox)
 	//
@@ -179,17 +207,50 @@ func createUI(metadata []Metadata) {
 	// create checkboxes for Site location
 	aSiteLocation := widget.NewCheck("A", func(aSite bool) {
 		log.Println("Check set to", aSite)
+		filters.ASite = aSite
 	})
 	bSiteLocation := widget.NewCheck("B", func(bSite bool) {
 		log.Println("Check set to", bSite)
+		filters.BSite = bSite
 	})
 	midSiteLocation := widget.NewCheck("Mid", func(midSite bool) {
 		log.Println("Check set to", midSite)
+		filters.MidSite = midSite
 	})
 	site := container.New(layout.NewGridLayout(4), aSiteLocation, bSiteLocation, midSiteLocation)
 	//
-	topleft := container.NewVBox(selectedmap, side, nade, site)
-	topright := canvas.NewText("TopRight", color.White)
+
+	///Begin Top Right///
+	var data = []string{"FileName"}
+	list := widget.NewList(
+		func() int {
+			return len(data)
+		},
+		func() fyne.CanvasObject {
+			return widget.NewLabel("template")
+		},
+		func(i widget.ListItemID, o fyne.CanvasObject) {
+			o.(*widget.Label).SetText(data[i])
+		})
+
+	filterButton := widget.NewButton("Apply Filters", func() {
+		// Reset slice
+		data = data[:1]
+		log.Println("Filters:", filters)
+		filteredNades := FilterMetadata(metadata, filters)
+		// Log results
+		log.Println("Filtered Results:")
+		for _, nade := range filteredNades {
+			log.Println(nade.NadeName, "-", nade.NadeType, "-", nade.SiteLocation)
+			data = append(data, nade.FileName)
+		}
+		list.Refresh()
+	})
+
+	///Begin Bottom Right///
+
+	topleft := container.NewVBox(selectedmap, side, nade, site, filterButton)
+	var topright = list
 	bottomleft := canvas.NewText("BottomLeft", color.White)
 	bottomright := canvas.NewText("BottomRight", color.White)
 
