@@ -9,6 +9,9 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/widget"
 )
 
 // Metadata struct
@@ -289,4 +292,28 @@ func MoveJsonFiles(jsonFiles []string) {
 		log.Printf("Moving %v to %v\n", src, dst)
 		os.Rename(src, dst)
 	}
+}
+
+func TagsUI() {
+	myApp := app.New()
+	myWindow := myApp.NewWindow("Form Widget")
+
+	entry := widget.NewEntry()
+	textArea := widget.NewMultiLineEntry()
+
+	form := &widget.Form{
+		Items: []*widget.FormItem{ // we can specify items in the constructor
+			{Text: "Entry", Widget: entry}},
+		OnSubmit: func() { // optional, handle form submission
+			log.Println("Form submitted:", entry.Text)
+			log.Println("multiline:", textArea.Text)
+			myWindow.Close()
+		},
+	}
+
+	// we can also append items
+	form.Append("Text", textArea)
+
+	myWindow.SetContent(form)
+	myWindow.ShowAndRun()
 }
