@@ -7,6 +7,7 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
+	"github.com/yahzoos/CS-StratBook/cmd/pkg/MetadataExplorer"
 )
 
 type gui struct {
@@ -29,6 +30,8 @@ func (g *gui) makeUI() fyne.CanvasObject {
 
 	annotationEntry := widget.NewEntry()
 	annotationEntry.SetText(g.Annotation_path)
+
+	metadataTabContent := MetadataExplorer.MetadataExplorerUI(g.Tags_path)
 
 	// Save button for tags path
 	saveTagsButton := widget.NewButton("Save Tags Path", func() {
@@ -64,8 +67,8 @@ func (g *gui) makeUI() fyne.CanvasObject {
 					widget.NewButton("Generate New Tags", g.generate_tags),
 				),
 			),
-			container.NewTabItem("Metadata Explorer",
-				container.NewVBox()), //MetadataExplorer.MetadataExplorer())),
+			container.NewTabItem("Metadata Explorer", metadataTabContent),
+			//container.NewVBox()), //MetadataExplorer.MetadataExplorer())),
 		),
 	)
 }

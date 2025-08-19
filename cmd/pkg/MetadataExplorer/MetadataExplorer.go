@@ -135,7 +135,7 @@ func FilterMetadata(metadata []Metadata, filters FilterOptions) []Metadata {
 }
 
 // Main function
-func MetadataExplorer(filePath string) {
+func MetadataExplorer(filePath string) fyne.CanvasObject {
 	metadata, err := LoadMetadata(filePath)
 	if err != nil {
 		fmt.Printf("Error loading metadata: %v", err)
@@ -158,7 +158,7 @@ func MetadataExplorer(filePath string) {
 	createUI(metadata)
 }
 
-func createUI(metadata []Metadata) {
+func createUI(metadata []Metadata) fyne.CanvasObject {
 	var filteredNades []Metadata
 
 	myApp := app.New()
@@ -304,9 +304,10 @@ func createUI(metadata []Metadata) {
 	bottomright = canvas.NewImageFromFile("D:\\CS-StratBook\\cmd\\CS-StratBook\\824b59e61f741306ea141553900d18f4ff4e49c1_full.jpg")
 	bottomright.FillMode = canvas.ImageFillContain
 
-	grid := container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
-	myWindow.SetContent(grid)
-	myWindow.ShowAndRun()
+	//grid := container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
+	//myWindow.SetContent(grid)
+	//myWindow.ShowAndRun()
+	return container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
 }
 
 // Function to dynamically set column widths based on content
