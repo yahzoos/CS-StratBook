@@ -300,7 +300,7 @@ func createUI(metadata []Metadata) fyne.CanvasObject {
 	recalculateColumnWidths(list, fileNamedata)
 	topright = container.NewHScroll(list)
 	bottomleft := canvas.NewText("BottomLeft", color.White)
-	bottomright = canvas.NewImageFromFile("D:\\CS-StratBook\\cmd\\824b59e61f741306ea141553900d18f4ff4e49c1_full.jpg")
+	bottomright = canvas.NewImageFromFile("D:\\CS-StratBook\\internal\\824b59e61f741306ea141553900d18f4ff4e49c1_full.jpg")
 	bottomright.FillMode = canvas.ImageFillContain
 
 	//grid := container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
