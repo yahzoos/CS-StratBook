@@ -18,9 +18,6 @@
 - Create "all maps" dropdown
 -- or auto load (basically click the button for first map in list)
 
-## Settings
-
-- if settings.json does not exist, write it with the defaults.
 
 ## main.gui.go
 

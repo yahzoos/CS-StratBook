@@ -40,7 +40,7 @@ func (g *gui) makeUI() fyne.CanvasObject {
 			TagsPath:       g.Tags_path,
 			AnnotationPath: g.Annotation_path, // keep current value
 		})
-		checkTagsFile(g.Tags_path) // ensure file exists
+		checkFile(g.Tags_path) // ensure file exists
 	})
 
 	// Save button for annotation path
