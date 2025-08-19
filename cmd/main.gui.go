@@ -22,37 +22,6 @@ func newGUI(tagsPath, annotationPath string) *gui {
 	}
 }
 
-/*
-func (g *gui) makeUI() fyne.CanvasObject {
-
-	return container.NewVBox(
-		container.NewAppTabs(container.NewTabItem("Home",
-			container.NewVBox(
-				container.NewGridWithColumns(2,
-					&widget.Entry{Text: "", PlaceHolder: "Metadata Path", MultiLine: false, Password: false},
-					widget.NewButton("Save", func() {
-						g.Tags_path = tagsEntry.Text
-						g.Annotation_path = annotationEntry.Text
-						SaveSettings(Settings{
-							TagsPath:       g.Tags_path,
-							AnnotationPath: g.Annotation_path,
-						})
-						// Ensure the tags file exists after path change
-						checkTagsFile(g.Tags_path)
-					})),
-				container.NewGridWithColumns(2,
-					&widget.Entry{Text: "", PlaceHolder: "Annotation Folder", MultiLine: false, Password: false},
-					widget.NewButton("Button", func() {})),
-				//widget.NewRichTextFromMarkdown(fmt.Sprintf("Tags Path: %s", g.Tags_path)),
-				//widget.NewRichTextFromMarkdown(fmt.Sprintf("Annotation Folder: %s", g.Annotation_path)),
-				widget.NewButton("Generate New Tags", g.generate_tags))),
-			container.NewTabItem("Metadata Explorer",
-				container.NewVBox())))
-	//container.NewVBox(MetadataExplorer.MetadataExplorer()))))
-
-}
-*/
-
 func (g *gui) makeUI() fyne.CanvasObject {
 	// Create entries initialized with current settings
 	tagsEntry := widget.NewEntry()

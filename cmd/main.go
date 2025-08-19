@@ -1,7 +1,10 @@
 package main
 
 import (
+	"log"
+
 	"fyne.io/fyne/v2/app"
+	"github.com/yahzoos/CS-StratBook/cmd/pkg/Tags"
 )
 
 //"github.com/yahzoos/CS-StratBook/cmd/pkg/MetadataExplorer"
@@ -31,6 +34,53 @@ func (g *gui) setupActions() {
 //}
 
 func (g *gui) generate_tags() {
+	log.Println("Generating new tags...")
+
+	// Step 1: Get all text/png files from the annotation folder
+	files, err := Tags.GetFilePaths(g.Annotation_path)
+	if err != nil {
+		log.Printf("Error getting file paths from %s: %v\n", g.Annotation_path, err)
+		return
+	}
+
+	// Step 2: Generate metadata for each file
+	var allMetadata []Tags.AnnotationMetadata
+	for baseName, fileInfo := range files {
+		metadata := Tags.GenerateMetadata(
+			map[string]Tags.FileInfo{baseName: fileInfo},
+			"",                        // side
+			"",                        // site
+			"Description placeholder", // description
+		)
+
+		// Validate metadata
+		if err := Tags.ValidateAnnotationMetadata(metadata); err != nil {
+			log.Printf("Validation error for %s: %v\n", metadata.FileName, err)
+			continue
+		}
+
+		// Save individual JSON file
+		if err := Tags.SaveMetadata(metadata); err != nil {
+			log.Printf("Failed to save metadata for %s: %v\n", metadata.FileName, err)
+			continue
+		}
+
+		allMetadata = append(allMetadata, metadata)
+	}
+
+	// Step 3: Merge all JSON files into the main tags.json
+	jsonFiles, err := Tags.GetJSONFiles()
+	if err != nil {
+		log.Printf("Error retrieving JSON files: %v\n", err)
+		return
+	}
+
+	if err := Tags.MergeJSONFiles(jsonFiles, g.Tags_path); err != nil {
+		log.Printf("Error merging JSON files: %v\n", err)
+		return
+	}
+
+	log.Println("All tags generated successfully!")
 }
 
 /*
