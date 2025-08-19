@@ -1,12 +1,32 @@
 package main
 
 import (
-	//"log"
-
-	"pkg/Tags"
+	"github.com/yahzoos/CS-StratBook/cmd/pkg/MetadataExplorer"
 )
 
-func main() {
+//"github.com/yahzoos/CS-StratBook/cmd/pkg/MetadataExplorer"
+//"github.com/yahzoos/CS-StratBook/cmd/pkg/Tags"
+//"log"
 
-	Tags.TagsUI
+func main() {
+	/*
+	   Thinkng out loud here.
+
+	   When the program starts, it should check a few things.
+
+	   1. Is there already a Tags.json file? (later can be a db?)
+	   	Yes:
+	   		Load "main ui" - not sure what to  call it yet
+	   		From here you can do everything
+	   		Load json file, show metadata explorer
+	   	No:
+	   		Ask for location of Tags.json
+	   		Prompt to create a new json file
+	   		Ask for path to annotation folder - ask to copy the CS local folder out somewhere else or have a backup
+	   			-Maybe make a local copy anyways so that the source never gets overwritten unless specifically requested later.
+	*/
+
+	//Tags.TagsUI()
+
+	MetadataExplorer.MetadataExplorer()
 }

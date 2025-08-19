@@ -140,21 +140,6 @@ func MetadataExplorer() {
 	if err != nil {
 		fmt.Printf("Error loading metadata: %v", err)
 	}
-
-	//u := generateMaps(tags)
-	//fmt.Printf("The generated Unique Maps are %v\n", u)
-
-	//var mapName string
-	//var side []string
-	//var nadeTypes []string
-	//var siteLocations []string
-	//var searchText string
-
-	//var input string
-	//fmt.Scanln(&input)
-
-	//out := FilterMetadata(tags, input, side, nadeTypes, siteLocations, searchText)
-	//fmt.Println(out)
 	createUI(metadata)
 }
 
