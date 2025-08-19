@@ -1,9 +1,6 @@
 package main
 
 import (
-	"log"
-	"os"
-
 	"fyne.io/fyne/v2/app"
 )
 
@@ -12,15 +9,13 @@ import (
 //"log"
 
 func main() {
-	var Tags_path string = "tags.json"
-	var Annotation_path string = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\annotations"
-
-	checkfiles()
+	// Load from file (or defaults if not found)
+	settings := LoadSettings()
 
 	a := app.New()
 	//	loadTheme(a)
 
-	g := newGUI(Tags_path, Annotation_path)
+	g := newGUI(settings.TagsPath, settings.AnnotationPath)
 	w := g.makeWindow(a)
 
 	g.setupActions()
@@ -54,30 +49,6 @@ When the program starts, it should check a few things.
     Ask for path to annotation folder - ask to copy the CS local folder out somewhere else or have a backup
     -Maybe make a local copy anyways so that the source never gets overwritten unless specifically requested later.
 */
-func checkfiles() {
-
-	filename := "tags.json"
-
-	if _, err := os.Stat(filename); err == nil {
-		// File exists
-		log.Println("File exists!")
-	} else if os.IsNotExist(err) {
-		// File does not exist
-		log.Println("File does not exist.")
-		file, err := os.Create(filename)
-		if err != nil {
-			log.Println("Error creating file:", err)
-			return
-		}
-		defer file.Close()
-	} else {
-		// Some other error, like permission issues
-		log.Println("Error checking file:", err)
-	}
-
-	//Tags_path = filename
-	//Annotation_path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\annotations"
-}
 
 //Tags.TagsUI()
 

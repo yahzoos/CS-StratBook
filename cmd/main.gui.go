@@ -4,8 +4,6 @@
 package main
 
 import (
-	"fmt"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
@@ -24,19 +22,84 @@ func newGUI(tagsPath, annotationPath string) *gui {
 	}
 }
 
+/*
 func (g *gui) makeUI() fyne.CanvasObject {
 
 	return container.NewVBox(
 		container.NewAppTabs(container.NewTabItem("Home",
 			container.NewVBox(
-				widget.NewRichTextFromMarkdown(fmt.Sprintf("Tags Path: %s", g.Tags_path)),
-				widget.NewRichTextFromMarkdown(fmt.Sprintf("Annotation Folder: %s", g.Annotation_path)),
+				container.NewGridWithColumns(2,
+					&widget.Entry{Text: "", PlaceHolder: "Metadata Path", MultiLine: false, Password: false},
+					widget.NewButton("Save", func() {
+						g.Tags_path = tagsEntry.Text
+						g.Annotation_path = annotationEntry.Text
+						SaveSettings(Settings{
+							TagsPath:       g.Tags_path,
+							AnnotationPath: g.Annotation_path,
+						})
+						// Ensure the tags file exists after path change
+						checkTagsFile(g.Tags_path)
+					})),
+				container.NewGridWithColumns(2,
+					&widget.Entry{Text: "", PlaceHolder: "Annotation Folder", MultiLine: false, Password: false},
+					widget.NewButton("Button", func() {})),
+				//widget.NewRichTextFromMarkdown(fmt.Sprintf("Tags Path: %s", g.Tags_path)),
+				//widget.NewRichTextFromMarkdown(fmt.Sprintf("Annotation Folder: %s", g.Annotation_path)),
 				widget.NewButton("Generate New Tags", g.generate_tags))),
 			container.NewTabItem("Metadata Explorer",
 				container.NewVBox())))
+	//container.NewVBox(MetadataExplorer.MetadataExplorer()))))
 
 }
+*/
 
+func (g *gui) makeUI() fyne.CanvasObject {
+	// Create entries initialized with current settings
+	tagsEntry := widget.NewEntry()
+	tagsEntry.SetText(g.Tags_path)
+
+	annotationEntry := widget.NewEntry()
+	annotationEntry.SetText(g.Annotation_path)
+
+	// Save button for tags path
+	saveTagsButton := widget.NewButton("Save Tags Path", func() {
+		g.Tags_path = tagsEntry.Text
+		SaveSettings(Settings{
+			TagsPath:       g.Tags_path,
+			AnnotationPath: g.Annotation_path, // keep current value
+		})
+		checkTagsFile(g.Tags_path) // ensure file exists
+	})
+
+	// Save button for annotation path
+	saveAnnotationButton := widget.NewButton("Save Annotation Path", func() {
+		g.Annotation_path = annotationEntry.Text
+		SaveSettings(Settings{
+			TagsPath:       g.Tags_path, // keep current value
+			AnnotationPath: g.Annotation_path,
+		})
+	})
+
+	return container.NewVBox(
+		container.NewAppTabs(
+			container.NewTabItem("Home",
+				container.NewVBox(
+					container.NewGridWithColumns(3,
+						widget.NewLabel("Tags Path:"),
+						tagsEntry,
+						saveTagsButton),
+					container.NewGridWithColumns(3,
+						widget.NewLabel("Annotation Folder:"),
+						annotationEntry,
+						saveAnnotationButton),
+					widget.NewButton("Generate New Tags", g.generate_tags),
+				),
+			),
+			container.NewTabItem("Metadata Explorer",
+				container.NewVBox()), //MetadataExplorer.MetadataExplorer())),
+		),
+	)
+}
 func (g *gui) makeWindow(a fyne.App) fyne.Window {
 	w := a.NewWindow("main.gui.go")
 	g.win = w
