@@ -135,8 +135,8 @@ func FilterMetadata(metadata []Metadata, filters FilterOptions) []Metadata {
 }
 
 // Main function
-func MetadataExplorer() {
-	metadata, err := LoadMetadata("tags.json")
+func MetadataExplorer(filePath string) {
+	metadata, err := LoadMetadata(filePath)
 	if err != nil {
 		fmt.Printf("Error loading metadata: %v", err)
 	}
