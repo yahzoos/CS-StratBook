@@ -28,12 +28,13 @@ func (g *gui) makeUI() fyne.CanvasObject {
 
 	return container.NewVBox(
 		container.NewAppTabs(container.NewTabItem("Home",
-			container.NewVBox()),
+			container.NewVBox(
+				widget.NewRichTextFromMarkdown(fmt.Sprintf("Tags Path: %s", g.Tags_path)),
+				widget.NewRichTextFromMarkdown(fmt.Sprintf("Annotation Folder: %s", g.Annotation_path)),
+				widget.NewButton("Generate New Tags", g.generate_tags))),
 			container.NewTabItem("Metadata Explorer",
-				container.NewVBox())),
-		widget.NewRichTextFromMarkdown(fmt.Sprintf("Tags Path: %s", g.Tags_path)),
-		widget.NewRichTextFromMarkdown(fmt.Sprintf("Annotation Folder: %s", g.Annotation_path)),
-		widget.NewButton("Generate New Tags", g.generate_tags))
+				container.NewVBox())))
+
 }
 
 func (g *gui) makeWindow(a fyne.App) fyne.Window {
