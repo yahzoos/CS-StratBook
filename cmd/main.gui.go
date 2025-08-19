@@ -31,7 +31,7 @@ func (g *gui) makeUI() fyne.CanvasObject {
 	annotationEntry := widget.NewEntry()
 	annotationEntry.SetText(g.Annotation_path)
 
-	metadataTabContent := MetadataExplorer.MetadataExplorerUI(g.Tags_path)
+	metadataTabContent := MetadataExplorer.MetadataExplorer(g.Tags_path)
 
 	// Save button for tags path
 	saveTagsButton := widget.NewButton("Save Tags Path", func() {
