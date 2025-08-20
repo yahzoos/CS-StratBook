@@ -3,7 +3,6 @@ package MetadataExplorer
 import (
 	"encoding/json"
 	"fmt"
-	"image/color"
 	"log"
 	"os"
 	"strings"
@@ -52,12 +51,12 @@ func LoadMetadata(filePath string) ([]Metadata, error) {
 
 // containsIgnoreCase checks if a slice contains a value (case-insensitive)
 /*func containsIgnoreCase(slice []string, item string) bool {
-	for _, v := range slice {
-		if strings.EqualFold(v, item) {
-			return true
-		}
-	}
-	return false
+    for _, v := range slice {
+        if strings.EqualFold(v, item) {
+            return true
+        }
+    }
+    return false
 }
 */
 func generateMaps(metadata []Metadata) []string {
@@ -152,15 +151,39 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.
 	var selectedRow int
 	var list *widget.Table
 
+	// For metadataBox and buttonBar
+	var metadataBox *fyne.Container
+	addBtn := widget.NewButton("Add", func() {
+		// Placeholder: do nothing for now
+	})
+	removeBtn := widget.NewButton("Remove", func() {
+		// Placeholder: do nothing for now
+	})
+	editBtn := widget.NewButton("Edit", func() {
+		// Placeholder: open edit window in the future
+	})
+	buttonBar := container.NewHBox(addBtn, removeBtn, editBtn)
+
+	updateMetadataBox := func(nade Metadata) {
+		metadataBox.Objects = metadataBox.Objects[:0]
+		metadataBox.Add(widget.NewLabel("FileName: " + nade.FileName))
+		metadataBox.Add(widget.NewLabel("FilePath: " + nade.FilePath))
+		metadataBox.Add(widget.NewLabel("ImagePath: " + nade.ImagePath))
+		metadataBox.Add(widget.NewLabel("NadeName: " + nade.NadeName))
+		metadataBox.Add(widget.NewLabel("Description: " + nade.Description))
+		metadataBox.Add(widget.NewLabel("MapName: " + nade.MapName))
+		metadataBox.Add(widget.NewLabel("Side: " + nade.Side))
+		metadataBox.Add(widget.NewLabel("NadeType: " + nade.NadeType))
+		metadataBox.Add(widget.NewLabel("SiteLocation: " + nade.SiteLocation))
+		metadataBox.Add(buttonBar)
+		metadataBox.Refresh()
+	}
+
 	// Initialize them before use
 	fileNamedata = [][]string{{"Name", "Side", "Type", "Site", "Description"}, {"", "", "", "", ""}}
 	selectedRow = -1
 
-	//myApp := app.New()
-	//myWindow := myApp.NewWindow("Choice Widgets")
-
-	///Begin Top Left///
-	//generate dropdown button with unique map names from metadata
+	// Begin Top Left
 	u := generateMaps(metadata)
 	selectMap := widget.NewSelect(u, func(mappick string) {
 		log.Println("Select set to", mappick)
@@ -249,6 +272,21 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.
 
 	var bottomright *canvas.Image
 	// Row Selection Handler
+	updateMetadataBox = func(nade Metadata) {
+		metadataBox.Objects = metadataBox.Objects[:0]
+		metadataBox.Add(widget.NewLabel("FileName: " + nade.FileName))
+		metadataBox.Add(widget.NewLabel("FilePath: " + nade.FilePath))
+		metadataBox.Add(widget.NewLabel("ImagePath: " + nade.ImagePath))
+		metadataBox.Add(widget.NewLabel("NadeName: " + nade.NadeName))
+		metadataBox.Add(widget.NewLabel("Description: " + nade.Description))
+		metadataBox.Add(widget.NewLabel("MapName: " + nade.MapName))
+		metadataBox.Add(widget.NewLabel("Side: " + nade.Side))
+		metadataBox.Add(widget.NewLabel("NadeType: " + nade.NadeType))
+		metadataBox.Add(widget.NewLabel("SiteLocation: " + nade.SiteLocation))
+		metadataBox.Add(buttonBar)
+		metadataBox.Refresh()
+	}
+
 	list.OnSelected = func(id widget.TableCellID) {
 		log.Println("Selected Row:", id.Row)                      // Log the row index
 		log.Println("Filtered Nades Length:", len(filteredNades)) // Log length of filteredNades
@@ -264,7 +302,9 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.
 		log.Println("Image Path:", bottomright.File)
 		log.Println("SelectedNade:", filteredNades[id.Row-1])
 		bottomright.Refresh()
-		//bottomright.Refresh()
+
+		// Update metadatabox
+		updateMetadataBox(selectedNade)
 	}
 
 	filterButton := widget.NewButton("Apply Filters", func() {
@@ -290,19 +330,17 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.
 		topright.Refresh()
 	})
 
-	///Begin Bottom Right///
+	///Begin Bottom left///
+	metadataBox = container.NewVBox(widget.NewLabel("Select a nade to view details"), buttonBar)
 
+	/// UI Construction ///
 	topleft := container.NewVBox(selectedmap, side, nade, site, filterButton)
-	//var topright = list
 	recalculateColumnWidths(list, fileNamedata)
 	topright = container.NewHScroll(list)
-	bottomleft := canvas.NewText("BottomLeft", color.White)
+	bottomleft := metadataBox
 	bottomright = canvas.NewImageFromFile("D:\\CS-StratBook\\internal\\824b59e61f741306ea141553900d18f4ff4e49c1_full.jpg")
 	bottomright.FillMode = canvas.ImageFillContain
 
-	//grid := container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
-	//myWindow.SetContent(grid)
-	//myWindow.ShowAndRun()
 	return container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
 }
 
