@@ -7,10 +7,12 @@
 
 ## pkg MetaData Exporer
 
-- reload tags.json whenever the tab is clicked (or have a button)
 - Crashes when clicking on the right side grid if nothing is there. (before pressing the apply filters button)
 - Create "all maps" dropdown
 -- or auto load (basically click the button for first map in list)
+- Automatically call applyFilters when a map is selected.
+- Show full metadata on selected nade. Allow for editing (though edit button -> new window)
+- Next to edit have add and remove buttons that send or remove selected nades to the FileGenerator Tab.
 
 
 ## main.gui.go
