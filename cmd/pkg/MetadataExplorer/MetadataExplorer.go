@@ -160,6 +160,15 @@ func MetadataExplorer(filePath string) fyne.CanvasObject {
 func createUI(metadata []Metadata) fyne.CanvasObject {
 	var filteredNades []Metadata
 
+	// Declare these at the top so all closures can access them
+	var fileNamedata [][]string
+	var selectedRow int
+	var list *widget.Table
+
+	// Initialize them before use
+	fileNamedata = [][]string{{"Name", "Side", "Type", "Site", "Description"}, {"", "", "", "", ""}}
+	selectedRow = -1
+
 	//myApp := app.New()
 	//myWindow := myApp.NewWindow("Choice Widgets")
 
@@ -170,7 +179,30 @@ func createUI(metadata []Metadata) fyne.CanvasObject {
 		log.Println("Select set to", mappick)
 		filters.MapPick = mappick
 	})
-	selectedmap := container.NewVBox(selectMap)
+
+	// Add a reload button with an icon
+	reloadBtn := widget.NewButtonWithIcon("", theme.ViewRefreshIcon(), func() {
+		// Reload metadata and refresh the UI
+		newMetadata, err := LoadMetadata("tags.json") // Use the correct path if needed
+		if err != nil {
+			log.Println("Error reloading metadata:", err)
+			return
+		}
+		// Update dropdown options
+		u := generateMaps(newMetadata)
+		selectMap.Options = u
+		selectMap.SetSelected("") // Reset selection
+
+		// Reset filters
+		filters = FilterOptions{}
+
+		// Clear table data
+		fileNamedata = [][]string{{"Name", "Side", "Type", "Site", "Description"}, {"", "", "", "", ""}}
+		selectedRow = -1
+		list.Refresh()
+	})
+
+	selectedmap := container.NewBorder(nil, nil, nil, reloadBtn, selectMap)
 	//
 
 	// create checkboxes for T or CT side. if t or ct true it was checked
@@ -224,12 +256,7 @@ func createUI(metadata []Metadata) fyne.CanvasObject {
 
 	///Begin Top Right///
 	var topright *container.Scroll // Declare first
-	var fileNamedata = [][]string{[]string{"Name", "Side", "Type", "Site", "Description"}, []string{"", "", "", "", ""}}
-	selectedRow := -1
-	selectedImage := canvas.NewImageFromFile("") // Placeholder Image
-	selectedImage.FillMode = canvas.ImageFillContain
-
-	list := widget.NewTable(
+	list = widget.NewTable(
 		func() (int, int) {
 			return len(fileNamedata), len(fileNamedata[0])
 		},
