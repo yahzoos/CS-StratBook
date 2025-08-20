@@ -133,31 +133,18 @@ func FilterMetadata(metadata []Metadata, filters FilterOptions) []Metadata {
 	return filtered
 }
 
+type ReloadFunc func()
+
 // Main function
-func MetadataExplorer(filePath string) fyne.CanvasObject {
+func MetadataExplorer(filePath string, reloadFunc ReloadFunc) fyne.CanvasObject {
 	metadata, err := LoadMetadata(filePath)
 	if err != nil {
 		fmt.Printf("Error loading metadata: %v", err)
 	}
-
-	//u := generateMaps(tags)
-	//fmt.Printf("The generated Unique Maps are %v\n", u)
-
-	//var mapName string
-	//var side []string
-	//var nadeTypes []string
-	//var siteLocations []string
-	//var searchText string
-
-	//var input string
-	//fmt.Scanln(&input)
-
-	//out := FilterMetadata(tags, input, side, nadeTypes, siteLocations, searchText)
-	//fmt.Println(out)
-	return createUI(metadata)
+	return createUI(metadata, filePath, reloadFunc)
 }
 
-func createUI(metadata []Metadata) fyne.CanvasObject {
+func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.CanvasObject {
 	var filteredNades []Metadata
 
 	// Declare these at the top so all closures can access them
@@ -182,24 +169,7 @@ func createUI(metadata []Metadata) fyne.CanvasObject {
 
 	// Add a reload button with an icon
 	reloadBtn := widget.NewButtonWithIcon("", theme.ViewRefreshIcon(), func() {
-		// Reload metadata and refresh the UI
-		newMetadata, err := LoadMetadata("tags.json") // Use the correct path if needed
-		if err != nil {
-			log.Println("Error reloading metadata:", err)
-			return
-		}
-		// Update dropdown options
-		u := generateMaps(newMetadata)
-		selectMap.Options = u
-		selectMap.SetSelected("") // Reset selection
-
-		// Reset filters
-		filters = FilterOptions{}
-
-		// Clear table data
-		fileNamedata = [][]string{{"Name", "Side", "Type", "Site", "Description"}, {"", "", "", "", ""}}
-		selectedRow = -1
-		list.Refresh()
+		reloadFunc()
 	})
 
 	selectedmap := container.NewBorder(nil, nil, nil, reloadBtn, selectMap)

@@ -31,7 +31,16 @@ func (g *gui) makeUI() fyne.CanvasObject {
 	annotationEntry := widget.NewEntry()
 	annotationEntry.SetText(g.Annotation_path)
 
-	metadataTabContent := MetadataExplorer.MetadataExplorer(g.Tags_path)
+	// Create the tab item with a placeholder (will set content below)
+	var metadataTab *container.TabItem
+	var reloadFunc func()
+
+	// Define a reload function that updates the tab's content
+	reloadFunc = func() {
+		metadataTab.Content = MetadataExplorer.MetadataExplorer(g.Tags_path, reloadFunc)
+	}
+
+	metadataTab = container.NewTabItem("Metadata Explorer", MetadataExplorer.MetadataExplorer(g.Tags_path, reloadFunc))
 
 	// Save button for tags path
 	saveTagsButton := widget.NewButton("Save Tags Path", func() {
@@ -67,8 +76,7 @@ func (g *gui) makeUI() fyne.CanvasObject {
 					widget.NewButton("Generate New Tags", g.generate_tags),
 				),
 			),
-			container.NewTabItem("Metadata Explorer", metadataTabContent),
-			//container.NewVBox()), //MetadataExplorer.MetadataExplorer())),
+			metadataTab,
 		),
 	)
 }
