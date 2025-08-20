@@ -231,6 +231,7 @@ func GetJSONFiles() ([]string, error) {
 	var jsonFiles []string
 
 	// Read all files in the current directory
+	//#HERE#
 	files, err := os.ReadDir(".")
 	if err != nil {
 		return nil, fmt.Errorf("failed to read directory: %v", err)
@@ -238,7 +239,7 @@ func GetJSONFiles() ([]string, error) {
 
 	// Filter for .json files
 	for _, file := range files {
-		if !file.IsDir() && filepath.Ext(file.Name()) == ".json" && file.Name() != "tags.json" {
+		if !file.IsDir() && filepath.Ext(file.Name()) == ".json" && file.Name() != "tags.json" && file.Name() != "settings.json" {
 			jsonFiles = append(jsonFiles, file.Name())
 		}
 	}
@@ -284,15 +285,27 @@ func MergeJSONFiles(filePaths []string, outputFilePath string) error {
 	return nil
 }
 
-func MoveJsonFiles(jsonFiles []string) {
-
+func MoveJsonFiles(annotationPath string, jsonFiles []string) error {
+	//cfg := settings.LoadSettings()
+	files := annotationPath
 	for i := range jsonFiles {
+		log.Println("DEBUG: filepath is: ", files)
 		src := jsonFiles[i]
 		rip := strings.TrimSuffix(jsonFiles[i], ".json")
-		dst := filepath.Join("Sample", rip, src)
+		dst := filepath.Join(files, rip, src)
 		log.Printf("Moving %v to %v\n", src, dst)
-		os.Rename(src, dst)
+
+		if err := os.MkdirAll(files, 0755); err != nil {
+			log.Println("Error making directory file: ", err)
+
+		}
+
+		if err := os.Rename(src, dst); err != nil {
+			log.Println("Error moving file: ", err)
+
+		}
 	}
+	return nil
 }
 
 func TagsUI() {

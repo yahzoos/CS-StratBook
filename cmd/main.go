@@ -81,6 +81,15 @@ func (g *gui) generate_tags() {
 	}
 
 	log.Println("All tags generated successfully!")
+
+	if err := Tags.MoveJsonFiles(g.Annotation_path, jsonFiles); err != nil {
+		log.Printf("Error movinging JSON files: %v\n", err)
+		return
+	}
+	log.Println("DEBUG move returns: ", err)
+
+	log.Println("All tages moved successfully")
+
 }
 
 /*
