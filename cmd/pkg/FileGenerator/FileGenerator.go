@@ -1,6 +1,7 @@
 package FileGenerator
 
-//Usage: go run main.go -o OutPutfile.txt <file1.txt> <file2.txt> ... <fileN.txt>
+// Usage: go run main.go -o OutPutfile.txt <file1.txt> <file2.txt> ... <fileN.txt>
+
 import (
 	"fmt"
 	"log"
@@ -14,6 +15,7 @@ type NadeList struct {
 	Files []string
 }
 
+// removeFirstDigits strips leading digits from a string
 func removeFirstDigits(s string) string {
 	for i, r := range s {
 		if !unicode.IsDigit(r) {
@@ -23,15 +25,17 @@ func removeFirstDigits(s string) string {
 	return ""
 }
 
+// AddNade appends a new nade file path if not already present
 func (nl *NadeList) AddNade(filePath string) {
 	for _, f := range nl.Files {
 		if f == filePath {
-			return //do nothing because its in the list
+			return // do nothing if it's already in the list
 		}
 	}
 	nl.Files = append(nl.Files, filePath)
 }
 
+// RemoveNade removes a nade file path if present
 func (nl *NadeList) RemoveNade(filePath string) {
 	for i, f := range nl.Files {
 		if f == filePath {
@@ -41,14 +45,13 @@ func (nl *NadeList) RemoveNade(filePath string) {
 	}
 }
 
-// using this to accpt a list created from the ui
+// FileGeneratorFromList is called from the UI, wraps FileGenerator
 func FileGeneratorFromList(outputFile string, nl *NadeList) {
 	FileGenerator(outputFile, nl.Files)
 }
 
-// keeping origional incase I want a cli tool
+// FileGenerator merges nade metadata files and renumbers MapAnnotationNodes
 func FileGenerator(outputFile string, inputFiles []string) {
-
 	var bigout []string
 	var start string
 	mapindex := 0
@@ -62,7 +65,6 @@ func FileGenerator(outputFile string, inputFiles []string) {
 
 		// Convert from []byte to string and remove last '}'
 		fileTextStr := strings.TrimRight(string(fileText), "}")
-
 		fileTextStr += "\n"
 
 		// Split the files at "MapAnnotationNode"
@@ -75,11 +77,11 @@ func FileGenerator(outputFile string, inputFiles []string) {
 
 		// Append MapAnnotationNode entries, renumbering them
 		for j := 1; j < len(fileSplit); j++ {
-			// Remove the leading numbers (the ones that where behind MapAnootationNode before it was removed by the split)
+			// Remove the leading numbers (the ones behind MapAnnotationNode)
 			modifiedSlice := removeFirstDigits(fileSplit[j])
-			// Add the map index number to the begining of each slice
+			// Add the map index number to the beginning of each slice
 			modifiedSlice = strconv.Itoa(mapindex) + modifiedSlice
-			// Add the text "MapAnnotationNode" infront of the new number and slice
+			// Add the text "MapAnnotationNode" in front
 			line := "MapAnnotationNode" + modifiedSlice
 			// Append each fixed slice to bigout
 			bigout = append(bigout, line)
@@ -87,16 +89,13 @@ func FileGenerator(outputFile string, inputFiles []string) {
 		}
 	}
 
-	// Merge everything, Use the beginning of file 1, the bigout containing the fixed MapAnnotationNodes and add a trailing }
+	// Merge everything: beginning of file1 + fixed MapAnnotationNodes + trailing }
 	newfile := start + strings.Join(bigout, "") + "}"
 
 	// Write output to file
-
 	if rerr := os.WriteFile(outputFile, []byte(newfile), 0644); rerr != nil {
 		log.Fatalf("Error writing to file %s: %v", outputFile, rerr)
 	}
 
 	fmt.Println("Merged file created successfully:", outputFile)
-
-	return
 }

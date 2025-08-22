@@ -41,39 +41,23 @@ func LoadMetadata(filePath string) ([]Metadata, error) {
 		return nil, err
 	}
 
-	var wrapper MetadataWrapper // Use wrapper struct
+	var wrapper MetadataWrapper
 	err = json.Unmarshal(data, &wrapper)
 	if err != nil {
 		return nil, err
 	}
 
-	return wrapper.Nades, nil // Return the nades slice where var[i].FileName would be the file_name of the ith index from the variable assigned to the output of the function.
+	return wrapper.Nades, nil
 }
 
-// containsIgnoreCase checks if a slice contains a value (case-insensitive)
-/*func containsIgnoreCase(slice []string, item string) bool {
-    for _, v := range slice {
-        if strings.EqualFold(v, item) {
-            return true
-        }
-    }
-    return false
-}
-*/
 func generateMaps(metadata []Metadata) []string {
-	//fmt.Printf("First Loop\n")
 	m := make(map[string]bool)
 	var uniqueMaps []string
 	for _, nades := range metadata {
-		//fmt.Printf("i is: %v", i)
-		//fmt.Printf("\n%v", nades.MapName)
 		if !m[nades.MapName] {
-			//	fmt.Printf("%v is not in the map... Adding it now\n", nades.MapName)
 			m[nades.MapName] = true
 			uniqueMaps = append(uniqueMaps, nades.MapName)
-			//	fmt.Printf("Current Unique Maps: %v\n", uniqueMaps)
 		}
-
 	}
 	return uniqueMaps
 }
@@ -94,22 +78,16 @@ type FilterOptions struct {
 
 var filters = FilterOptions{}
 
-// FilterMetadata filters the metadata based on user-selected options
 func FilterMetadata(metadata []Metadata, filters FilterOptions) []Metadata {
 	var filtered []Metadata
-
 	for _, nade := range metadata {
-		// Check Map Name (Required)
 		if strings.ToLower(nade.MapName) != strings.ToLower(filters.MapPick) {
 			continue
 		}
-
-		// Check Side (T, CT) - Include all if neither is selected
-		if (filters.T || filters.CT) && !((filters.T && nade.Side == "T") || (filters.CT && nade.Side == "CT")) {
+		if (filters.T || filters.CT) &&
+			!((filters.T && nade.Side == "T") || (filters.CT && nade.Side == "CT")) {
 			continue
 		}
-
-		// Check Nade Type - Include all if none are selected
 		if (filters.Smokes || filters.Flashes || filters.Molotovs || filters.HEs) &&
 			!((filters.Smokes && nade.NadeType == "smoke") ||
 				(filters.Flashes && nade.NadeType == "flash") ||
@@ -117,47 +95,50 @@ func FilterMetadata(metadata []Metadata, filters FilterOptions) []Metadata {
 				(filters.HEs && nade.NadeType == "he_grenade")) {
 			continue
 		}
-
-		// Check Site Location - Include all if none are selected
 		if (filters.ASite || filters.BSite || filters.MidSite) &&
 			!((filters.ASite && nade.SiteLocation == "A") ||
 				(filters.BSite && nade.SiteLocation == "B") ||
 				(filters.MidSite && nade.SiteLocation == "MID")) {
 			continue
 		}
-
-		// Passed all filters
 		filtered = append(filtered, nade)
 	}
-
 	return filtered
 }
 
 type ReloadFunc func()
 
-// Main function
-func MetadataExplorer(filePath string, reloadFunc ReloadFunc) fyne.CanvasObject {
+// ExplorerResult bundles UI + nade list + metadata
+type ExplorerResult struct {
+	UI       fyne.CanvasObject
+	NadeList *FileGenerator.NadeList
+	Metadata []Metadata
+}
+
+// Main entrypoint
+func MetadataExplorer(filePath string, reloadFunc ReloadFunc) ExplorerResult {
 	metadata, err := LoadMetadata(filePath)
 	if err != nil {
 		fmt.Printf("Error loading metadata: %v", err)
 	}
-	return createUI(metadata, filePath, reloadFunc)
+	nadeList := &FileGenerator.NadeList{}
+	ui := createUI(metadata, filePath, reloadFunc, nadeList)
+	return ExplorerResult{
+		UI:       ui,
+		NadeList: nadeList,
+		Metadata: metadata,
+	}
 }
 
-func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.CanvasObject {
+func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeList *FileGenerator.NadeList) fyne.CanvasObject {
 	var filteredNades []Metadata
-
-	// Declare these at the top so all closures can access them
 	var fileNamedata [][]string
 	var selectedRow int
 	var list *widget.Table
-
-	// Declare nade list
-	nadeList := &FileGenerator.NadeList{}
 	var currentSelectedNade *Metadata
-
-	// For metadataBox and buttonBar
 	var metadataBox *fyne.Container
+
+	// Buttons
 	addBtn := widget.NewButton("Add", func() {
 		if currentSelectedNade != nil {
 			nadeList.AddNade(currentSelectedNade.FilePath)
@@ -168,9 +149,7 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.
 			nadeList.RemoveNade(currentSelectedNade.FilePath)
 		}
 	})
-	editBtn := widget.NewButton("Edit", func() {
-		// Placeholder: open edit window in the future
-	})
+	editBtn := widget.NewButton("Edit", func() {})
 	buttonBar := container.NewHBox(addBtn, removeBtn, editBtn)
 
 	updateMetadataBox := func(nade Metadata) {
@@ -188,167 +167,84 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.
 		metadataBox.Refresh()
 	}
 
-	// Initialize them before use
-	fileNamedata = [][]string{{"Name", "Side", "Type", "Site", "Description"}, {"", "", "", "", ""}}
+	// Initialize
+	fileNamedata = [][]string{{"Name", "Side", "Type", "Site", "Description"}}
 	selectedRow = -1
 
-	// Begin Top Left
+	// Filters UI
 	u := generateMaps(metadata)
 	selectMap := widget.NewSelect(u, func(mappick string) {
 		log.Println("Select set to", mappick)
 		filters.MapPick = mappick
 	})
-
-	// Add a reload button with an icon
 	reloadBtn := widget.NewButtonWithIcon("", theme.ViewRefreshIcon(), func() {
 		reloadFunc()
 	})
-
 	selectedmap := container.NewBorder(nil, nil, nil, reloadBtn, selectMap)
-	//
 
-	// create checkboxes for T or CT side. if t or ct true it was checked
-	tSidebox := widget.NewCheck("T", func(t bool) {
-		log.Println("Check set to", t)
-		filters.T = t
-	})
-
-	ctSidebox := widget.NewCheck("CT", func(ct bool) {
-		log.Println("Check set to", ct)
-		filters.CT = ct
-	})
+	tSidebox := widget.NewCheck("T", func(t bool) { filters.T = t })
+	ctSidebox := widget.NewCheck("CT", func(ct bool) { filters.CT = ct })
 	side := container.New(layout.NewGridLayout(4), tSidebox, ctSidebox)
-	//
 
-	// create checkboxes for nade types
-	smokeSidebox := widget.NewCheck("Smoke", func(smoke bool) {
-		log.Println("Check set to", smoke)
-		filters.Smokes = smoke
-	})
-	flashSidebox := widget.NewCheck("Flash", func(flash bool) {
-		log.Println("Check set to", flash)
-		filters.Flashes = flash
-	})
-	molotovSidebox := widget.NewCheck("Molotov", func(molotov bool) {
-		log.Println("Check set to", molotov)
-		filters.Molotovs = molotov
-	})
-	heSidebox := widget.NewCheck("HE_Grenade", func(he_grenade bool) {
-		log.Println("Check set to", he_grenade)
-		filters.HEs = he_grenade
-	})
+	smokeSidebox := widget.NewCheck("Smoke", func(smoke bool) { filters.Smokes = smoke })
+	flashSidebox := widget.NewCheck("Flash", func(flash bool) { filters.Flashes = flash })
+	molotovSidebox := widget.NewCheck("Molotov", func(molotov bool) { filters.Molotovs = molotov })
+	heSidebox := widget.NewCheck("HE_Grenade", func(he bool) { filters.HEs = he })
 	nade := container.New(layout.NewGridLayout(4), smokeSidebox, flashSidebox, molotovSidebox, heSidebox)
-	//
 
-	// create checkboxes for Site location
-	aSiteLocation := widget.NewCheck("A", func(aSite bool) {
-		log.Println("Check set to", aSite)
-		filters.ASite = aSite
-	})
-	bSiteLocation := widget.NewCheck("B", func(bSite bool) {
-		log.Println("Check set to", bSite)
-		filters.BSite = bSite
-	})
-	midSiteLocation := widget.NewCheck("Mid", func(midSite bool) {
-		log.Println("Check set to", midSite)
-		filters.MidSite = midSite
-	})
+	aSiteLocation := widget.NewCheck("A", func(a bool) { filters.ASite = a })
+	bSiteLocation := widget.NewCheck("B", func(b bool) { filters.BSite = b })
+	midSiteLocation := widget.NewCheck("Mid", func(mid bool) { filters.MidSite = mid })
 	site := container.New(layout.NewGridLayout(4), aSiteLocation, bSiteLocation, midSiteLocation)
-	//
 
-	///Begin Top Right///
-	var topright *container.Scroll // Declare first
 	list = widget.NewTable(
-		func() (int, int) {
-			return len(fileNamedata), len(fileNamedata[0])
-		},
-		func() fyne.CanvasObject {
-			return widget.NewLabel("")
-		},
+		func() (int, int) { return len(fileNamedata), len(fileNamedata[0]) },
+		func() fyne.CanvasObject { return widget.NewLabel("") },
 		func(i widget.TableCellID, o fyne.CanvasObject) {
 			label := o.(*widget.Label)
 			label.SetText(fileNamedata[i.Row][i.Col])
 			if i.Row == selectedRow {
 				label.TextStyle.Bold = true
-				//label.Color = color.RGBA{R: 100, G: 100, B: 255, A: 255} // Blue highlight
 			} else {
 				label.TextStyle.Bold = false
-				//label.Color = theme.ColorNameForeground
 			}
 			label.Refresh()
-
-		})
+		},
+	)
 
 	var bottomright *canvas.Image
-	// Row Selection Handler
-	updateMetadataBox = func(nade Metadata) {
-		metadataBox.Objects = metadataBox.Objects[:0]
-		metadataBox.Add(widget.NewLabel("FileName: " + nade.FileName))
-		metadataBox.Add(widget.NewLabel("FilePath: " + nade.FilePath))
-		metadataBox.Add(widget.NewLabel("ImagePath: " + nade.ImagePath))
-		metadataBox.Add(widget.NewLabel("NadeName: " + nade.NadeName))
-		metadataBox.Add(widget.NewLabel("Description: " + nade.Description))
-		metadataBox.Add(widget.NewLabel("MapName: " + nade.MapName))
-		metadataBox.Add(widget.NewLabel("Side: " + nade.Side))
-		metadataBox.Add(widget.NewLabel("NadeType: " + nade.NadeType))
-		metadataBox.Add(widget.NewLabel("SiteLocation: " + nade.SiteLocation))
-		metadataBox.Add(buttonBar)
-		metadataBox.Refresh()
-	}
-
 	list.OnSelected = func(id widget.TableCellID) {
-		log.Println("Selected Row:", id.Row)                      // Log the row index
-		log.Println("Filtered Nades Length:", len(filteredNades)) // Log length of filteredNades
-		if id.Row < 1 {                                           // Skip header row - made less than 1 to avoid app crash when the selector is somehow negative??
+		if id.Row < 1 {
 			return
 		}
 		selectedRow = id.Row
 		list.Refresh()
-
-		// Update Image
-		selectedNade := filteredNades[id.Row-1] // Offset for header row
+		selectedNade := filteredNades[id.Row-1]
 		bottomright.File = selectedNade.ImagePath
-		log.Println("Image Path:", bottomright.File)
-		log.Println("SelectedNade:", filteredNades[id.Row-1])
 		bottomright.Refresh()
-
-		// Update metadatabox
 		updateMetadataBox(selectedNade)
 		currentSelectedNade = &selectedNade
 	}
 
 	filterButton := widget.NewButton("Apply Filters", func() {
-		// Reset slice
 		fileNamedata = fileNamedata[:1]
-		log.Println("Filters:", filters)
 		filteredNades = FilterMetadata(metadata, filters)
-		// Log results
-		log.Println("Filtered Results:")
 		for _, nade := range filteredNades {
-			log.Println(nade.NadeName, "-", nade.NadeType, "-", nade.SiteLocation)
 			newslice := []string{nade.NadeName, nade.Side, nade.NadeType, nade.SiteLocation, nade.Description}
 			fileNamedata = append(fileNamedata, newslice)
 		}
 		selectedRow = -1
-		// Refresh table data
 		list.Refresh()
-
-		// Resize Columns dynamically
 		recalculateColumnWidths(list, fileNamedata)
-
-		// Refresh container to update UI
-		topright.Refresh()
 	})
 
-	///Begin Bottom left///
 	metadataBox = container.NewVBox(widget.NewLabel("Select a nade to view details"), buttonBar)
 
-	/// UI Construction ///
 	topleft := container.NewVBox(selectedmap, side, nade, site, filterButton)
 	recalculateColumnWidths(list, fileNamedata)
-	topright = container.NewHScroll(list)
+	topright := container.NewHScroll(list)
 	bottomleft := metadataBox
-	bottomright = canvas.NewImageFromFile("D:\\CS-StratBook\\internal\\824b59e61f741306ea141553900d18f4ff4e49c1_full.jpg")
+	bottomright = canvas.NewImageFromFile("")
 	bottomright.FillMode = canvas.ImageFillContain
 
 	return container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
@@ -357,10 +253,7 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.
 // Function to dynamically set column widths based on content
 func recalculateColumnWidths(table *widget.Table, data [][]string) {
 	colWidths := make([]float32, len(data[0]))
-
-	dummyLabel := widget.NewLabel("") // Used to measure text size
-
-	// Determine max width for each column
+	dummyLabel := widget.NewLabel("")
 	for _, row := range data {
 		for colIdx, text := range row {
 			size := fyne.MeasureText(text, theme.TextSize(), dummyLabel.TextStyle)
@@ -369,9 +262,7 @@ func recalculateColumnWidths(table *widget.Table, data [][]string) {
 			}
 		}
 	}
-
-	// Apply new column widths
 	for i, width := range colWidths {
-		table.SetColumnWidth(i, width+20) // Add padding for spacing
+		table.SetColumnWidth(i, width+20)
 	}
 }
