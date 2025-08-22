@@ -11,8 +11,8 @@
 - Create "all maps" dropdown
 -- or auto load (basically click the button for first map in list)
 - Automatically call applyFilters when a map is selected.
-- Allow for editing (though edit button -> new window)
-- Next to edit have add and remove buttons that send or remove selected nades to the FileGenerator Tab.
+
+
 
 
 ## main.gui.go
@@ -21,4 +21,4 @@
 
 # Features
 
-- Add nades from metadata explorer to the File generator (new tab? New window?) add button, and right click ment. remove button. Display selected where? Bottom left?
+- Allow for editing (though edit button -> new window) [metadataexplorer]
