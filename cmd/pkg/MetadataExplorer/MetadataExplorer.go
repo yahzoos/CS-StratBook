@@ -13,6 +13,7 @@ import (
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+	"github.com/yahzoos/CS-StratBook/cmd/pkg/FileGenerator"
 )
 
 // Metadata represents the structure of each entry in the JSON file
@@ -151,13 +152,21 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.
 	var selectedRow int
 	var list *widget.Table
 
+	// Declare nade list
+	nadeList := &FileGenerator.NadeList{}
+	var currentSelectedNade *Metadata
+
 	// For metadataBox and buttonBar
 	var metadataBox *fyne.Container
 	addBtn := widget.NewButton("Add", func() {
-		// Placeholder: do nothing for now
+		if currentSelectedNade != nil {
+			nadeList.AddNade(currentSelectedNade.FilePath)
+		}
 	})
 	removeBtn := widget.NewButton("Remove", func() {
-		// Placeholder: do nothing for now
+		if currentSelectedNade != nil {
+			nadeList.RemoveNade(currentSelectedNade.FilePath)
+		}
 	})
 	editBtn := widget.NewButton("Edit", func() {
 		// Placeholder: open edit window in the future
@@ -305,6 +314,7 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc) fyne.
 
 		// Update metadatabox
 		updateMetadataBox(selectedNade)
+		currentSelectedNade = &selectedNade
 	}
 
 	filterButton := widget.NewButton("Apply Filters", func() {

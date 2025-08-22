@@ -10,6 +10,10 @@ import (
 	"unicode"
 )
 
+type NadeList struct {
+	Files []string
+}
+
 func removeFirstDigits(s string) string {
 	for i, r := range s {
 		if !unicode.IsDigit(r) {
@@ -19,17 +23,31 @@ func removeFirstDigits(s string) string {
 	return ""
 }
 
+func (nl *NadeList) AddNade(filePath string) {
+	for _, f := range nl.Files {
+		if f == filePath {
+			return //do nothing because its in the list
+		}
+	}
+	nl.Files = append(nl.Files, filePath)
+}
+
+func (nl *NadeList) RemoveNade(filePath string) {
+	for i, f := range nl.Files {
+		if f == filePath {
+			nl.Files = append(nl.Files[:i], nl.Files[i+1:]...)
+			return
+		}
+	}
+}
+
+// using this to accpt a list created from the ui
+func FileGeneratorFromList(outputFile string, nl *NadeList) {
+	FileGenerator(outputFile, nl.Files)
+}
+
+// keeping origional incase I want a cli tool
 func FileGenerator(outputFile string, inputFiles []string) {
-
-	// Define an output file flag
-	//outputFile := flag.String("o", "merged.txt", "Specify the output file name")
-	//flag.Parse() //Parse command-line arguments
-
-	// Get the input files from arguments
-	//inputFiles := flag.Args()
-	//if len(inputFiles) < 2 {
-	//	log.Fatal("Usage: go run main.go -o OutPutfile.txt <file1.txt> <file2.txt> ... <fileN.txt>")
-	//}
 
 	var bigout []string
 	var start string
