@@ -12,13 +12,15 @@ import (
 )
 
 type gui struct {
+	App             fyne.App
 	win             fyne.Window
 	Tags_path       string
 	Annotation_path string
 }
 
-func newGUI(tagsPath, annotationPath string) *gui {
+func newGUI(a fyne.App, tagsPath, annotationPath string) *gui {
 	return &gui{
+		App:             a,
 		Tags_path:       tagsPath,
 		Annotation_path: annotationPath,
 	}

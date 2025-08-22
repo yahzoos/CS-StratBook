@@ -10,7 +10,9 @@ import (
 	"regexp"
 	"strings"
 
-	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/canvas"
+	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -91,63 +93,53 @@ func GetFilePaths(dirPath string) (map[string]FileInfo, error) {
 }
 
 // Main Function
-func GenerateMetadata(files map[string]FileInfo, side string, site string, description string) AnnotationMetadata {
-	var metadata AnnotationMetadata
+func GenerateMetadata(files map[string]FileInfo) ([]AnnotationMetadata, error) {
+	var metadataList []AnnotationMetadata
 
 	for baseName, fileInfo := range files {
-		log.Printf("\nGenerating Metadata for %s\n", baseName)
-
-		log.Printf("DEBUG: fileName is %v\n Dir is: %v\n", baseName, filepath.Dir(fileInfo.TxtPath))
-
-		// Get map name from text file
-		// Read file
 		fileText, err := os.ReadFile(fileInfo.TxtPath)
 		if err != nil {
-			log.Fatalf("Error reading file %s: %v", fileInfo.TxtPath, err)
+			log.Printf("Error reading file %s: %v", fileInfo.TxtPath, err)
+			continue
 		}
 
-		// Extract map name from txt file using regex
-		var mapNameRegex = regexp.MustCompile(`de_\w+`)
-		mapName := mapNameRegex.FindString(string(fileText))
-
-		var mapNameValue string
-		if len(mapName) > 1 {
-			mapNameValue = mapName
+		// Extract map name
+		mapName := ""
+		if m := regexp.MustCompile(`de_\w+`).FindString(string(fileText)); m != "" {
+			mapName = m
 		} else {
-			log.Println("WARNING: MapName not found in", fileInfo.TxtPath)
-			mapNameValue = ""
+			log.Printf("WARNING: MapName not found in %s", fileInfo.TxtPath)
 		}
-		//log.Println("DEBUG MAPNAME:", mapName)
-		log.Println("DEBUG MAPNAMEVALUE:", mapNameValue)
 
-		// Extract nadeType from txt file "GrenadeType" field
-		var nadeTypeRegex = regexp.MustCompile(`GrenadeType = "([^"]+)"`)
-		nadeType := nadeTypeRegex.FindStringSubmatch(string(fileText))
-
-		var nadeTypeValue string
-		if len(nadeType) > 1 {
-			nadeTypeValue = nadeType[1]
+		// Extract nade type
+		nadeType := ""
+		if match := regexp.MustCompile(`GrenadeType = "([^"]+)"`).FindStringSubmatch(string(fileText)); len(match) > 1 {
+			nadeType = match[1]
 		} else {
-			log.Println("WARNING: GrenadeType not found in", fileInfo.TxtPath)
-			nadeTypeValue = "" // Default to empty string or handle appropriately
+			log.Printf("WARNING: GrenadeType not found in %s", fileInfo.TxtPath)
 		}
-		//log.Println("DEBUG NADETYPE:", nadeType[1])
-		log.Println("DEBUG NADETYPEValue:", nadeTypeValue)
-		// Create metadata struct
-		metadata = AnnotationMetadata{
+
+		metadata := AnnotationMetadata{
 			FileName:    baseName + ".txt",
 			FilePath:    fileInfo.TxtPath,
 			ImagePath:   fileInfo.PngPath,
 			NadeName:    fileInfo.ParentPath,
-			Description: description,
-			MapName:     mapNameValue,
-			Side:        side,
-			NadeType:    nadeTypeValue,
-			Site:        site,
+			MapName:     mapName,
+			NadeType:    nadeType,
+			Description: "", // user will fill
+			Side:        "", // user will select
+			Site:        "", // user will select
 		}
 
+		metadataList = append(metadataList, metadata)
 	}
-	return metadata
+
+	if len(metadataList) == 0 {
+		return nil, fmt.Errorf("no valid files found")
+	}
+
+	// Return the slice; GUI will handle prompting
+	return metadataList, nil
 }
 
 // Validation function
@@ -308,26 +300,138 @@ func MoveJsonFiles(annotationPath string, jsonFiles []string) error {
 	return nil
 }
 
-func TagsUI() {
-	myApp := app.New()
-	myWindow := myApp.NewWindow("Form Widget")
-
-	entry := widget.NewEntry()
-	textArea := widget.NewMultiLineEntry()
-
-	form := &widget.Form{
-		Items: []*widget.FormItem{ // we can specify items in the constructor
-			{Text: "Entry", Widget: entry}},
-		OnSubmit: func() { // optional, handle form submission
-			log.Println("Form submitted:", entry.Text)
-			log.Println("multiline:", textArea.Text)
-			myWindow.Close()
-		},
+func PromptUserForAllNades(a fyne.App, metadataList []AnnotationMetadata) ([]AnnotationMetadata, error) {
+	if len(metadataList) == 0 {
+		return metadataList, nil
 	}
 
-	// we can also append items
-	form.Append("Text", textArea)
+	myWindow := a.NewWindow("Edit Nades")
+	currentIndex := 0
+	total := len(metadataList)
 
-	myWindow.SetContent(form)
-	myWindow.ShowAndRun()
+	descriptionEntry := widget.NewEntry()
+	nadeNameLabel := widget.NewLabel("")
+	nadeNameLabel.Wrapping = fyne.TextWrap(fyne.TextTruncateClip)
+	sideT := widget.NewCheck("T", nil)
+	sideCT := widget.NewCheck("CT", nil)
+	siteA := widget.NewCheck("A", nil)
+	siteB := widget.NewCheck("B", nil)
+	siteMid := widget.NewCheck("Mid", nil)
+	counterLabel := widget.NewLabel("")
+	imageCanvas := canvas.NewImageFromFile("")
+	imageCanvas.FillMode = canvas.ImageFillContain
+
+	// Single-selection logic
+	sideT.OnChanged = func(checked bool) {
+		if checked {
+			sideCT.SetChecked(false)
+		}
+	}
+	sideCT.OnChanged = func(checked bool) {
+		if checked {
+			sideT.SetChecked(false)
+		}
+	}
+	siteA.OnChanged = func(checked bool) {
+		if checked {
+			siteB.SetChecked(false)
+			siteMid.SetChecked(false)
+		}
+	}
+	siteB.OnChanged = func(checked bool) {
+		if checked {
+			siteA.SetChecked(false)
+			siteMid.SetChecked(false)
+		}
+	}
+	siteMid.OnChanged = func(checked bool) {
+		if checked {
+			siteA.SetChecked(false)
+			siteB.SetChecked(false)
+		}
+	}
+
+	saveCurrentNade := func() {
+		nade := &metadataList[currentIndex]
+		nade.Description = descriptionEntry.Text
+		if sideT.Checked {
+			nade.Side = "T"
+		} else if sideCT.Checked {
+			nade.Side = "CT"
+		} else {
+			nade.Side = ""
+		}
+		if siteA.Checked {
+			nade.Site = "A"
+		} else if siteB.Checked {
+			nade.Site = "B"
+		} else if siteMid.Checked {
+			nade.Site = "Mid"
+		} else {
+			nade.Site = ""
+		}
+	}
+
+	loadNade := func(index int) {
+		nade := metadataList[index]
+		nadeNameLabel.SetText(nade.NadeName)
+		descriptionEntry.SetText(nade.Description)
+		sideT.SetChecked(nade.Side == "T")
+		sideCT.SetChecked(nade.Side == "CT")
+		siteA.SetChecked(nade.Site == "A")
+		siteB.SetChecked(nade.Site == "B")
+		siteMid.SetChecked(nade.Site == "Mid")
+		counterLabel.SetText(fmt.Sprintf("%d / %d", index+1, total))
+		if _, err := os.Stat(nade.ImagePath); err == nil {
+			imageCanvas.File = nade.ImagePath
+		} else {
+			imageCanvas.File = ""
+		}
+		imageCanvas.Refresh()
+	}
+
+	done := make(chan struct{})
+	var resultErr error
+
+	prevBtn := widget.NewButton("Previous", func() {
+		if currentIndex > 0 {
+			saveCurrentNade()
+			currentIndex--
+			loadNade(currentIndex)
+		}
+	})
+	nextBtn := widget.NewButton("Next", func() {
+		if currentIndex < total-1 {
+			saveCurrentNade()
+			currentIndex++
+			loadNade(currentIndex)
+		}
+	})
+	submitBtn := widget.NewButton("Submit", func() { saveCurrentNade(); close(done) })
+	cancelBtn := widget.NewButton("Cancel", func() { resultErr = errors.New("canceled"); close(done) })
+
+	sideContainer := container.NewHBox(sideT, sideCT)
+	siteContainer := container.NewHBox(siteA, siteB, siteMid)
+	buttonContainer := container.NewHBox(prevBtn, nextBtn, submitBtn, cancelBtn)
+
+	content := container.NewVBox(
+		widget.NewLabel("Nade Name:"), nadeNameLabel,
+		widget.NewLabel("Description:"), descriptionEntry,
+		widget.NewLabel("Side:"), sideContainer,
+		widget.NewLabel("Site:"), siteContainer,
+		widget.NewLabel("Image Preview:"), imageCanvas,
+		counterLabel,
+		buttonContainer,
+	)
+
+	myWindow.SetContent(content)
+	myWindow.Resize(fyne.NewSize(600, 500))
+	loadNade(currentIndex)
+	myWindow.Show()
+
+	// Wait for user action
+	<-done
+	myWindow.Close()
+
+	return metadataList, resultErr
 }

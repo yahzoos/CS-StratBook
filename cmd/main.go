@@ -2,6 +2,8 @@ package main
 
 import (
 	"log"
+	"os"
+	"regexp"
 
 	"fyne.io/fyne/v2/app"
 	"github.com/yahzoos/CS-StratBook/cmd/pkg/Tags"
@@ -18,7 +20,7 @@ func main() {
 	a := app.New()
 	//	loadTheme(a)
 
-	g := newGUI(settings.TagsPath, settings.AnnotationPath)
+	g := newGUI(a, settings.TagsPath, settings.AnnotationPath)
 	w := g.makeWindow(a)
 
 	g.setupActions()
@@ -43,32 +45,61 @@ func (g *gui) generate_tags() {
 		return
 	}
 
-	// Step 2: Generate metadata for each file
-	var allMetadata []Tags.AnnotationMetadata
+	// Step 2: Build initial metadata slice (mapName and nadeType extracted here)
+	var metadataList []Tags.AnnotationMetadata
 	for baseName, fileInfo := range files {
-		metadata := Tags.GenerateMetadata(
-			map[string]Tags.FileInfo{baseName: fileInfo},
-			"",                        // side
-			"",                        // site
-			"Description placeholder", // description
-		)
+		fileText, err := os.ReadFile(fileInfo.TxtPath)
+		if err != nil {
+			log.Printf("Error reading file %s: %v", fileInfo.TxtPath, err)
+			continue
+		}
 
-		// Validate metadata
+		// Extract map name
+		mapName := ""
+		if m := regexp.MustCompile(`de_\w+`).FindString(string(fileText)); m != "" {
+			mapName = m
+		}
+
+		// Extract nade type
+		nadeType := ""
+		if match := regexp.MustCompile(`GrenadeType = "([^"]+)"`).FindStringSubmatch(string(fileText)); len(match) > 1 {
+			nadeType = match[1]
+		}
+
+		metadata := Tags.AnnotationMetadata{
+			FileName:    baseName + ".txt",
+			FilePath:    fileInfo.TxtPath,
+			ImagePath:   fileInfo.PngPath,
+			NadeName:    fileInfo.ParentPath,
+			MapName:     mapName,
+			NadeType:    nadeType,
+			Description: "", // user fills in GUI
+			Side:        "", // user selects GUI
+			Site:        "", // user selects GUI
+		}
+		metadataList = append(metadataList, metadata)
+	}
+
+	// Step 3: Prompt user to edit metadata for all nades in a single window
+	updatedList, err := Tags.PromptUserForAllNades(g.App, metadataList)
+	if err != nil {
+		log.Println("User canceled metadata entry")
+		return
+	}
+
+	// Step 4: Validate and save all metadata
+	for _, metadata := range updatedList {
 		if err := Tags.ValidateAnnotationMetadata(metadata); err != nil {
 			log.Printf("Validation error for %s: %v\n", metadata.FileName, err)
 			continue
 		}
-
-		// Save individual JSON file
 		if err := Tags.SaveMetadata(metadata); err != nil {
 			log.Printf("Failed to save metadata for %s: %v\n", metadata.FileName, err)
 			continue
 		}
-
-		allMetadata = append(allMetadata, metadata)
 	}
 
-	// Step 3: Merge all JSON files into the main tags.json
+	// Step 5: Merge JSON files into tags.json
 	jsonFiles, err := Tags.GetJSONFiles()
 	if err != nil {
 		log.Printf("Error retrieving JSON files: %v\n", err)
@@ -80,16 +111,13 @@ func (g *gui) generate_tags() {
 		return
 	}
 
-	log.Println("All tags generated successfully!")
-
+	// Step 6: Move JSON files into annotation folder
 	if err := Tags.MoveJsonFiles(g.Annotation_path, jsonFiles); err != nil {
-		log.Printf("Error movinging JSON files: %v\n", err)
+		log.Printf("Error moving JSON files: %v\n", err)
 		return
 	}
-	log.Println("DEBUG move returns: ", err)
 
-	log.Println("All tages moved successfully")
-
+	log.Println("All tags generated and moved successfully!")
 }
 
 /*
