@@ -3,7 +3,6 @@ package FileGenerator
 // Usage: go run main.go -o OutPutfile.txt <file1.txt> <file2.txt> ... <fileN.txt>
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -97,5 +96,5 @@ func FileGenerator(outputFile string, inputFiles []string) {
 		log.Fatalf("Error writing to file %s: %v", outputFile, rerr)
 	}
 
-	fmt.Println("Merged file created successfully:", outputFile)
+	log.Println("Merged file created successfully:", outputFile)
 }

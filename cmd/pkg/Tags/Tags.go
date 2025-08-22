@@ -234,7 +234,7 @@ func GetJSONFiles() ([]string, error) {
 	//#HERE#
 	files, err := os.ReadDir(".")
 	if err != nil {
-		return nil, fmt.Errorf("failed to read directory: %v", err)
+		return nil, fmt.Errorf("failed to read directory: ", err)
 	}
 
 	// Filter for .json files

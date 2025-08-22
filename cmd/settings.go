@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -19,6 +18,16 @@ const settingsFile = "settings.json"
 
 // LoadSettings reads settings.json if it exists, otherwise returns defaults
 func LoadSettings() Settings {
+	// --- SETUP LOGGING HERE ---
+	logFile, err := os.OpenFile("CS_Stratbook.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
+	if err != nil {
+		// If we can't open log file, fallback to stdout
+		log.Fatalf("Failed to open log file: %v", err)
+	}
+	log.SetOutput(logFile)
+	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+	// --- END LOGGING SETUP ---
+
 	var s Settings
 
 	// Try reading the file
@@ -55,12 +64,12 @@ func LoadSettings() Settings {
 func SaveSettings(s Settings) {
 	data, err := json.MarshalIndent(s, "", "  ")
 	if err != nil {
-		fmt.Println("Error marshaling settings:", err)
+		log.Println("Error marshaling settings:", err)
 		return
 	}
 
 	if err := os.WriteFile(settingsFile, data, 0644); err != nil {
-		fmt.Println("Error writing settings file:", err)
+		log.Println("Error writing settings file:", err)
 	}
 }
 

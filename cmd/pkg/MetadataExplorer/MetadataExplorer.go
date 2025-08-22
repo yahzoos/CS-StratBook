@@ -2,7 +2,6 @@ package MetadataExplorer
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -119,7 +118,7 @@ type ExplorerResult struct {
 func MetadataExplorer(filePath string, reloadFunc ReloadFunc) ExplorerResult {
 	metadata, err := LoadMetadata(filePath)
 	if err != nil {
-		fmt.Printf("Error loading metadata: %v", err)
+		log.Printf("Error loading metadata: %v", err)
 	}
 	nadeList := &FileGenerator.NadeList{}
 	ui := createUI(metadata, filePath, reloadFunc, nadeList)
