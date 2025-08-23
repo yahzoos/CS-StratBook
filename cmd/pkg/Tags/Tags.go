@@ -208,6 +208,7 @@ func SaveMetadata(metadata AnnotationMetadata) error {
 		return err
 	}
 	metaFilePath := metadata.NadeName + ".json"
+	log.Printf("[SaveMetadata] Writing JSON to file: %s", metaFilePath)
 	err = os.WriteFile(metaFilePath, jsonData, 0644)
 	if err != nil {
 		log.Printf("error writing metadata file: %v", err)
@@ -392,6 +393,16 @@ func PromptUserForAllNades(a fyne.App, metadataList []AnnotationMetadata) ([]Ann
 		log.Printf("[saveCurrentNade] Updated metadata: %+v\n", *nade)
 	}
 
+	// Helper for reading file as []byte
+	mustReadFile := func(path string) []byte {
+		data, err := os.ReadFile(path)
+		if err != nil {
+			log.Printf("[mustReadFile] Error reading file: %v", err)
+			return nil
+		}
+		return data
+	}
+
 	loadNade := func(index int) {
 		nade := metadataList[index]
 		log.Printf("[loadNade] Loading index: %d, NadeName: %s\n", index, nade.NadeName)
@@ -407,20 +418,19 @@ func PromptUserForAllNades(a fyne.App, metadataList []AnnotationMetadata) ([]Ann
 		counterLabel.SetText(fmt.Sprintf("%d / %d", index+1, total))
 
 		if _, err := os.Stat(nade.ImagePath); err == nil {
-			log.Printf("[loadNade] Image exists: %s\n", nade.ImagePath)
-			resource, err := fyne.LoadResourceFromPath(nade.ImagePath)
-			if err != nil {
-				log.Printf("[loadNade] Error loading resource: %v\n", err)
-				imageCanvas.Resource = nil
+			data := mustReadFile(nade.ImagePath)
+			if data != nil {
+				imageCanvas.Resource = fyne.NewStaticResource(filepath.Base(nade.ImagePath), data)
 			} else {
-				imageCanvas.Resource = resource
+				imageCanvas.Resource = nil
 			}
 		} else {
 			log.Printf("[loadNade] Image NOT found or invalid path: %s\n", nade.ImagePath)
 			imageCanvas.Resource = nil
 		}
 		imageCanvas.Refresh()
-		log.Printf("[loadNade] ImageCanvas Resource: %v", imageCanvas.Resource)
+
+		//log.Printf("[loadNade] ImageCanvas Resource: %v", imageCanvas.Resource)
 		log.Printf("[loadNade] ImageCanvas.Size(): %v", imageCanvas.Size())
 		log.Printf("[loadNade] ImageCanvas.MinSize(): %v", imageCanvas.MinSize())
 		log.Printf("[loadNade] topContainer.Size(): %v", topContainer.Size())
@@ -445,12 +455,58 @@ func PromptUserForAllNades(a fyne.App, metadataList []AnnotationMetadata) ([]Ann
 			loadNade(currentIndex)
 		}
 	})
-	submitBtn := widget.NewButton("Submit", func() { saveCurrentNade(); close(done) })
+	submitBtn := widget.NewButton("Submit", func() {
+		saveCurrentNade()
+		nade := metadataList[currentIndex]
+		if nade.Description == "" {
+			nade.Description = "Default description"
+		}
+
+		log.Printf("[Submit] About to save metadata: %+v", nade)
+		log.Printf("[Submit] Target file path: %s", nade.NadeName+".json")
+		wd, _ := os.Getwd()
+		log.Printf("[Submit] Current working directory: %s", wd)
+
+		err := SaveMetadata(nade) // write immediately
+		if err != nil {
+			log.Printf("[Submit] Failed to save %s: %v", nade.NadeName, err)
+		} else {
+			log.Printf("[Submit] Saved %s.json", nade.NadeName)
+		}
+		// Remove current nade
+		metadataList = append(metadataList[:currentIndex], metadataList[currentIndex+1:]...)
+		total = len(metadataList)
+
+		// If its the last close the window
+		if total == 0 {
+			close(done)
+			return
+		}
+		// If not the last remove current nade from list.
+		if currentIndex >= total {
+			currentIndex = total - 1
+		}
+		loadNade(currentIndex)
+	})
+	submitAllBtn := widget.NewButton("Submit All", func() {
+		for i := range metadataList {
+			if metadataList[i].Description == "" {
+				metadataList[i].Description = "No description provided"
+			}
+			log.Printf("[SubmitAll] Writing metadata for: %s", metadataList[i].NadeName)
+
+			err := SaveMetadata(metadataList[i])
+			if err != nil {
+				log.Printf("[SubmitAll] Failed to save %s: %v", metadataList[i].NadeName, err)
+			}
+		}
+		close(done)
+	})
 	cancelBtn := widget.NewButton("Cancel", func() { resultErr = errors.New("canceled"); close(done) })
 
 	sideContainer := container.NewHBox(sideT, sideCT)
 	siteContainer := container.NewHBox(siteA, siteB, siteMid)
-	buttonContainer := container.NewHBox(prevBtn, nextBtn, submitBtn, cancelBtn)
+	buttonContainer := container.NewHBox(prevBtn, nextBtn, submitBtn, submitAllBtn, cancelBtn)
 
 	// Bottom container: Description, Side, Site, Counter, Buttons
 	bottomContainer := container.NewVBox(
