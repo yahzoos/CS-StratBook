@@ -207,6 +207,7 @@ func SaveMetadata(metadata AnnotationMetadata) error {
 		log.Printf("error marshaling JSON: %v", err)
 		return err
 	}
+
 	metaFilePath := metadata.NadeName + ".json"
 	log.Printf("[SaveMetadata] Writing JSON to file: %s", metaFilePath)
 	err = os.WriteFile(metaFilePath, jsonData, 0644)
@@ -244,6 +245,17 @@ func GetJSONFiles() ([]string, error) {
 // suggested default value outputFilePath := "tags.json"
 func MergeJSONFiles(filePaths []string, outputFilePath string) error {
 	var mergedAnnotations []AnnotationMetadata
+
+	if data, err := os.ReadFile(outputFilePath); err == nil {
+		var existing struct {
+			Nades []AnnotationMetadata `json:"nades"`
+		}
+		if err := json.Unmarshal(data, &existing); err == nil {
+			mergedAnnotations = append(mergedAnnotations, existing.Nades...)
+		} else {
+			log.Printf("failed to unmarshal existing tags.json: %v", err)
+		}
+	}
 
 	for _, filePath := range filePaths {
 		data, err := os.ReadFile(filePath)

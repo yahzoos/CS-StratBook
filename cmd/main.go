@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"os"
 	"regexp"
@@ -79,6 +80,30 @@ func (g *gui) generate_tags() {
 		}
 		metadataList = append(metadataList, metadata)
 	}
+
+	// Step 2.5: Filter out duplicates based on NadeName so user is not prompted for them.
+	existingNames := make(map[string]bool)
+	// Load Existing tags.json
+	if data, err := os.ReadFile(g.Tags_path); err == nil {
+		var merged struct {
+			Nades []Tags.AnnotationMetadata `json:"nades"`
+		}
+		if err := json.Unmarshal(data, &merged); err == nil {
+			for _, nade := range merged.Nades {
+				existingNames[nade.NadeName] = true
+			}
+		}
+	}
+	var filteredList []Tags.AnnotationMetadata
+	for _, m := range metadataList {
+		if _, exists := existingNames[m.NadeName]; exists {
+			log.Printf("[generate_tags] Skipping duplicate: %s\n", m.NadeName)
+			continue
+		}
+		filteredList = append(filteredList, m)
+	}
+	metadataList = filteredList
+	log.Println("[generate_tags] MetadataList:", metadataList)
 
 	// Step 3: Prompt user to edit metadata for all nades in a single window
 	updatedList, err := Tags.PromptUserForAllNades(g.App, metadataList)
