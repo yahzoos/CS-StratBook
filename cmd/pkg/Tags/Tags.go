@@ -130,7 +130,7 @@ func GenerateMetadata(files map[string]FileInfo) ([]AnnotationMetadata, error) {
 			Side:        "", // user will select
 			Site:        "", // user will select
 		}
-
+		log.Printf("[GenerateMetadata] Created metadata: %+v\n", metadata)
 		metadataList = append(metadataList, metadata)
 	}
 
@@ -318,8 +318,20 @@ func PromptUserForAllNades(a fyne.App, metadataList []AnnotationMetadata) ([]Ann
 	siteB := widget.NewCheck("B", nil)
 	siteMid := widget.NewCheck("Mid", nil)
 	counterLabel := widget.NewLabel("")
-	imageCanvas := canvas.NewImageFromFile("")
+	imageCanvas := canvas.NewImageFromResource(nil)
 	imageCanvas.FillMode = canvas.ImageFillContain
+	imageCanvas.SetMinSize(fyne.NewSize(400, 300))
+
+	// Wrap image in a container that grows with available space
+	imageContainer := container.NewCenter(imageCanvas)
+
+	// Top container: Nade Name + Image Preview
+	topContainer := container.NewVBox(
+		widget.NewLabel("Nade Name:"),
+		nadeNameLabel,
+		widget.NewLabel("Image Preview:"),
+		imageContainer,
+	)
 
 	// Single-selection logic
 	sideT.OnChanged = func(checked bool) {
@@ -353,7 +365,14 @@ func PromptUserForAllNades(a fyne.App, metadataList []AnnotationMetadata) ([]Ann
 
 	saveCurrentNade := func() {
 		nade := &metadataList[currentIndex]
-		nade.Description = descriptionEntry.Text
+		log.Printf("[saveCurrentNade] Saving index: %d, NadeName: %s\n", currentIndex, nade.NadeName)
+
+		if descriptionEntry.Text == "" {
+			nade.Description = "No description provided"
+		} else {
+			nade.Description = descriptionEntry.Text
+		}
+
 		if sideT.Checked {
 			nade.Side = "T"
 		} else if sideCT.Checked {
@@ -370,10 +389,14 @@ func PromptUserForAllNades(a fyne.App, metadataList []AnnotationMetadata) ([]Ann
 		} else {
 			nade.Site = ""
 		}
+		log.Printf("[saveCurrentNade] Updated metadata: %+v\n", *nade)
 	}
 
 	loadNade := func(index int) {
 		nade := metadataList[index]
+		log.Printf("[loadNade] Loading index: %d, NadeName: %s\n", index, nade.NadeName)
+		log.Printf("[loadNade] Description: %s, Side: %s, Site: %s, ImagePath: %s\n", nade.Description, nade.Side, nade.Site, nade.ImagePath)
+
 		nadeNameLabel.SetText(nade.NadeName)
 		descriptionEntry.SetText(nade.Description)
 		sideT.SetChecked(nade.Side == "T")
@@ -382,12 +405,27 @@ func PromptUserForAllNades(a fyne.App, metadataList []AnnotationMetadata) ([]Ann
 		siteB.SetChecked(nade.Site == "B")
 		siteMid.SetChecked(nade.Site == "Mid")
 		counterLabel.SetText(fmt.Sprintf("%d / %d", index+1, total))
+
 		if _, err := os.Stat(nade.ImagePath); err == nil {
-			imageCanvas.File = nade.ImagePath
+			log.Printf("[loadNade] Image exists: %s\n", nade.ImagePath)
+			resource, err := fyne.LoadResourceFromPath(nade.ImagePath)
+			if err != nil {
+				log.Printf("[loadNade] Error loading resource: %v\n", err)
+				imageCanvas.Resource = nil
+			} else {
+				imageCanvas.Resource = resource
+			}
 		} else {
-			imageCanvas.File = ""
+			log.Printf("[loadNade] Image NOT found or invalid path: %s\n", nade.ImagePath)
+			imageCanvas.Resource = nil
 		}
 		imageCanvas.Refresh()
+		log.Printf("[loadNade] ImageCanvas Resource: %v", imageCanvas.Resource)
+		log.Printf("[loadNade] ImageCanvas.Size(): %v", imageCanvas.Size())
+		log.Printf("[loadNade] ImageCanvas.MinSize(): %v", imageCanvas.MinSize())
+		log.Printf("[loadNade] topContainer.Size(): %v", topContainer.Size())
+		//log.Printf("[loadNade] content container.Size(): %v", content.Size())
+		//log.Printf("[loadNade] myWindow.Size(): %v", myWindow.Size())
 	}
 
 	done := make(chan struct{})
@@ -414,14 +452,18 @@ func PromptUserForAllNades(a fyne.App, metadataList []AnnotationMetadata) ([]Ann
 	siteContainer := container.NewHBox(siteA, siteB, siteMid)
 	buttonContainer := container.NewHBox(prevBtn, nextBtn, submitBtn, cancelBtn)
 
-	content := container.NewVBox(
-		widget.NewLabel("Nade Name:"), nadeNameLabel,
+	// Bottom container: Description, Side, Site, Counter, Buttons
+	bottomContainer := container.NewVBox(
 		widget.NewLabel("Description:"), descriptionEntry,
 		widget.NewLabel("Side:"), sideContainer,
 		widget.NewLabel("Site:"), siteContainer,
-		widget.NewLabel("Image Preview:"), imageCanvas,
 		counterLabel,
 		buttonContainer,
+	)
+
+	// Main layout: Top + Bottom
+	content := container.NewBorder(nil, nil, nil, nil,
+		container.NewVBox(topContainer, bottomContainer),
 	)
 
 	myWindow.SetContent(content)
