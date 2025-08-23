@@ -1,0 +1,76 @@
+{
+  "nades": [
+    {
+      "file_name": "A_Main2E_Box.txt",
+      "file_path": "D:\\CS-StratBook\\local\\A_Main2E_Box\\A_Main2E_Box.txt",
+      "image_path": "D:\\CS-StratBook\\local\\A_Main2E_Box\\A_Main2E_Box.png",
+      "nade_name": "A_Main2E_Box",
+      "description": "No description provided",
+      "map_name": "de_train",
+      "nade_type": "molotov"
+    },
+    {
+      "file_name": "A_Main2NextToPop.txt",
+      "file_path": "D:\\CS-StratBook\\local\\A_Main2NextToPop\\A_Main2NextToPop.txt",
+      "image_path": "D:\\CS-StratBook\\local\\A_Main2NextToPop\\A_Main2NextToPop.png",
+      "nade_name": "A_Main2NextToPop",
+      "description": "No description provided",
+      "map_name": "de_train",
+      "nade_type": "molotov"
+    },
+    {
+      "file_name": "CT2BMain.txt",
+      "file_path": "D:\\CS-StratBook\\local\\CT2BMain\\CT2BMain.txt",
+      "image_path": "D:\\CS-StratBook\\local\\CT2BMain\\CT2BMain.png",
+      "nade_name": "CT2BMain",
+      "description": "No description provided",
+      "map_name": "de_ancient",
+      "nade_type": "smoke"
+    },
+    {
+      "file_name": "T2Camera.txt",
+      "file_path": "D:\\CS-StratBook\\local\\T2Camera\\T2Camera.txt",
+      "image_path": "D:\\CS-StratBook\\local\\T2Camera\\T2Camera.png",
+      "nade_name": "T2Camera",
+      "description": "No description provided",
+      "map_name": "de_train",
+      "nade_type": "smoke"
+    },
+    {
+      "file_name": "T2Sandwich_Fast.txt",
+      "file_path": "D:\\CS-StratBook\\local\\T2Sandwich_Fast\\T2Sandwich_Fast.txt",
+      "image_path": "D:\\CS-StratBook\\local\\T2Sandwich_Fast\\T2Sandwich_Fast.png",
+      "nade_name": "T2Sandwich_Fast",
+      "description": "No description provided",
+      "map_name": "de_train",
+      "nade_type": "smoke"
+    },
+    {
+      "file_name": "T2SpawnRedRoom.txt",
+      "file_path": "D:\\CS-StratBook\\local\\T2SpawnRedRoom\\T2SpawnRedRoom.txt",
+      "image_path": "D:\\CS-StratBook\\local\\T2SpawnRedRoom\\T2SpawnRedRoom.png",
+      "nade_name": "T2SpawnRedRoom",
+      "description": "No description provided",
+      "map_name": "de_ancient",
+      "nade_type": "smoke"
+    },
+    {
+      "file_name": "T2MidFlash1.txt",
+      "file_path": "D:\\CS-StratBook\\local\\T2MidFlash1\\T2MidFlash1.txt",
+      "image_path": "D:\\CS-StratBook\\local\\T2MidFlash1\\T2MidFlash1.png",
+      "nade_name": "T2MidFlash1",
+      "description": "No description provided",
+      "map_name": "de_ancient",
+      "nade_type": "flash"
+    },
+    {
+      "file_name": "T2MidFlash2.txt",
+      "file_path": "D:\\CS-StratBook\\local\\T2MidFlash2\\T2MidFlash2.txt",
+      "image_path": "D:\\CS-StratBook\\local\\T2MidFlash2\\T2MidFlash2.png",
+      "nade_name": "T2MidFlash2",
+      "description": "No description provided",
+      "map_name": "de_ancient",
+      "nade_type": "flash"
+    }
+  ]
+}
