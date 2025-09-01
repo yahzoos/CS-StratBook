@@ -25,7 +25,7 @@ type Metadata struct {
 	MapName      string `json:"map_name"`
 	Side         string `json:"side"`
 	NadeType     string `json:"nade_type"`
-	SiteLocation string `json:"site_location"`
+	SiteLocation string `json:"site"`
 }
 
 // Wrapper struct to correctly map the JSON file structure
