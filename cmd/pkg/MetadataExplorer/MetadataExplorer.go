@@ -25,7 +25,7 @@ type Metadata struct {
 	MapName      string `json:"map_name"`
 	Side         string `json:"side"`
 	NadeType     string `json:"nade_type"`
-	SiteLocation string `json:"site_location"`
+	SiteLocation string `json:"site"`
 }
 
 // Wrapper struct to correctly map the JSON file structure
@@ -91,7 +91,8 @@ func FilterMetadata(metadata []Metadata, filters FilterOptions) []Metadata {
 			!((filters.Smokes && nade.NadeType == "smoke") ||
 				(filters.Flashes && nade.NadeType == "flash") ||
 				(filters.Molotovs && nade.NadeType == "molotov") ||
-				(filters.HEs && nade.NadeType == "he_grenade")) {
+				(filters.Molotovs && nade.NadeType == "incendiary") ||
+				(filters.HEs && nade.NadeType == "he")) {
 			continue
 		}
 		if (filters.ASite || filters.BSite || filters.MidSite) &&

@@ -1,0 +1,11 @@
+{
+  "file_name": "T2SpawnRedRoom.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2SpawnRedRoom\\T2SpawnRedRoom.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2SpawnRedRoom\\T2SpawnRedRoom.png",
+  "nade_name": "T2SpawnRedRoom",
+  "description": "Smoke RedRoom from spawn. Not instant.",
+  "map_name": "de_ancient",
+  "side": "T",
+  "nade_type": "smoke",
+  "site": "Mid"
+}

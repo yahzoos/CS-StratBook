@@ -1,0 +1,300 @@
+{
+  "nades": [
+    {
+      "file_name": "A_Main2E_Box.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\A_Main2E_Box\\A_Main2E_Box.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\A_Main2E_Box\\A_Main2E_Box.png",
+      "nade_name": "A_Main2E_Box",
+      "description": "Molly Ebox with Tcon control",
+      "map_name": "de_train",
+      "side": "T",
+      "nade_type": "molotov",
+      "site": "A"
+    },
+    {
+      "file_name": "A_Main2NextToPop.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\A_Main2NextToPop\\A_Main2NextToPop.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\A_Main2NextToPop\\A_Main2NextToPop.png",
+      "nade_name": "A_Main2NextToPop",
+      "description": "Molly Next to Pop/Ebox with Tcon Control",
+      "map_name": "de_train",
+      "side": "T",
+      "nade_type": "molotov",
+      "site": "A"
+    },
+    {
+      "file_name": "AggroCarPeek.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\AggroCarPeek\\AggroCarPeek.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\AggroCarPeek\\AggroCarPeek.png",
+      "nade_name": "AggroCarPeek",
+      "description": "self flash to peek from car.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "Balc+miniPit.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Balc+miniPit\\Balc+miniPit.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Balc+miniPit\\Balc+miniPit.png",
+      "nade_name": "Balc+miniPit",
+      "description": "molly balcony and under with bracket control",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "molotov",
+      "site": "A"
+    },
+    {
+      "file_name": "BannanaFlash1.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BannanaFlash1\\BannanaFlash1.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BannanaFlash1\\BannanaFlash1.png",
+      "nade_name": "BannanaFlash1",
+      "description": "Flash Close positions in Bannana",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "BannanaFlash2.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BannanaFlash2\\BannanaFlash2.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BannanaFlash2\\BannanaFlash2.png",
+      "nade_name": "BannanaFlash2",
+      "description": "Flashes CT playing the corner of Top Bannana",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "BracketFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BracketFlash\\BracketFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BracketFlash\\BracketFlash.png",
+      "nade_name": "BracketFlash",
+      "description": "Flash left side brackets. Good for rifler",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "Mid"
+    },
+    {
+      "file_name": "BracketsAwpFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BracketsAwpFlash\\BracketsAwpFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BracketsAwpFlash\\BracketsAwpFlash.png",
+      "nade_name": "BracketsAwpFlash",
+      "description": "Flashes Awper holding pixel angle",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "A"
+    },
+    {
+      "file_name": "CT2BMain.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\CT2BMain\\CT2BMain.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\CT2BMain\\CT2BMain.png",
+      "nade_name": "CT2BMain",
+      "description": "Doesn't work on new map",
+      "map_name": "de_ancient",
+	  "side": "CT",
+      "nade_type": "smoke",
+	  "site": "B"
+	  
+    },
+    {
+      "file_name": "CarFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\CarFlash\\CarFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\CarFlash\\CarFlash.png",
+      "nade_name": "CarFlash",
+      "description": "T Flash to peek car from bottom bannan. Gets Awper.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "CarMolly.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\CarMolly\\CarMolly.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\CarMolly\\CarMolly.png",
+      "nade_name": "CarMolly",
+      "description": "Molly Car on the run. First spawn.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "molotov",
+      "site": "B"
+    },
+    {
+      "file_name": "CarPeekExtinguish.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\CarPeekExtinguish\\CarPeekExtinguish.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\CarPeekExtinguish\\CarPeekExtinguish.png",
+      "nade_name": "CarPeekExtinguish",
+      "description": "Extinguish car molly for peek.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "smoke",
+      "site": "B"
+    },
+    {
+      "file_name": "DeepBracketRifleFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\DeepBracketRifleFlash\\DeepBracketRifleFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\DeepBracketRifleFlash\\DeepBracketRifleFlash.png",
+      "nade_name": "DeepBracketRifleFlash",
+      "description": "flash cubby and under porch.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "A"
+    },
+    {
+      "file_name": "EarlyBannanaHe.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\EarlyBannanaHe\\EarlyBannanaHe.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\EarlyBannanaHe\\EarlyBannanaHe.png",
+      "nade_name": "EarlyBannanaHe",
+      "description": "On the run, HE the T's taking early bananna control",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "he",
+      "site": "B"
+    },
+    {
+      "file_name": "FallenFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\FallenFlash\\FallenFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\FallenFlash\\FallenFlash.png",
+      "nade_name": "FallenFlash",
+      "description": "Flash to peek from Car",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "FireExitFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\FireExitFlash\\FireExitFlash.txt",
+      "image_path": "",
+      "nade_name": "FireExitFlash",
+      "description": "Flashes site and pit",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "A"
+    },
+    {
+      "file_name": "QuickBottomBannana.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\QuickBottomBannana\\QuickBottomBannana.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\QuickBottomBannana\\QuickBottomBannana.png",
+      "nade_name": "QuickBottomBannana",
+      "description": "Smoke bottom of Bannana for B players.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "smoke",
+      "site": "B"
+    },
+    {
+      "file_name": "QuickHalfWallMolly.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\QuickHalfWallMolly\\QuickHalfWallMolly.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\QuickHalfWallMolly\\QuickHalfWallMolly.png",
+      "nade_name": "QuickHalfWallMolly",
+      "description": "Molly HalfWall on the run.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "incendiary",
+      "site": "B"
+    },
+    {
+      "file_name": "Spawn2HalfWall.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Spawn2HalfWall\\Spawn2HalfWall.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Spawn2HalfWall\\Spawn2HalfWall.png",
+      "nade_name": "Spawn2HalfWall",
+      "description": "No description provided",
+      "map_name": "de_inferno",
+      "nade_type": "smoke"
+    },
+    {
+      "file_name": "T2Camera.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2Camera\\T2Camera.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2Camera\\T2Camera.png",
+      "nade_name": "T2Camera",
+      "description": "Simple Camera Smoke",
+      "map_name": "de_train",
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "A"
+    },
+    {
+      "file_name": "T2MidFlash1.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2MidFlash1\\T2MidFlash1.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2MidFlash1\\T2MidFlash1.png",
+      "nade_name": "T2MidFlash1",
+      "description": "Flash Team out mid",
+      "map_name": "de_ancient",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "Mid"
+    },
+    {
+      "file_name": "T2MidFlash2.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2MidFlash2\\T2MidFlash2.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2MidFlash2\\T2MidFlash2.png",
+      "nade_name": "T2MidFlash2",
+      "description": "Flash Team out mid",
+      "map_name": "de_ancient",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "Mid"
+    },
+    {
+      "file_name": "T2Sandwich_Fast.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2Sandwich_Fast\\T2Sandwich_Fast.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2Sandwich_Fast\\T2Sandwich_Fast.png",
+      "nade_name": "T2Sandwich_Fast",
+      "description": "Smoke Sandwich from spawn.",
+      "map_name": "de_train",
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "A"
+    },
+    {
+      "file_name": "T2SpawnRedRoom.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2SpawnRedRoom\\T2SpawnRedRoom.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\T2SpawnRedRoom\\T2SpawnRedRoom.png",
+      "nade_name": "T2SpawnRedRoom",
+      "description": "Smoke RedRoom from spawn. Not instant.",
+      "map_name": "de_ancient",
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "Mid"
+    },
+    {
+      "file_name": "TopBannanaSmoke.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\TopBannanaSmoke\\TopBannanaSmoke.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\TopBannanaSmoke\\TopBannanaSmoke.png",
+      "nade_name": "TopBannanaSmoke",
+      "description": "Smoke top bannana to isolate sandbags.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "B"
+    },
+    {
+      "file_name": "sandbags_he.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\sandbags_he\\sandbags_he.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\sandbags_he\\sandbags_he.png",
+      "nade_name": "sandbags_he",
+      "description": "HE sandbags player. On the Run. First spawn.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "he",
+      "site": "B"
+    },
+    {
+      "file_name": "sandbags_molly.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\sandbags_molly\\sandbags_molly.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\sandbags_molly\\sandbags_molly.png",
+      "nade_name": "sandbags_molly",
+      "description": "Molly sandbags player on the run.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "molotov",
+      "site": "B"
+    }
+  ]
+}

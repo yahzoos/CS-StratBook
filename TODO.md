@@ -2,23 +2,22 @@
 
 ## pkg Tags
 
-- only a single nade is "tagged" when multi nade annotations exist
-- Maybe configure multi nade annotations to split out?
+### Features
+- Breakout single nades is from multi nade annotations.
 
 ## pkg MetaData Exporer
 
+### Bugs
 - Crashes when clicking on the right side grid if nothing is there. (before pressing the apply filters button)
-- Create "all maps" dropdown
--- or auto load (basically click the button for first map in list)
+
+
+### Features
+
 - Automatically call applyFilters when a map is selected.
-
-
-
+- Allow for editing (though edit button -> new window)
 
 ## main.gui.go
 
+### Features
 - Change app name in the title bar.
 
-# Features
-
-- Allow for editing (though edit button -> new window) [metadataexplorer]
