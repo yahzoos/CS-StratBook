@@ -1,0 +1,11 @@
+{
+  "file_name": "sandbags_he.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\sandbags_he\\sandbags_he.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\sandbags_he\\sandbags_he.png",
+  "nade_name": "sandbags_he",
+  "description": "HE sandbags player. On the Run. First spawn.",
+  "map_name": "de_inferno",
+  "side": "T",
+  "nade_type": "he",
+  "site": "B"
+}

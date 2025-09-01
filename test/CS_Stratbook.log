@@ -1,0 +1,398 @@
+2025/08/31 17:04:43 settings.go:37: No settings file found, using defaults
+2025/08/31 17:04:43 MetadataExplorer.go:121: Error loading metadata: open tags.json: The system cannot find the file specified.
+2025/08/31 17:05:08 main.go:40: Generating new tags...
+2025/08/31 17:05:08 main.go:54: Error reading file : open : The system cannot find the file specified.
+2025/08/31 17:05:08 main.go:106: [generate_tags] MetadataList: [{CarFlash.txt D:\CS-StratBook\Annotations\Testing\CarFlash\CarFlash.txt D:\CS-StratBook\Annotations\Testing\CarFlash\CarFlash.png CarFlash  de_inferno  flash } {T2Camera.txt D:\CS-StratBook\Annotations\Testing\T2Camera\T2Camera.txt D:\CS-StratBook\Annotations\Testing\T2Camera\T2Camera.png T2Camera  de_train  smoke } {A_Main2NextToPop.txt D:\CS-StratBook\Annotations\Testing\A_Main2NextToPop\A_Main2NextToPop.txt D:\CS-StratBook\Annotations\Testing\A_Main2NextToPop\A_Main2NextToPop.png A_Main2NextToPop  de_train  molotov } {BracketFlash.txt D:\CS-StratBook\Annotations\Testing\BracketFlash\BracketFlash.txt D:\CS-StratBook\Annotations\Testing\BracketFlash\BracketFlash.png BracketFlash  de_inferno  flash } {FireExitFlash.txt D:\CS-StratBook\Annotations\Testing\FireExitFlash\FireExitFlash.txt  FireExitFlash  de_inferno  flash } {BannanaFlash1.txt D:\CS-StratBook\Annotations\Testing\BannanaFlash1\BannanaFlash1.txt D:\CS-StratBook\Annotations\Testing\BannanaFlash1\BannanaFlash1.png BannanaFlash1  de_inferno  flash } {CarMolly.txt D:\CS-StratBook\Annotations\Testing\CarMolly\CarMolly.txt D:\CS-StratBook\Annotations\Testing\CarMolly\CarMolly.png CarMolly  de_inferno  molotov } {FallenFlash.txt D:\CS-StratBook\Annotations\Testing\FallenFlash\FallenFlash.txt D:\CS-StratBook\Annotations\Testing\FallenFlash\FallenFlash.png FallenFlash  de_inferno  flash } {T2MidFlash2.txt D:\CS-StratBook\Annotations\Testing\T2MidFlash2\T2MidFlash2.txt D:\CS-StratBook\Annotations\Testing\T2MidFlash2\T2MidFlash2.png T2MidFlash2  de_ancient  flash } {T2Sandwich_Fast.txt D:\CS-StratBook\Annotations\Testing\T2Sandwich_Fast\T2Sandwich_Fast.txt D:\CS-StratBook\Annotations\Testing\T2Sandwich_Fast\T2Sandwich_Fast.png T2Sandwich_Fast  de_train  smoke } {QuickHalfWallMolly.txt D:\CS-StratBook\Annotations\Testing\QuickHalfWallMolly\QuickHalfWallMolly.txt D:\CS-StratBook\Annotations\Testing\QuickHalfWallMolly\QuickHalfWallMolly.png QuickHalfWallMolly  de_inferno  incendiary } {T2MidFlash1.txt D:\CS-StratBook\Annotations\Testing\T2MidFlash1\T2MidFlash1.txt D:\CS-StratBook\Annotations\Testing\T2MidFlash1\T2MidFlash1.png T2MidFlash1  de_ancient  flash } {T2SpawnRedRoom.txt D:\CS-StratBook\Annotations\Testing\T2SpawnRedRoom\T2SpawnRedRoom.txt D:\CS-StratBook\Annotations\Testing\T2SpawnRedRoom\T2SpawnRedRoom.png T2SpawnRedRoom  de_ancient  smoke } {TopBannanaSmoke.txt D:\CS-StratBook\Annotations\Testing\TopBannanaSmoke\TopBannanaSmoke.txt D:\CS-StratBook\Annotations\Testing\TopBannanaSmoke\TopBannanaSmoke.png TopBannanaSmoke  de_inferno  smoke } {sandbags_he.txt D:\CS-StratBook\Annotations\Testing\sandbags_he\sandbags_he.txt D:\CS-StratBook\Annotations\Testing\sandbags_he\sandbags_he.png sandbags_he  de_inferno  he } {sandbags_molly.txt D:\CS-StratBook\Annotations\Testing\sandbags_molly\sandbags_molly.txt D:\CS-StratBook\Annotations\Testing\sandbags_molly\sandbags_molly.png sandbags_molly  de_inferno  molotov } {Balc+miniPit.txt D:\CS-StratBook\Annotations\Testing\Balc+miniPit\Balc+miniPit.txt D:\CS-StratBook\Annotations\Testing\Balc+miniPit\Balc+miniPit.png Balc+miniPit  de_inferno  molotov } {AggroCarPeek.txt D:\CS-StratBook\Annotations\Testing\AggroCarPeek\AggroCarPeek.txt D:\CS-StratBook\Annotations\Testing\AggroCarPeek\AggroCarPeek.png AggroCarPeek  de_inferno  flash } {CarPeekExtinguish.txt D:\CS-StratBook\Annotations\Testing\CarPeekExtinguish\CarPeekExtinguish.txt D:\CS-StratBook\Annotations\Testing\CarPeekExtinguish\CarPeekExtinguish.png CarPeekExtinguish  de_inferno  smoke } {DeepBracketRifleFlash.txt D:\CS-StratBook\Annotations\Testing\DeepBracketRifleFlash\DeepBracketRifleFlash.txt D:\CS-StratBook\Annotations\Testing\DeepBracketRifleFlash\DeepBracketRifleFlash.png DeepBracketRifleFlash  de_inferno  flash } {EarlyBannanaHe.txt D:\CS-StratBook\Annotations\Testing\EarlyBannanaHe\EarlyBannanaHe.txt D:\CS-StratBook\Annotations\Testing\EarlyBannanaHe\EarlyBannanaHe.png EarlyBannanaHe  de_inferno  he } {QuickBottomBannana.txt D:\CS-StratBook\Annotations\Testing\QuickBottomBannana\QuickBottomBannana.txt D:\CS-StratBook\Annotations\Testing\QuickBottomBannana\QuickBottomBannana.png QuickBottomBannana  de_inferno  smoke } {A_Main2E_Box.txt D:\CS-StratBook\Annotations\Testing\A_Main2E_Box\A_Main2E_Box.txt D:\CS-StratBook\Annotations\Testing\A_Main2E_Box\A_Main2E_Box.png A_Main2E_Box  de_train  molotov } {BannanaFlash2.txt D:\CS-StratBook\Annotations\Testing\BannanaFlash2\BannanaFlash2.txt D:\CS-StratBook\Annotations\Testing\BannanaFlash2\BannanaFlash2.png BannanaFlash2  de_inferno  flash } {BracketsAwpFlash.txt D:\CS-StratBook\Annotations\Testing\BracketsAwpFlash\BracketsAwpFlash.txt D:\CS-StratBook\Annotations\Testing\BracketsAwpFlash\BracketsAwpFlash.png BracketsAwpFlash  de_inferno  flash } {CT2BMain.txt D:\CS-StratBook\Annotations\Testing\CT2BMain\CT2BMain.txt D:\CS-StratBook\Annotations\Testing\CT2BMain\CT2BMain.png CT2BMain  de_ancient  smoke } {Spawn2HalfWall.txt D:\CS-StratBook\Annotations\Testing\Spawn2HalfWall\Spawn2HalfWall.txt D:\CS-StratBook\Annotations\Testing\Spawn2HalfWall\Spawn2HalfWall.png Spawn2HalfWall  de_inferno  smoke }]
+2025/08/31 17:05:08 Tags.go:420: [loadNade] Loading index: 0, NadeName: CarFlash
+2025/08/31 17:05:08 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\CarFlash\CarFlash.png
+2025/08/31 17:05:08 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:05:08 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:05:08 Tags.go:448: [loadNade] topContainer.Size(): {400 417.23438}
+2025/08/31 17:05:49 Tags.go:381: [saveCurrentNade] Saving index: 0, NadeName: CarFlash
+2025/08/31 17:05:49 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:CarFlash.txt FilePath:D:\CS-StratBook\Annotations\Testing\CarFlash\CarFlash.txt ImagePath:D:\CS-StratBook\Annotations\Testing\CarFlash\CarFlash.png NadeName:CarFlash Description:T Flash to peek car from bottom bannan. Gets Awper. MapName:de_inferno Side:T NadeType:flash Site:B}
+2025/08/31 17:05:49 Tags.go:477: [Submit] About to save metadata: {FileName:CarFlash.txt FilePath:D:\CS-StratBook\Annotations\Testing\CarFlash\CarFlash.txt ImagePath:D:\CS-StratBook\Annotations\Testing\CarFlash\CarFlash.png NadeName:CarFlash Description:T Flash to peek car from bottom bannan. Gets Awper. MapName:de_inferno Side:T NadeType:flash Site:B}
+2025/08/31 17:05:49 Tags.go:478: [Submit] Target file path: CarFlash.json
+2025/08/31 17:05:49 Tags.go:480: [Submit] Current working directory: D:\CS-StratBook\test
+2025/08/31 17:05:49 Tags.go:212: [SaveMetadata] Writing JSON to file: CarFlash.json
+2025/08/31 17:05:49 Tags.go:219: Metadata saved: CarFlash.json
+2025/08/31 17:05:49 Tags.go:486: [Submit] Saved CarFlash.json
+2025/08/31 17:05:49 Tags.go:420: [loadNade] Loading index: 0, NadeName: T2Camera
+2025/08/31 17:05:49 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\T2Camera\T2Camera.png
+2025/08/31 17:05:49 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:05:49 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:05:49 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:06:00 Tags.go:381: [saveCurrentNade] Saving index: 0, NadeName: T2Camera
+2025/08/31 17:06:00 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:T2Camera.txt FilePath:D:\CS-StratBook\Annotations\Testing\T2Camera\T2Camera.txt ImagePath:D:\CS-StratBook\Annotations\Testing\T2Camera\T2Camera.png NadeName:T2Camera Description:Simple Camera Smoke MapName:de_train Side:T NadeType:smoke Site:A}
+2025/08/31 17:06:00 Tags.go:420: [loadNade] Loading index: 1, NadeName: A_Main2NextToPop
+2025/08/31 17:06:00 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\A_Main2NextToPop\A_Main2NextToPop.png
+2025/08/31 17:06:00 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:06:00 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:06:00 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:06:17 Tags.go:381: [saveCurrentNade] Saving index: 1, NadeName: A_Main2NextToPop
+2025/08/31 17:06:17 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:A_Main2NextToPop.txt FilePath:D:\CS-StratBook\Annotations\Testing\A_Main2NextToPop\A_Main2NextToPop.txt ImagePath:D:\CS-StratBook\Annotations\Testing\A_Main2NextToPop\A_Main2NextToPop.png NadeName:A_Main2NextToPop Description:Molly Next to Pop/Ebox with Tcon Control MapName:de_train Side:T NadeType:molotov Site:A}
+2025/08/31 17:06:17 Tags.go:420: [loadNade] Loading index: 2, NadeName: BracketFlash
+2025/08/31 17:06:17 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\BracketFlash\BracketFlash.png
+2025/08/31 17:06:17 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:06:17 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:06:17 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:06:36 Tags.go:381: [saveCurrentNade] Saving index: 2, NadeName: BracketFlash
+2025/08/31 17:06:36 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:BracketFlash.txt FilePath:D:\CS-StratBook\Annotations\Testing\BracketFlash\BracketFlash.txt ImagePath:D:\CS-StratBook\Annotations\Testing\BracketFlash\BracketFlash.png NadeName:BracketFlash Description:Flash left side brackets. Good for rifler MapName:de_inferno Side:T NadeType:flash Site:Mid}
+2025/08/31 17:06:36 Tags.go:420: [loadNade] Loading index: 3, NadeName: FireExitFlash
+2025/08/31 17:06:36 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: 
+2025/08/31 17:06:36 Tags.go:440: [loadNade] Image NOT found or invalid path: 
+2025/08/31 17:06:36 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:06:36 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:06:36 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:07:02 Tags.go:381: [saveCurrentNade] Saving index: 3, NadeName: FireExitFlash
+2025/08/31 17:07:02 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:FireExitFlash.txt FilePath:D:\CS-StratBook\Annotations\Testing\FireExitFlash\FireExitFlash.txt ImagePath: NadeName:FireExitFlash Description:Flashes site and pit MapName:de_inferno Side:T NadeType:flash Site:A}
+2025/08/31 17:07:02 Tags.go:420: [loadNade] Loading index: 4, NadeName: BannanaFlash1
+2025/08/31 17:07:02 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\BannanaFlash1\BannanaFlash1.png
+2025/08/31 17:07:02 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:07:02 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:07:02 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:07:16 Tags.go:381: [saveCurrentNade] Saving index: 4, NadeName: BannanaFlash1
+2025/08/31 17:07:16 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:BannanaFlash1.txt FilePath:D:\CS-StratBook\Annotations\Testing\BannanaFlash1\BannanaFlash1.txt ImagePath:D:\CS-StratBook\Annotations\Testing\BannanaFlash1\BannanaFlash1.png NadeName:BannanaFlash1 Description:Flash Close positions in Bannana MapName:de_inferno Side:T NadeType:flash Site:B}
+2025/08/31 17:07:16 Tags.go:420: [loadNade] Loading index: 5, NadeName: CarMolly
+2025/08/31 17:07:16 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\CarMolly\CarMolly.png
+2025/08/31 17:07:16 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:07:16 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:07:16 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:07:29 Tags.go:381: [saveCurrentNade] Saving index: 5, NadeName: CarMolly
+2025/08/31 17:07:29 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:CarMolly.txt FilePath:D:\CS-StratBook\Annotations\Testing\CarMolly\CarMolly.txt ImagePath:D:\CS-StratBook\Annotations\Testing\CarMolly\CarMolly.png NadeName:CarMolly Description:Molly Car on the run. First spawn. MapName:de_inferno Side:T NadeType:molotov Site:B}
+2025/08/31 17:07:29 Tags.go:420: [loadNade] Loading index: 6, NadeName: FallenFlash
+2025/08/31 17:07:29 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\FallenFlash\FallenFlash.png
+2025/08/31 17:07:29 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:07:29 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:07:29 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:07:40 Tags.go:381: [saveCurrentNade] Saving index: 6, NadeName: FallenFlash
+2025/08/31 17:07:40 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:FallenFlash.txt FilePath:D:\CS-StratBook\Annotations\Testing\FallenFlash\FallenFlash.txt ImagePath:D:\CS-StratBook\Annotations\Testing\FallenFlash\FallenFlash.png NadeName:FallenFlash Description:Flash to peek from Car MapName:de_inferno Side:CT NadeType:flash Site:B}
+2025/08/31 17:07:40 Tags.go:420: [loadNade] Loading index: 7, NadeName: T2MidFlash2
+2025/08/31 17:07:40 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\T2MidFlash2\T2MidFlash2.png
+2025/08/31 17:07:40 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:07:40 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:07:40 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:07:50 Tags.go:381: [saveCurrentNade] Saving index: 7, NadeName: T2MidFlash2
+2025/08/31 17:07:50 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:T2MidFlash2.txt FilePath:D:\CS-StratBook\Annotations\Testing\T2MidFlash2\T2MidFlash2.txt ImagePath:D:\CS-StratBook\Annotations\Testing\T2MidFlash2\T2MidFlash2.png NadeName:T2MidFlash2 Description:Flash Team out mid MapName:de_ancient Side:T NadeType:flash Site:Mid}
+2025/08/31 17:07:50 Tags.go:420: [loadNade] Loading index: 8, NadeName: T2Sandwich_Fast
+2025/08/31 17:07:50 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\T2Sandwich_Fast\T2Sandwich_Fast.png
+2025/08/31 17:07:50 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:07:50 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:07:50 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:08:01 Tags.go:381: [saveCurrentNade] Saving index: 8, NadeName: T2Sandwich_Fast
+2025/08/31 17:08:01 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:T2Sandwich_Fast.txt FilePath:D:\CS-StratBook\Annotations\Testing\T2Sandwich_Fast\T2Sandwich_Fast.txt ImagePath:D:\CS-StratBook\Annotations\Testing\T2Sandwich_Fast\T2Sandwich_Fast.png NadeName:T2Sandwich_Fast Description:Smoke Sandwich from spawn. MapName:de_train Side:T NadeType:smoke Site:A}
+2025/08/31 17:08:01 Tags.go:420: [loadNade] Loading index: 9, NadeName: QuickHalfWallMolly
+2025/08/31 17:08:01 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\QuickHalfWallMolly\QuickHalfWallMolly.png
+2025/08/31 17:08:01 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:08:01 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:08:01 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:08:12 Tags.go:381: [saveCurrentNade] Saving index: 9, NadeName: QuickHalfWallMolly
+2025/08/31 17:08:12 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:QuickHalfWallMolly.txt FilePath:D:\CS-StratBook\Annotations\Testing\QuickHalfWallMolly\QuickHalfWallMolly.txt ImagePath:D:\CS-StratBook\Annotations\Testing\QuickHalfWallMolly\QuickHalfWallMolly.png NadeName:QuickHalfWallMolly Description:Molly HalfWall on the run. MapName:de_inferno Side:CT NadeType:incendiary Site:B}
+2025/08/31 17:08:12 Tags.go:420: [loadNade] Loading index: 10, NadeName: T2MidFlash1
+2025/08/31 17:08:12 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\T2MidFlash1\T2MidFlash1.png
+2025/08/31 17:08:12 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:08:12 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:08:12 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:08:19 Tags.go:381: [saveCurrentNade] Saving index: 10, NadeName: T2MidFlash1
+2025/08/31 17:08:19 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:T2MidFlash1.txt FilePath:D:\CS-StratBook\Annotations\Testing\T2MidFlash1\T2MidFlash1.txt ImagePath:D:\CS-StratBook\Annotations\Testing\T2MidFlash1\T2MidFlash1.png NadeName:T2MidFlash1 Description:Flash Team out mid MapName:de_ancient Side:T NadeType:flash Site:Mid}
+2025/08/31 17:08:19 Tags.go:420: [loadNade] Loading index: 11, NadeName: T2SpawnRedRoom
+2025/08/31 17:08:19 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\T2SpawnRedRoom\T2SpawnRedRoom.png
+2025/08/31 17:08:19 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:08:19 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:08:19 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:08:31 Tags.go:381: [saveCurrentNade] Saving index: 11, NadeName: T2SpawnRedRoom
+2025/08/31 17:08:31 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:T2SpawnRedRoom.txt FilePath:D:\CS-StratBook\Annotations\Testing\T2SpawnRedRoom\T2SpawnRedRoom.txt ImagePath:D:\CS-StratBook\Annotations\Testing\T2SpawnRedRoom\T2SpawnRedRoom.png NadeName:T2SpawnRedRoom Description:Smoke RedRoom from spawn. Not instant. MapName:de_ancient Side:T NadeType:smoke Site:Mid}
+2025/08/31 17:08:31 Tags.go:420: [loadNade] Loading index: 12, NadeName: TopBannanaSmoke
+2025/08/31 17:08:31 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\TopBannanaSmoke\TopBannanaSmoke.png
+2025/08/31 17:08:31 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:08:31 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:08:31 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:08:50 Tags.go:381: [saveCurrentNade] Saving index: 12, NadeName: TopBannanaSmoke
+2025/08/31 17:08:50 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:TopBannanaSmoke.txt FilePath:D:\CS-StratBook\Annotations\Testing\TopBannanaSmoke\TopBannanaSmoke.txt ImagePath:D:\CS-StratBook\Annotations\Testing\TopBannanaSmoke\TopBannanaSmoke.png NadeName:TopBannanaSmoke Description:Smoke top bannana to isolate sandbags. MapName:de_inferno Side:T NadeType:smoke Site:B}
+2025/08/31 17:08:50 Tags.go:420: [loadNade] Loading index: 13, NadeName: sandbags_he
+2025/08/31 17:08:50 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\sandbags_he\sandbags_he.png
+2025/08/31 17:08:50 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:08:50 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:08:50 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:09:05 Tags.go:381: [saveCurrentNade] Saving index: 13, NadeName: sandbags_he
+2025/08/31 17:09:05 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:sandbags_he.txt FilePath:D:\CS-StratBook\Annotations\Testing\sandbags_he\sandbags_he.txt ImagePath:D:\CS-StratBook\Annotations\Testing\sandbags_he\sandbags_he.png NadeName:sandbags_he Description:HE sandbags player. On the Run. First spawn. MapName:de_inferno Side:T NadeType:he Site:B}
+2025/08/31 17:09:05 Tags.go:420: [loadNade] Loading index: 14, NadeName: sandbags_molly
+2025/08/31 17:09:05 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\sandbags_molly\sandbags_molly.png
+2025/08/31 17:09:05 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:09:05 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:09:05 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:09:17 Tags.go:381: [saveCurrentNade] Saving index: 14, NadeName: sandbags_molly
+2025/08/31 17:09:17 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:sandbags_molly.txt FilePath:D:\CS-StratBook\Annotations\Testing\sandbags_molly\sandbags_molly.txt ImagePath:D:\CS-StratBook\Annotations\Testing\sandbags_molly\sandbags_molly.png NadeName:sandbags_molly Description:Molly sandbags player on the run. MapName:de_inferno Side:T NadeType:molotov Site:B}
+2025/08/31 17:09:17 Tags.go:420: [loadNade] Loading index: 15, NadeName: Balc+miniPit
+2025/08/31 17:09:17 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\Balc+miniPit\Balc+miniPit.png
+2025/08/31 17:09:17 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:09:17 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:09:17 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:09:32 Tags.go:381: [saveCurrentNade] Saving index: 15, NadeName: Balc+miniPit
+2025/08/31 17:09:32 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:Balc+miniPit.txt FilePath:D:\CS-StratBook\Annotations\Testing\Balc+miniPit\Balc+miniPit.txt ImagePath:D:\CS-StratBook\Annotations\Testing\Balc+miniPit\Balc+miniPit.png NadeName:Balc+miniPit Description:molly balcony and under with bracket control MapName:de_inferno Side:T NadeType:molotov Site:A}
+2025/08/31 17:09:32 Tags.go:420: [loadNade] Loading index: 16, NadeName: AggroCarPeek
+2025/08/31 17:09:32 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\AggroCarPeek\AggroCarPeek.png
+2025/08/31 17:09:32 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:09:32 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:09:32 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:09:43 Tags.go:381: [saveCurrentNade] Saving index: 16, NadeName: AggroCarPeek
+2025/08/31 17:09:43 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:AggroCarPeek.txt FilePath:D:\CS-StratBook\Annotations\Testing\AggroCarPeek\AggroCarPeek.txt ImagePath:D:\CS-StratBook\Annotations\Testing\AggroCarPeek\AggroCarPeek.png NadeName:AggroCarPeek Description:self flash to peek from car. MapName:de_inferno Side:CT NadeType:flash Site:B}
+2025/08/31 17:09:43 Tags.go:420: [loadNade] Loading index: 17, NadeName: CarPeekExtinguish
+2025/08/31 17:09:43 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\CarPeekExtinguish\CarPeekExtinguish.png
+2025/08/31 17:09:43 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:09:43 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:09:43 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:10:01 Tags.go:381: [saveCurrentNade] Saving index: 17, NadeName: CarPeekExtinguish
+2025/08/31 17:10:01 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:CarPeekExtinguish.txt FilePath:D:\CS-StratBook\Annotations\Testing\CarPeekExtinguish\CarPeekExtinguish.txt ImagePath:D:\CS-StratBook\Annotations\Testing\CarPeekExtinguish\CarPeekExtinguish.png NadeName:CarPeekExtinguish Description:Extinguish car molly for peek. MapName:de_inferno Side:CT NadeType:smoke Site:B}
+2025/08/31 17:10:01 Tags.go:420: [loadNade] Loading index: 18, NadeName: DeepBracketRifleFlash
+2025/08/31 17:10:01 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\DeepBracketRifleFlash\DeepBracketRifleFlash.png
+2025/08/31 17:10:01 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:10:01 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:10:01 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:10:17 Tags.go:381: [saveCurrentNade] Saving index: 18, NadeName: DeepBracketRifleFlash
+2025/08/31 17:10:17 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:DeepBracketRifleFlash.txt FilePath:D:\CS-StratBook\Annotations\Testing\DeepBracketRifleFlash\DeepBracketRifleFlash.txt ImagePath:D:\CS-StratBook\Annotations\Testing\DeepBracketRifleFlash\DeepBracketRifleFlash.png NadeName:DeepBracketRifleFlash Description:flash cubby and under porch. MapName:de_inferno Side:T NadeType:flash Site:A}
+2025/08/31 17:10:17 Tags.go:420: [loadNade] Loading index: 19, NadeName: EarlyBannanaHe
+2025/08/31 17:10:17 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\EarlyBannanaHe\EarlyBannanaHe.png
+2025/08/31 17:10:17 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:10:17 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:10:17 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:10:38 Tags.go:381: [saveCurrentNade] Saving index: 19, NadeName: EarlyBannanaHe
+2025/08/31 17:10:38 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:EarlyBannanaHe.txt FilePath:D:\CS-StratBook\Annotations\Testing\EarlyBannanaHe\EarlyBannanaHe.txt ImagePath:D:\CS-StratBook\Annotations\Testing\EarlyBannanaHe\EarlyBannanaHe.png NadeName:EarlyBannanaHe Description:On the run, he T's taking early bananna control MapName:de_inferno Side:CT NadeType:he Site:B}
+2025/08/31 17:10:38 Tags.go:420: [loadNade] Loading index: 20, NadeName: QuickBottomBannana
+2025/08/31 17:10:38 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\QuickBottomBannana\QuickBottomBannana.png
+2025/08/31 17:10:38 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:10:38 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:10:38 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:11:12 Tags.go:381: [saveCurrentNade] Saving index: 20, NadeName: QuickBottomBannana
+2025/08/31 17:11:12 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:QuickBottomBannana.txt FilePath:D:\CS-StratBook\Annotations\Testing\QuickBottomBannana\QuickBottomBannana.txt ImagePath:D:\CS-StratBook\Annotations\Testing\QuickBottomBannana\QuickBottomBannana.png NadeName:QuickBottomBannana Description:Smoke bottom of Bannana for B players. MapName:de_inferno Side:CT NadeType:smoke Site:B}
+2025/08/31 17:11:12 Tags.go:420: [loadNade] Loading index: 19, NadeName: EarlyBannanaHe
+2025/08/31 17:11:12 Tags.go:421: [loadNade] Description: On the run, he T's taking early bananna control, Side: CT, Site: B, ImagePath: D:\CS-StratBook\Annotations\Testing\EarlyBannanaHe\EarlyBannanaHe.png
+2025/08/31 17:11:12 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:11:12 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:11:12 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:11:25 Tags.go:381: [saveCurrentNade] Saving index: 19, NadeName: EarlyBannanaHe
+2025/08/31 17:11:25 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:EarlyBannanaHe.txt FilePath:D:\CS-StratBook\Annotations\Testing\EarlyBannanaHe\EarlyBannanaHe.txt ImagePath:D:\CS-StratBook\Annotations\Testing\EarlyBannanaHe\EarlyBannanaHe.png NadeName:EarlyBannanaHe Description:On the run, HE the T's taking early bananna control MapName:de_inferno Side:CT NadeType:he Site:B}
+2025/08/31 17:11:25 Tags.go:420: [loadNade] Loading index: 20, NadeName: QuickBottomBannana
+2025/08/31 17:11:25 Tags.go:421: [loadNade] Description: Smoke bottom of Bannana for B players., Side: CT, Site: B, ImagePath: D:\CS-StratBook\Annotations\Testing\QuickBottomBannana\QuickBottomBannana.png
+2025/08/31 17:11:26 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:11:26 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:11:26 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:11:26 Tags.go:381: [saveCurrentNade] Saving index: 20, NadeName: QuickBottomBannana
+2025/08/31 17:11:26 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:QuickBottomBannana.txt FilePath:D:\CS-StratBook\Annotations\Testing\QuickBottomBannana\QuickBottomBannana.txt ImagePath:D:\CS-StratBook\Annotations\Testing\QuickBottomBannana\QuickBottomBannana.png NadeName:QuickBottomBannana Description:Smoke bottom of Bannana for B players. MapName:de_inferno Side:CT NadeType:smoke Site:B}
+2025/08/31 17:11:26 Tags.go:420: [loadNade] Loading index: 21, NadeName: A_Main2E_Box
+2025/08/31 17:11:26 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\A_Main2E_Box\A_Main2E_Box.png
+2025/08/31 17:11:26 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:11:26 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:11:26 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:11:50 Tags.go:381: [saveCurrentNade] Saving index: 21, NadeName: A_Main2E_Box
+2025/08/31 17:11:50 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:A_Main2E_Box.txt FilePath:D:\CS-StratBook\Annotations\Testing\A_Main2E_Box\A_Main2E_Box.txt ImagePath:D:\CS-StratBook\Annotations\Testing\A_Main2E_Box\A_Main2E_Box.png NadeName:A_Main2E_Box Description:Molly Ebox with Tcon control MapName:de_train Side:T NadeType:molotov Site:A}
+2025/08/31 17:11:50 Tags.go:420: [loadNade] Loading index: 22, NadeName: BannanaFlash2
+2025/08/31 17:11:50 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\BannanaFlash2\BannanaFlash2.png
+2025/08/31 17:11:50 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:11:50 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:11:50 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:12:20 Tags.go:381: [saveCurrentNade] Saving index: 22, NadeName: BannanaFlash2
+2025/08/31 17:12:20 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:BannanaFlash2.txt FilePath:D:\CS-StratBook\Annotations\Testing\BannanaFlash2\BannanaFlash2.txt ImagePath:D:\CS-StratBook\Annotations\Testing\BannanaFlash2\BannanaFlash2.png NadeName:BannanaFlash2 Description:Flashes CT playing the corner of Top Bannana MapName:de_inferno Side:T NadeType:flash Site:B}
+2025/08/31 17:12:20 Tags.go:420: [loadNade] Loading index: 23, NadeName: BracketsAwpFlash
+2025/08/31 17:12:20 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\BracketsAwpFlash\BracketsAwpFlash.png
+2025/08/31 17:12:20 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:12:20 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:12:20 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:12:51 Tags.go:381: [saveCurrentNade] Saving index: 23, NadeName: BracketsAwpFlash
+2025/08/31 17:12:51 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:BracketsAwpFlash.txt FilePath:D:\CS-StratBook\Annotations\Testing\BracketsAwpFlash\BracketsAwpFlash.txt ImagePath:D:\CS-StratBook\Annotations\Testing\BracketsAwpFlash\BracketsAwpFlash.png NadeName:BracketsAwpFlash Description:Flashes Awper holding pixel angle MapName:de_inferno Side:T NadeType:flash Site:A}
+2025/08/31 17:12:51 Tags.go:420: [loadNade] Loading index: 24, NadeName: CT2BMain
+2025/08/31 17:12:51 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\CT2BMain\CT2BMain.png
+2025/08/31 17:12:51 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:12:51 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:12:51 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:13:00 Tags.go:381: [saveCurrentNade] Saving index: 24, NadeName: CT2BMain
+2025/08/31 17:13:00 Tags.go:405: [saveCurrentNade] Updated metadata: {FileName:CT2BMain.txt FilePath:D:\CS-StratBook\Annotations\Testing\CT2BMain\CT2BMain.txt ImagePath:D:\CS-StratBook\Annotations\Testing\CT2BMain\CT2BMain.png NadeName:CT2BMain Description:Doesn't work on new map MapName:de_ancient Side: NadeType:smoke Site:}
+2025/08/31 17:13:00 Tags.go:420: [loadNade] Loading index: 25, NadeName: Spawn2HalfWall
+2025/08/31 17:13:00 Tags.go:421: [loadNade] Description: , Side: , Site: , ImagePath: D:\CS-StratBook\Annotations\Testing\Spawn2HalfWall\Spawn2HalfWall.png
+2025/08/31 17:13:00 Tags.go:446: [loadNade] ImageCanvas.Size(): {400 300}
+2025/08/31 17:13:00 Tags.go:447: [loadNade] ImageCanvas.MinSize(): {400 300}
+2025/08/31 17:13:00 Tags.go:448: [loadNade] topContainer.Size(): {592 417.23438}
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: T2Camera
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2Camera.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2Camera.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: A_Main2NextToPop
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: A_Main2NextToPop.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: A_Main2NextToPop.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: BracketFlash
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: BracketFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: BracketFlash.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: FireExitFlash
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: FireExitFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: FireExitFlash.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: BannanaFlash1
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: BannanaFlash1.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: BannanaFlash1.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: CarMolly
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: CarMolly.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: CarMolly.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: FallenFlash
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: FallenFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: FallenFlash.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: T2MidFlash2
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2MidFlash2.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2MidFlash2.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: T2Sandwich_Fast
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2Sandwich_Fast.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2Sandwich_Fast.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: QuickHalfWallMolly
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: QuickHalfWallMolly.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: QuickHalfWallMolly.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: T2MidFlash1
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2MidFlash1.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2MidFlash1.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: T2SpawnRedRoom
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2SpawnRedRoom.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2SpawnRedRoom.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: TopBannanaSmoke
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: TopBannanaSmoke.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: TopBannanaSmoke.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: sandbags_he
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: sandbags_he.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: sandbags_he.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: sandbags_molly
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: sandbags_molly.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: sandbags_molly.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: Balc+miniPit
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: Balc+miniPit.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: Balc+miniPit.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: AggroCarPeek
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: AggroCarPeek.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: AggroCarPeek.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: CarPeekExtinguish
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: CarPeekExtinguish.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: CarPeekExtinguish.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: DeepBracketRifleFlash
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: DeepBracketRifleFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: DeepBracketRifleFlash.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: EarlyBannanaHe
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: EarlyBannanaHe.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: EarlyBannanaHe.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: QuickBottomBannana
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: QuickBottomBannana.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: QuickBottomBannana.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: A_Main2E_Box
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: A_Main2E_Box.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: A_Main2E_Box.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: BannanaFlash2
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: BannanaFlash2.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: BannanaFlash2.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: BracketsAwpFlash
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: BracketsAwpFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: BracketsAwpFlash.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: CT2BMain
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: CT2BMain.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: CT2BMain.json
+2025/08/31 17:13:22 Tags.go:508: [SubmitAll] Writing metadata for: Spawn2HalfWall
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: Spawn2HalfWall.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: Spawn2HalfWall.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2Camera.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2Camera.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: A_Main2NextToPop.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: A_Main2NextToPop.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: BracketFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: BracketFlash.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: FireExitFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: FireExitFlash.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: BannanaFlash1.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: BannanaFlash1.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: CarMolly.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: CarMolly.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: FallenFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: FallenFlash.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2MidFlash2.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2MidFlash2.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2Sandwich_Fast.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2Sandwich_Fast.json
+2025/08/31 17:13:22 main.go:118: Validation error for QuickHalfWallMolly.txt: nade_type is required and must be one of 'flash', 'smoke', 'molotov', 'he_grenade'
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2MidFlash1.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2MidFlash1.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: T2SpawnRedRoom.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: T2SpawnRedRoom.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: TopBannanaSmoke.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: TopBannanaSmoke.json
+2025/08/31 17:13:22 main.go:118: Validation error for sandbags_he.txt: nade_type is required and must be one of 'flash', 'smoke', 'molotov', 'he_grenade'
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: sandbags_molly.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: sandbags_molly.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: Balc+miniPit.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: Balc+miniPit.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: AggroCarPeek.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: AggroCarPeek.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: CarPeekExtinguish.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: CarPeekExtinguish.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: DeepBracketRifleFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: DeepBracketRifleFlash.json
+2025/08/31 17:13:22 main.go:118: Validation error for EarlyBannanaHe.txt: nade_type is required and must be one of 'flash', 'smoke', 'molotov', 'he_grenade'
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: QuickBottomBannana.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: QuickBottomBannana.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: A_Main2E_Box.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: A_Main2E_Box.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: BannanaFlash2.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: BannanaFlash2.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: BracketsAwpFlash.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: BracketsAwpFlash.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: CT2BMain.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: CT2BMain.json
+2025/08/31 17:13:22 Tags.go:212: [SaveMetadata] Writing JSON to file: Spawn2HalfWall.json
+2025/08/31 17:13:22 Tags.go:219: Metadata saved: Spawn2HalfWall.json
+2025/08/31 17:13:22 Tags.go:289: JSON files merged successfully into tags.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving A_Main2E_Box.json to D:\CS-StratBook\Annotations\Testing\A_Main2E_Box\A_Main2E_Box.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving A_Main2NextToPop.json to D:\CS-StratBook\Annotations\Testing\A_Main2NextToPop\A_Main2NextToPop.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving AggroCarPeek.json to D:\CS-StratBook\Annotations\Testing\AggroCarPeek\AggroCarPeek.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving Balc+miniPit.json to D:\CS-StratBook\Annotations\Testing\Balc+miniPit\Balc+miniPit.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving BannanaFlash1.json to D:\CS-StratBook\Annotations\Testing\BannanaFlash1\BannanaFlash1.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving BannanaFlash2.json to D:\CS-StratBook\Annotations\Testing\BannanaFlash2\BannanaFlash2.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving BracketFlash.json to D:\CS-StratBook\Annotations\Testing\BracketFlash\BracketFlash.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving BracketsAwpFlash.json to D:\CS-StratBook\Annotations\Testing\BracketsAwpFlash\BracketsAwpFlash.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving CT2BMain.json to D:\CS-StratBook\Annotations\Testing\CT2BMain\CT2BMain.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving CarFlash.json to D:\CS-StratBook\Annotations\Testing\CarFlash\CarFlash.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving CarMolly.json to D:\CS-StratBook\Annotations\Testing\CarMolly\CarMolly.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving CarPeekExtinguish.json to D:\CS-StratBook\Annotations\Testing\CarPeekExtinguish\CarPeekExtinguish.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving DeepBracketRifleFlash.json to D:\CS-StratBook\Annotations\Testing\DeepBracketRifleFlash\DeepBracketRifleFlash.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving EarlyBannanaHe.json to D:\CS-StratBook\Annotations\Testing\EarlyBannanaHe\EarlyBannanaHe.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving FallenFlash.json to D:\CS-StratBook\Annotations\Testing\FallenFlash\FallenFlash.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving FireExitFlash.json to D:\CS-StratBook\Annotations\Testing\FireExitFlash\FireExitFlash.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving QuickBottomBannana.json to D:\CS-StratBook\Annotations\Testing\QuickBottomBannana\QuickBottomBannana.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving QuickHalfWallMolly.json to D:\CS-StratBook\Annotations\Testing\QuickHalfWallMolly\QuickHalfWallMolly.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving Spawn2HalfWall.json to D:\CS-StratBook\Annotations\Testing\Spawn2HalfWall\Spawn2HalfWall.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving T2Camera.json to D:\CS-StratBook\Annotations\Testing\T2Camera\T2Camera.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving T2MidFlash1.json to D:\CS-StratBook\Annotations\Testing\T2MidFlash1\T2MidFlash1.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving T2MidFlash2.json to D:\CS-StratBook\Annotations\Testing\T2MidFlash2\T2MidFlash2.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving T2Sandwich_Fast.json to D:\CS-StratBook\Annotations\Testing\T2Sandwich_Fast\T2Sandwich_Fast.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving T2SpawnRedRoom.json to D:\CS-StratBook\Annotations\Testing\T2SpawnRedRoom\T2SpawnRedRoom.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving TopBannanaSmoke.json to D:\CS-StratBook\Annotations\Testing\TopBannanaSmoke\TopBannanaSmoke.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving sandbags_he.json to D:\CS-StratBook\Annotations\Testing\sandbags_he\sandbags_he.json
+2025/08/31 17:13:22 Tags.go:297: DEBUG: filepath is:  D:\CS-StratBook\Annotations\Testing
+2025/08/31 17:13:22 Tags.go:301: Moving sandbags_molly.json to D:\CS-StratBook\Annotations\Testing\sandbags_molly\sandbags_molly.json
+2025/08/31 17:13:22 main.go:145: All tags generated and moved successfully!
+2025/08/31 17:13:27 MetadataExplorer.go:176: Select set to de_train
+2025/08/31 17:13:30 MetadataExplorer.go:176: Select set to de_inferno
