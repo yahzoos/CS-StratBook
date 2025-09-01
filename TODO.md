@@ -9,7 +9,7 @@
 
 ### Bugs
 - Crashes when clicking on the right side grid if nothing is there. (before pressing the apply filters button)
-- Molotov only shows T Molotovs - need it to include incendiary
+- He_grenade filter not working
 
 ### Features
 

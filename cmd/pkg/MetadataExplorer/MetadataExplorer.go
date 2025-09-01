@@ -91,6 +91,7 @@ func FilterMetadata(metadata []Metadata, filters FilterOptions) []Metadata {
 			!((filters.Smokes && nade.NadeType == "smoke") ||
 				(filters.Flashes && nade.NadeType == "flash") ||
 				(filters.Molotovs && nade.NadeType == "molotov") ||
+				(filters.Molotovs && nade.NadeType == "incendiary") ||
 				(filters.HEs && nade.NadeType == "he_grenade")) {
 			continue
 		}
