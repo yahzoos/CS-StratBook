@@ -8,6 +8,8 @@ Tags.json is the 'main' metadata file. This contains all of the annotation metad
 
 The annotations folder is where the individual annoations are stored. If you change this path, be sure to find and replace the path to match in tags.json.
 
+Best Practice would be to store all of the annoation files in a different folder and only move the ones you would want to use into the default csgo path.
+
 The generate new tags can be used when new (single) nade annotations are placed in the Annotation Folder Path. It will bring up a new window where a description, side and site can be added.
 
 ## Metatdata Explorer Tab

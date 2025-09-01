@@ -11,10 +11,6 @@
 - Automatically call applyFilters when a map is selected.
 - Allow for editing (though edit button -> new window)
 
-## FileGenerator
-### Bugs
-- HE grenades are not added to tab from Metadata Explorer
-
 ## main.gui.go
 ### Features
 - Change app name in the title bar.
