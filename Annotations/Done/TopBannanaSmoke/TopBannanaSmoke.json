@@ -1,0 +1,11 @@
+{
+  "file_name": "TopBannanaSmoke.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\TopBannanaSmoke\\TopBannanaSmoke.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\TopBannanaSmoke\\TopBannanaSmoke.png",
+  "nade_name": "TopBannanaSmoke",
+  "description": "Smoke top bannana to isolate sandbags.",
+  "map_name": "de_inferno",
+  "side": "T",
+  "nade_type": "smoke",
+  "site": "B"
+}
