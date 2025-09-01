@@ -9,7 +9,7 @@
 
 ### Bugs
 - Crashes when clicking on the right side grid if nothing is there. (before pressing the apply filters button)
-- He_grenade filter not working
+
 
 ### Features
 

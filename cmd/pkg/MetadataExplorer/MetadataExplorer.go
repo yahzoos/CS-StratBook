@@ -92,7 +92,7 @@ func FilterMetadata(metadata []Metadata, filters FilterOptions) []Metadata {
 				(filters.Flashes && nade.NadeType == "flash") ||
 				(filters.Molotovs && nade.NadeType == "molotov") ||
 				(filters.Molotovs && nade.NadeType == "incendiary") ||
-				(filters.HEs && nade.NadeType == "he_grenade")) {
+				(filters.HEs && nade.NadeType == "he")) {
 			continue
 		}
 		if (filters.ASite || filters.BSite || filters.MidSite) &&
