@@ -95,7 +95,10 @@
       "nade_name": "CT2BMain",
       "description": "Doesn't work on new map",
       "map_name": "de_ancient",
-      "nade_type": "smoke"
+	  "side": "CT",
+      "nade_type": "smoke",
+	  "site": "B"
+	  
     },
     {
       "file_name": "CarFlash.txt",
