@@ -8,7 +8,10 @@ When the application first loads it will create a settings.json file. The paths 
 
 Tags.json is the 'main' metadata file. This contains all of the annotation metadata in a single source.
 
-The annotations folder is where the individual annotations are stored. If you change this path, be sure to find and replace the path to match in tags.json. >[!NOTE] On linux you will need to replace the `~` with the actual hard path>
+The annotations folder is where the individual annotations are stored. If you change this path, be sure to find and replace the path to match in tags.json. 
+
+>[!NOTE]
+>On linux you will need to replace the `~` with the actual hard path.
 
 Best Practice would be to store all of the annotation files in a different folder and only move the ones you would want to use into the default csgo path.
 
