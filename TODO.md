@@ -13,6 +13,8 @@
 - Allow for editing (though edit button -> new window)
 
 ## main.gui.go
+### Bugs
+- Window size gets too large for screen (unless you are on 4k - then it is ok :) )
 ### Features
 - Change app name in the title bar.
 
