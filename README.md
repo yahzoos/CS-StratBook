@@ -1,18 +1,20 @@
 # CS-StratBook
 Yahzoos' annotated nade guides for CS2
 
+The Executables can be found in the CS-Stratbook Windows or Linux folder.
+
 ## Home Tab
 When the application first loads it will create a settings.json file. The paths can be edited in the UI. 
 
 Tags.json is the 'main' metadata file. This contains all of the annotation metadata in a single source.
 
-The annotations folder is where the individual annoations are stored. If you change this path, be sure to find and replace the path to match in tags.json.
+The annotations folder is where the individual annotations are stored. If you change this path, be sure to find and replace the path to match in tags.json. >[!NOTE] On linux you will need to replace the `~` with the actual hard path>
 
-Best Practice would be to store all of the annoation files in a different folder and only move the ones you would want to use into the default csgo path.
+Best Practice would be to store all of the annotation files in a different folder and only move the ones you would want to use into the default csgo path.
 
 The generate new tags can be used when new (single) nade annotations are placed in the Annotation Folder Path. It will bring up a new window where a description, side and site can be added.
 
-## Metatdata Explorer Tab
+## Metadata Explorer Tab
  Click the refresh button if new annotations were added.
 
  Select a map and any filters, if none are selected it will show everything for the map. Click apply filters to have everything show in the right hand grid.
@@ -27,7 +29,7 @@ The generate new tags can be used when new (single) nade annotations are placed 
 
  This tab has all the nades selected from the previous tab.
 
- Write a name for the new annoation file (make sure to end with .txt)
+ Write a name for the new annotation file (make sure to end with .txt)
  
 
 # Using the annotation files
