@@ -1,0 +1,11 @@
+{
+  "file_name": "CTSmoke_from_Corner.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\CTSmoke_from_Corner\\CTSmoke_from_Corner.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\CTSmoke_from_Corner\\CTSmoke_from_Corner.png",
+  "nade_name": "CTSmoke_from_Corner",
+  "description": "Smoke CT boost from corner behind halfwall.",
+  "map_name": "de_inferno",
+  "side": "T",
+  "nade_type": "smoke",
+  "site": "B"
+}

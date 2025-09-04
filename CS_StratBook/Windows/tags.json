@@ -205,9 +205,9 @@
       "nade_name": "Spawn2HalfWall",
       "description": "No description provided",
       "map_name": "de_inferno",
-	  "side": "T",
-	  "site": "B",
-      "nade_type": "smoke"
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "B"
     },
     {
       "file_name": "T2Camera.txt",
@@ -295,6 +295,268 @@
       "map_name": "de_inferno",
       "side": "T",
       "nade_type": "molotov",
+      "site": "B"
+    },
+    {
+      "file_name": "BSiteGodFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BSiteGodFlash\\BSiteGodFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BSiteGodFlash\\BSiteGodFlash.png",
+      "nade_name": "BSiteGodFlash",
+      "description": "First flash thrown from logs. Entry needs to hug wall.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "BackLogsFire.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BackLogsFire\\BackLogsFire.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BackLogsFire\\BackLogsFire.png",
+      "nade_name": "BackLogsFire",
+      "description": "Molly area behind logs.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "incendiary",
+      "site": "B"
+    },
+    {
+      "file_name": "BackLogsHE.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BackLogsHE\\BackLogsHE.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BackLogsHE\\BackLogsHE.png",
+      "nade_name": "BackLogsHE",
+      "description": "Nade area behind logs.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "he",
+      "site": "B"
+    },
+    {
+      "file_name": "Boost2Dark.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Boost2Dark\\Boost2Dark.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Boost2Dark\\Boost2Dark.png",
+      "nade_name": "Boost2Dark",
+      "description": "Either boost or skill jump and molly dark.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "molotov",
+      "site": "B"
+    },
+    {
+      "file_name": "BsiteBalcFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BsiteBalcFlash\\BsiteBalcFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BsiteBalcFlash\\BsiteBalcFlash.png",
+      "nade_name": "BsiteBalcFlash",
+      "description": "Thrown from Logs. Good 2nd flash for entry team. Team safe.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "Corner2CT.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Corner2CT\\Corner2CT.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Corner2CT\\Corner2CT.png",
+      "nade_name": "Corner2CT",
+      "description": "Smoke CT boost from corner behind halfwall.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "B"
+    },
+    {
+      "file_name": "Car2First\\SecondOranges.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Car2First\u0026SecondOranges\\Car2First\u0026SecondOranges.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Car2First\u0026SecondOranges\\Car2First\u0026SecondOranges.png",
+      "nade_name": "Car2First\\SecondOranges",
+      "description": "Molly 1st \\ 2nd Oranges from Car.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "molotov",
+      "site": "B"
+    },
+    {
+      "file_name": "Car2NewBox.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Car2NewBox\\Car2NewBox.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Car2NewBox\\Car2NewBox.png",
+      "nade_name": "Car2NewBox",
+      "description": "Molly NewBox from Car - sometimes won't spread fully.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "molotov",
+      "site": "B"
+    },
+    {
+      "file_name": "Coffin2HalfWall.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Coffin2HalfWall\\Coffin2HalfWall.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Coffin2HalfWall\\Coffin2HalfWall.png",
+      "nade_name": "Coffin2HalfWall",
+      "description": "Nade T's setting up for execute from Coffin.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "he",
+      "site": "B"
+    },
+    {
+      "file_name": "Coffin2TopBannanaFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Coffin2TopBannanaFlash\\Coffin2TopBannanaFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Coffin2TopBannanaFlash\\Coffin2TopBannanaFlash.png",
+      "nade_name": "Coffin2TopBannanaFlash",
+      "description": "Flash Team to peak top bannan from coffin.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "CoffinSelfFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\CoffinSelfFlash\\CoffinSelfFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\CoffinSelfFlash\\CoffinSelfFlash.png",
+      "nade_name": "CoffinSelfFlash",
+      "description": "Flash yourself or help team from behind coffins.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "Corner2Coffins.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Corner2Coffins\\Corner2Coffins.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Corner2Coffins\\Corner2Coffins.png",
+      "nade_name": "Corner2Coffins",
+      "description": "Care jump up shenanigins. Smoke from Corner behind halfwal.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "B"
+    },
+    {
+      "file_name": "DesparationFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\DesparationFlash\\DesparationFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\DesparationFlash\\DesparationFlash.png",
+      "nade_name": "DesparationFlash",
+      "description": "When you need to make a play through a CT smoke.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "FirstOrange2CarFire.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\FirstOrange2CarFire\\FirstOrange2CarFire.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\FirstOrange2CarFire\\FirstOrange2CarFire.png",
+      "nade_name": "FirstOrange2CarFire",
+      "description": "Retake top mid. Molly Car from top of 1st orange.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "incendiary",
+      "site": "B"
+    },
+    {
+      "file_name": "FirstOrange2TopBannanaSmoke.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\FirstOrange2TopBannanaSmoke\\FirstOrange2TopBannanaSmoke.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\FirstOrange2TopBannanaSmoke\\FirstOrange2TopBannanaSmoke.png",
+      "nade_name": "FirstOrange2TopBannanaSmoke",
+      "description": "Retake bannana. Smoke boost and Logs boot out.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "smoke",
+      "site": "B"
+    },
+    {
+      "file_name": "FrontHalfWall2Coffins.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\FrontHalfWall2Coffins\\FrontHalfWall2Coffins.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\FrontHalfWall2Coffins\\FrontHalfWall2Coffins.png",
+      "nade_name": "FrontHalfWall2Coffins",
+      "description": "Smoke Coffins from infront of halfwall.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "B"
+    },
+    {
+      "file_name": "Gas2CT.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Gas2CT\\Gas2CT.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Gas2CT\\Gas2CT.png",
+      "nade_name": "Gas2CT",
+      "description": "Smoke CT boost from gas pannel in Bannana",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "B"
+    },
+    {
+      "file_name": "Halfwall2CT.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Halfwall2CT\\Halfwall2CT.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Halfwall2CT\\Halfwall2CT.png",
+      "nade_name": "Halfwall2CT",
+      "description": "Smoke CT Boost from behind halfwall",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "smoke",
+      "site": "B"
+    },
+    {
+      "file_name": "LeftCubbyFire.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\LeftCubbyFire\\LeftCubbyFire.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\LeftCubbyFire\\LeftCubbyFire.png",
+      "nade_name": "LeftCubbyFire",
+      "description": "Molly the cubby in bannana",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "incendiary",
+      "site": "B"
+    },
+    {
+      "file_name": "LeftCubbyHE.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\LeftCubbyHE\\LeftCubbyHE.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\LeftCubbyHE\\LeftCubbyHE.png",
+      "nade_name": "LeftCubbyHE",
+      "description": "Nade the cubby from Top Bannana.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "he",
+      "site": "B"
+    },
+    {
+      "file_name": "SafeCTFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\SafeCTFlash\\SafeCTFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\SafeCTFlash\\SafeCTFlash.png",
+      "nade_name": "SafeCTFlash",
+      "description": "Flash from in front of halfwall for Team.",
+      "map_name": "de_inferno",
+      "side": "T",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "Sandbags2BannanaFlash.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Sandbags2BannanaFlash\\Sandbags2BannanaFlash.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Sandbags2BannanaFlash\\Sandbags2BannanaFlash.png",
+      "nade_name": "Sandbags2BannanaFlash",
+      "description": "Self or Team flash - must turn.",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "flash",
+      "site": "B"
+    },
+    {
+      "file_name": "",
+      "file_path": "",
+      "image_path": "",
+      "nade_name": "",
+      "description": "",
+      "map_name": "",
+      "nade_type": ""
+    },
+    {
+      "file_name": "Top2BottomBannana.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Top2BottomBannana\\Top2BottomBannana.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Top2BottomBannana\\Top2BottomBannana.png",
+      "nade_name": "Top2BottomBannana",
+      "description": "Smoke Bottom Bannana from top bannana",
+      "map_name": "de_inferno",
+      "side": "CT",
+      "nade_type": "smoke",
       "site": "B"
     }
   ]

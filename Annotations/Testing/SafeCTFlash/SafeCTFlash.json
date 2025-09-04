@@ -1,0 +1,11 @@
+{
+  "file_name": "SafeCTFlash.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\SafeCTFlash\\SafeCTFlash.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\SafeCTFlash\\SafeCTFlash.png",
+  "nade_name": "SafeCTFlash",
+  "description": "Flash from in front of halfwall for Team.",
+  "map_name": "de_inferno",
+  "side": "T",
+  "nade_type": "flash",
+  "site": "B"
+}
