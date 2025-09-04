@@ -1,0 +1,11 @@
+{
+  "file_name": "Gas2CT.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Gas2CT\\Gas2CT.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Gas2CT\\Gas2CT.png",
+  "nade_name": "Gas2CT",
+  "description": "Smoke CT boost from gas pannel in Bannana",
+  "map_name": "de_inferno",
+  "side": "T",
+  "nade_type": "smoke",
+  "site": "B"
+}

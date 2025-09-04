@@ -1,0 +1,11 @@
+{
+  "file_name": "BSiteGodFlash.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BSiteGodFlash\\BSiteGodFlash.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BSiteGodFlash\\BSiteGodFlash.png",
+  "nade_name": "BSiteGodFlash",
+  "description": "First flash thrown from logs. Entry needs to hug wall.",
+  "map_name": "de_inferno",
+  "side": "T",
+  "nade_type": "flash",
+  "site": "B"
+}

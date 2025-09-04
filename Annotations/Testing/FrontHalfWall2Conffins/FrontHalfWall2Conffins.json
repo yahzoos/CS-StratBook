@@ -1,0 +1,11 @@
+{
+  "file_name": "FrontHalfWall2Conffins.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\FrontHalfWall2Conffins\\FrontHalfWall2Conffins.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\FrontHalfWall2Conffins\\FrontHalfWall2Conffins.png",
+  "nade_name": "FrontHalfWall2Conffins",
+  "description": "Smoke Coffins from infront of halfwall.",
+  "map_name": "de_inferno",
+  "side": "T",
+  "nade_type": "smoke",
+  "site": "B"
+}

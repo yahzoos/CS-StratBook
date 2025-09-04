@@ -1,0 +1,11 @@
+{
+  "file_name": "Halfwall2CT.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Halfwall2CT\\Halfwall2CT.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Halfwall2CT\\Halfwall2CT.png",
+  "nade_name": "Halfwall2CT",
+  "description": "Smoke CT Boost from behind halfwall",
+  "map_name": "de_inferno",
+  "side": "T",
+  "nade_type": "smoke",
+  "site": "B"
+}
