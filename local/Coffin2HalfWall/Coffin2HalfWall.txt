@@ -9,19 +9,19 @@
 	{
 		Enabled = true
 		Type = "grenade"
-		Id = "ba065e91-e2bf-45d5-a129-8eee9f57dc40"
+		Id = "00ed55aa-03b5-4757-aea5-7aee04f40a0b"
 		SubType = "main"
-		Position = [ 863.936768, 2349.913818, 140.084305 ]
-		Angles = [ 0.0, -128.625183, 0.0 ]
+		Position = [ 536.886108, 3093.969727, 263.03125 ]
+		Angles = [ 0.0, -100.183296, 0.0 ]
 		VisiblePfx = true
 		Color = [ 255, 255, 255 ]
-		TextPositionOffset = [ 0.0, -20.0, 55.0 ]
+		TextPositionOffset = [ 0.0, 0.0, 60.0 ]
 		TextFacePlayer = true
 		TextHorizontalAlign = "center"
 		RevealOnSuccess = false
 		Title = 
 		{
-			Text = "EarlyBannanaHE"
+			Text = "Coffin2HalfWall"
 			FontSize = 125
 			FadeInDist = 600.0
 			FadeOutDist = 40.0
@@ -29,7 +29,7 @@
 		}
 		Desc = 
 		{
-			Text = "On the run, run alongside wall."
+			Text = "jump up while tapping w"
 			FontSize = 75
 			FadeInDist = 300.0
 			FadeOutDist = 40.0
@@ -44,10 +44,10 @@
 	{
 		Enabled = true
 		Type = "grenade"
-		Id = "9d17f5b9-ac88-4302-9b9a-cda548889ea2"
+		Id = "a7fc2d25-fcd2-4684-8793-497cf24923e5"
 		SubType = "aim_target"
-		Position = [ 806.75946, 2278.195557, 241.937454 ]
-		Angles = [ -23.478361, -128.563583, 0.0 ]
+		Position = [ 516.121948, 2998.699707, 304.839539 ]
+		Angles = [ 12.821669, -102.29538, 0.0 ]
 		VisiblePfx = true
 		TextPositionOffset = [ 0.0, 0.0, 30.0 ]
 		TextFacePlayer = false
@@ -55,7 +55,7 @@
 		RevealOnSuccess = false
 		Title = 
 		{
-			Text = "EarlyBannanaHE"
+			Text = "Coffin2HalfWall"
 			FontSize = 125
 			FadeInDist = 50.0
 			FadeOutDist = -1.0
@@ -63,22 +63,22 @@
 		}
 		Desc = 
 		{
-			Text = "aim at top of balcony. Left+RightClick RunThrow"
+			Text = "aim at notch\nRunning jumpthrow. jump/release right before you fall off"
 			FontSize = 75
 			FadeInDist = 50.0
 			FadeOutDist = -1.0
 			ShowBackground = true
 		}
-		MasterNodeId = "ba065e91-e2bf-45d5-a129-8eee9f57dc40"
+		MasterNodeId = "00ed55aa-03b5-4757-aea5-7aee04f40a0b"
 	}
 	MapAnnotationNode2 = 
 	{
 		Enabled = true
 		Type = "grenade"
-		Id = "cac57c4c-1b33-4b22-aa62-538bbfabeaec"
+		Id = "8c2faeba-8711-487d-8abd-8e2b594f0b42"
 		SubType = "destination"
-		Position = [ 176.113678, 1486.071167, 146.476013 ]
-		Angles = [ -23.478361, -128.563583, 0.0 ]
+		Position = [ 348.772491, 1824.944702, 174.457626 ]
+		Angles = [ 12.821669, -102.29538, 0.0 ]
 		VisiblePfx = true
 		TextPositionOffset = [ 0.0, 0.0, 0.0 ]
 		TextFacePlayer = false
@@ -100,7 +100,7 @@
 			FadeOutDist = -1.0
 			ShowBackground = true
 		}
-		MasterNodeId = "ba065e91-e2bf-45d5-a129-8eee9f57dc40"
+		MasterNodeId = "00ed55aa-03b5-4757-aea5-7aee04f40a0b"
 		DistanceThreshold = 80.0
 	}
 }

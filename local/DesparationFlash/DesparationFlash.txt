@@ -9,19 +9,19 @@
 	{
 		Enabled = true
 		Type = "grenade"
-		Id = "ba065e91-e2bf-45d5-a129-8eee9f57dc40"
+		Id = "d4725f11-8fb6-444f-ab29-d5f6e4ec1bcc"
 		SubType = "main"
-		Position = [ 863.936768, 2349.913818, 140.084305 ]
-		Angles = [ 0.0, -128.625183, 0.0 ]
+		Position = [ 1311.96875, 2648.054443, 136.392822 ]
+		Angles = [ 0.0, 176.895691, 0.0 ]
 		VisiblePfx = true
 		Color = [ 255, 255, 255 ]
-		TextPositionOffset = [ 0.0, -20.0, 55.0 ]
+		TextPositionOffset = [ 0.0, 0.0, 60.0 ]
 		TextFacePlayer = true
 		TextHorizontalAlign = "center"
 		RevealOnSuccess = false
 		Title = 
 		{
-			Text = "EarlyBannanaHE"
+			Text = "DesparationFlash"
 			FontSize = 125
 			FadeInDist = 600.0
 			FadeOutDist = 40.0
@@ -29,7 +29,7 @@
 		}
 		Desc = 
 		{
-			Text = "On the run, run alongside wall."
+			Text = "When CT is smoked.\nStand in this corner"
 			FontSize = 75
 			FadeInDist = 300.0
 			FadeOutDist = 40.0
@@ -38,24 +38,24 @@
 		StreakLimitGuidesOn = 2
 		StreakLimitGuidesOff = 2
 		JumpThrow = false
-		GrenadeType = "he"
+		GrenadeType = "flash"
 	}
 	MapAnnotationNode1 = 
 	{
 		Enabled = true
 		Type = "grenade"
-		Id = "9d17f5b9-ac88-4302-9b9a-cda548889ea2"
+		Id = "d3aa4794-10de-4540-b1d6-2573c4ad46b6"
 		SubType = "aim_target"
-		Position = [ 806.75946, 2278.195557, 241.937454 ]
-		Angles = [ -23.478361, -128.563583, 0.0 ]
+		Position = [ 1251.243164, 2648.679443, 277.37558 ]
+		Angles = [ -52.606293, 179.4104, 0.0 ]
 		VisiblePfx = true
-		TextPositionOffset = [ 0.0, 0.0, 30.0 ]
+		TextPositionOffset = [ 0.0, -20.0, 30.0 ]
 		TextFacePlayer = false
 		TextHorizontalAlign = "center"
 		RevealOnSuccess = false
 		Title = 
 		{
-			Text = "EarlyBannanaHE"
+			Text = "DesparationFlash"
 			FontSize = 125
 			FadeInDist = 50.0
 			FadeOutDist = -1.0
@@ -63,22 +63,22 @@
 		}
 		Desc = 
 		{
-			Text = "aim at top of balcony. Left+RightClick RunThrow"
+			Text = "two down from spout, or diagonal from brace\nLeft+RightClick Throw"
 			FontSize = 75
 			FadeInDist = 50.0
 			FadeOutDist = -1.0
 			ShowBackground = true
 		}
-		MasterNodeId = "ba065e91-e2bf-45d5-a129-8eee9f57dc40"
+		MasterNodeId = "d4725f11-8fb6-444f-ab29-d5f6e4ec1bcc"
 	}
 	MapAnnotationNode2 = 
 	{
 		Enabled = true
 		Type = "grenade"
-		Id = "cac57c4c-1b33-4b22-aa62-538bbfabeaec"
+		Id = "3a804b86-26f6-4b5e-a371-cbb46dcd52f2"
 		SubType = "destination"
-		Position = [ 176.113678, 1486.071167, 146.476013 ]
-		Angles = [ -23.478361, -128.563583, 0.0 ]
+		Position = [ 908.658203, 2652.194824, 376.703491 ]
+		Angles = [ -52.606293, 179.4104, 0.0 ]
 		VisiblePfx = true
 		TextPositionOffset = [ 0.0, 0.0, 0.0 ]
 		TextFacePlayer = false
@@ -100,7 +100,7 @@
 			FadeOutDist = -1.0
 			ShowBackground = true
 		}
-		MasterNodeId = "ba065e91-e2bf-45d5-a129-8eee9f57dc40"
+		MasterNodeId = "d4725f11-8fb6-444f-ab29-d5f6e4ec1bcc"
 		DistanceThreshold = 80.0
 	}
 }

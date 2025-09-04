@@ -1,0 +1,11 @@
+{
+  "file_name": "BackLogsFire.txt",
+  "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\BackLogsFire\\BackLogsFire.txt",
+  "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\BackLogsFire\\BackLogsFire.png",
+  "nade_name": "BackLogsFire",
+  "description": "Molly area behind logs.",
+  "map_name": "de_inferno",
+  "side": "CT",
+  "nade_type": "incendiary",
+  "site": "B"
+}
