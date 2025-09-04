@@ -15,7 +15,7 @@
 		Angles = [ 0.0, -129.420654, 0.0 ]
 		VisiblePfx = true
 		Color = [ 255, 255, 255 ]
-		TextPositionOffset = [ 0.0, 0.0, 60.0 ]
+		TextPositionOffset = [ 0.0, 0.0, 80.0 ]
 		TextFacePlayer = true
 		TextHorizontalAlign = "center"
 		RevealOnSuccess = false
@@ -49,7 +49,7 @@
 		Position = [ 706.142395, 2168.080078, 212.652878 ]
 		Angles = [ -7.250988, -129.514755, 0.0 ]
 		VisiblePfx = true
-		TextPositionOffset = [ 0.0, 0.0, 30.0 ]
+		TextPositionOffset = [ 0.0, 0.0, 50.0 ]
 		TextFacePlayer = false
 		TextHorizontalAlign = "center"
 		RevealOnSuccess = false
@@ -63,7 +63,7 @@
 		}
 		Desc = 
 		{
-			Text = "aim instructions"
+			Text = "just chuck it; runthrow"
 			FontSize = 75
 			FadeInDist = 50.0
 			FadeOutDist = -1.0

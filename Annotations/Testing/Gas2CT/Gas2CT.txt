@@ -21,7 +21,7 @@
 		RevealOnSuccess = false
 		Title = 
 		{
-			Text = "CTSmoke"
+			Text = "Gas2CT"
 			FontSize = 125
 			FadeInDist = 600.0
 			FadeOutDist = 40.0
@@ -55,7 +55,7 @@
 		RevealOnSuccess = false
 		Title = 
 		{
-			Text = "CTSmoke"
+			Text = "Gas2CT"
 			FontSize = 125
 			FadeInDist = 50.0
 			FadeOutDist = -1.0

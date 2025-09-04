@@ -353,10 +353,10 @@
       "site": "B"
     },
     {
-      "file_name": "CTSmoke_from_Corner.txt",
-      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\CTSmoke_from_Corner\\CTSmoke_from_Corner.txt",
-      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\CTSmoke_from_Corner\\CTSmoke_from_Corner.png",
-      "nade_name": "CTSmoke_from_Corner",
+      "file_name": "Corner2CT.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Corner2CT\\Corner2CT.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Corner2CT\\Corner2CT.png",
+      "nade_name": "Corner2CT",
       "description": "Smoke CT boost from corner behind halfwall.",
       "map_name": "de_inferno",
       "side": "T",
@@ -364,11 +364,11 @@
       "site": "B"
     },
     {
-      "file_name": "Car2First\u0026SecondOranges.txt",
-      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Car2First\u0026SecondOranges\\Car2First\u0026SecondOranges.txt",
-      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Car2First\u0026SecondOranges\\Car2First\u0026SecondOranges.png",
-      "nade_name": "Car2First\u0026SecondOranges",
-      "description": "Molly 1st \u0026 2nd Oranges from Car.",
+      "file_name": "Car2First\\SecondOranges.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\Car2First\\SecondOranges\\Car2First\\SecondOranges.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\Car2First\\SecondOranges\\Car2First\\SecondOranges.png",
+      "nade_name": "Car2First\\SecondOranges",
+      "description": "Molly 1st \\ 2nd Oranges from Car.",
       "map_name": "de_inferno",
       "side": "T",
       "nade_type": "molotov",
@@ -463,10 +463,10 @@
       "site": "B"
     },
     {
-      "file_name": "FrontHalfWall2Conffins.txt",
-      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\FrontHalfWall2Conffins\\FrontHalfWall2Conffins.txt",
-      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\FrontHalfWall2Conffins\\FrontHalfWall2Conffins.png",
-      "nade_name": "FrontHalfWall2Conffins",
+      "file_name": "FrontHalfWall2Coffins.txt",
+      "file_path": "D:\\CS-StratBook\\Annotations\\Testing\\FrontHalfWall2Coffins\\FrontHalfWall2Coffins.txt",
+      "image_path": "D:\\CS-StratBook\\Annotations\\Testing\\FrontHalfWall2Coffins\\FrontHalfWall2Coffins.png",
+      "nade_name": "FrontHalfWall2Coffins",
       "description": "Smoke Coffins from infront of halfwall.",
       "map_name": "de_inferno",
       "side": "T",

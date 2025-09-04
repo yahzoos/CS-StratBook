@@ -21,7 +21,7 @@
 		RevealOnSuccess = false
 		Title = 
 		{
-			Text = "Car2First&SecondOragnes"
+			Text = "Car2First&SecondOranges"
 			FontSize = 125
 			FadeInDist = 600.0
 			FadeOutDist = 40.0
@@ -49,13 +49,13 @@
 		Position = [ 422.103699, 2071.688721, 261.340698 ]
 		Angles = [ -37.813618, 136.119583, 0.0 ]
 		VisiblePfx = true
-		TextPositionOffset = [ 0.0, 0.0, 30.0 ]
+		TextPositionOffset = [ 0.0, 20.0, 30.0 ]
 		TextFacePlayer = false
 		TextHorizontalAlign = "center"
 		RevealOnSuccess = false
 		Title = 
 		{
-			Text = "Car2First&SecondOragnes"
+			Text = "Car2First&SecondOranges"
 			FontSize = 125
 			FadeInDist = 50.0
 			FadeOutDist = -1.0
