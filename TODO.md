@@ -3,6 +3,7 @@
 ## pkg Tags
 ### Features
 - Breakout single nades is from multi nade annotations.
+- Rethinking path metadata - maybe just use the annoations folder variable?
 
 ## MetaData Explorer
 ### Bugs
