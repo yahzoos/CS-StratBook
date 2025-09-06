@@ -124,7 +124,7 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeL
 		},
 	)
 
-	var bottomright *canvas.Image
+	var imageCanvas *canvas.Image
 	list.OnSelected = func(id widget.TableCellID) {
 		if id.Row < 1 {
 			return
@@ -132,8 +132,8 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeL
 		selectedRow = id.Row
 		list.Refresh()
 		selectedNade := filteredNades[id.Row-1]
-		bottomright.File = selectedNade.ImagePath
-		bottomright.Refresh()
+		imageCanvas.File = selectedNade.ImagePath
+		imageCanvas.Refresh()
 		updateMetadataBox(selectedNade)
 		currentSelectedNade = &selectedNade
 	}
@@ -160,11 +160,19 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeL
 	recalculateColumnWidths(list, fileNamedata)
 	topright := container.NewScroll(list)
 	topright.Direction = container.ScrollBoth
-	bottomleft := metadataBox
-	bottomright = canvas.NewImageFromFile("")
-	bottomright.FillMode = canvas.ImageFillContain
+	bottomright := metadataBox
+	imageCanvas = canvas.NewImageFromFile("")
+	imageCanvas.FillMode = canvas.ImageFillContain
+	imageCanvas.SetMinSize(fyne.NewSize(400, 300))
+	bottomleft := container.NewCenter(imageCanvas)
 
-	return container.New(layout.NewGridLayout(2), topleft, topright, bottomleft, bottomright)
+	topSection := container.NewHSplit(topleft, topright)
+	topSection.SetOffset(0.3)
+	bottomSection := container.NewHSplit(bottomleft, bottomright)
+	bottomSection.SetOffset(0.4)
+	mainLayout := container.NewVSplit(topSection, bottomSection)
+	mainLayout.SetOffset(0.5)
+	return mainLayout
 }
 
 // Function to dynamically set column widths based on content
