@@ -146,7 +146,8 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeL
 
 	topleft := container.NewVBox(selectedmap, side, nade, site, filterButton)
 	recalculateColumnWidths(list, fileNamedata)
-	topright := container.NewHScroll(list)
+	topright := container.NewScroll(list)
+	topright.Direction = container.ScrollBoth
 	bottomleft := metadataBox
 	bottomright = canvas.NewImageFromFile("")
 	bottomright.FillMode = canvas.ImageFillContain
@@ -156,6 +157,7 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeL
 
 // Function to dynamically set column widths based on content
 func recalculateColumnWidths(table *widget.Table, data [][]string) {
+	const maxColumnWidth float32 = 450
 	colWidths := make([]float32, len(data[0]))
 	dummyLabel := widget.NewLabel("")
 	for _, row := range data {
