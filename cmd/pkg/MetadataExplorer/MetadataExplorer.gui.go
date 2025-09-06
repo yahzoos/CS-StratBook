@@ -40,7 +40,8 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeL
 	var selectedRow int
 	var list *widget.Table
 	var currentSelectedNade *Metadata
-	var metadataBox *fyne.Container
+	var metadataBox *container.Scroll
+	var metadataContent *fyne.Container
 
 	// Buttons
 	addBtn := widget.NewButton("Add", func() {
@@ -57,17 +58,24 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeL
 	buttonBar := container.NewHBox(addBtn, removeBtn, editBtn)
 
 	updateMetadataBox := func(nade Metadata) {
-		metadataBox.Objects = metadataBox.Objects[:0]
-		metadataBox.Add(widget.NewLabel("FileName: " + nade.FileName))
-		metadataBox.Add(widget.NewLabel("FilePath: " + nade.FilePath))
-		metadataBox.Add(widget.NewLabel("ImagePath: " + nade.ImagePath))
-		metadataBox.Add(widget.NewLabel("NadeName: " + nade.NadeName))
-		metadataBox.Add(widget.NewLabel("Description: " + nade.Description))
-		metadataBox.Add(widget.NewLabel("MapName: " + nade.MapName))
-		metadataBox.Add(widget.NewLabel("Side: " + nade.Side))
-		metadataBox.Add(widget.NewLabel("NadeType: " + nade.NadeType))
-		metadataBox.Add(widget.NewLabel("SiteLocation: " + nade.SiteLocation))
-		metadataBox.Add(buttonBar)
+		content := metadataBox.Content.(*fyne.Container)
+
+		content.Objects = content.Objects[:0]
+		content.Add(widget.NewLabel("FileName: " + nade.FileName))
+		content.Add(widget.NewLabel("FilePath: " + nade.FilePath))
+		content.Add(widget.NewLabel("ImagePath: " + nade.ImagePath))
+		content.Add(widget.NewLabel("NadeName: " + nade.NadeName))
+
+		descLabel := widget.NewLabel(nade.Description)
+		descLabel.Wrapping = fyne.TextWrapWord
+		content.Add(widget.NewLabel("Description: "))
+		content.Add(descLabel)
+
+		content.Add(widget.NewLabel("MapName: " + nade.MapName))
+		content.Add(widget.NewLabel("Side: " + nade.Side))
+		content.Add(widget.NewLabel("NadeType: " + nade.NadeType))
+		content.Add(widget.NewLabel("SiteLocation: " + nade.SiteLocation))
+		content.Add(buttonBar)
 		metadataBox.Refresh()
 	}
 
@@ -142,7 +150,11 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeL
 		recalculateColumnWidths(list, fileNamedata)
 	})
 
-	metadataBox = container.NewVBox(widget.NewLabel("Select a nade to view details"), buttonBar)
+	metadataContent = container.NewVBox(widget.NewLabel("Select a nade to view details"), buttonBar)
+
+	metadataBox = container.NewScroll(metadataContent)
+	metadataBox.Direction = container.ScrollVerticalOnly
+	metadataBox.SetMinSize(fyne.NewSize(300, 200))
 
 	topleft := container.NewVBox(selectedmap, side, nade, site, filterButton)
 	recalculateColumnWidths(list, fileNamedata)
