@@ -170,8 +170,8 @@ func createUI(metadata []Metadata, filePath string, reloadFunc ReloadFunc, nadeL
 	topSection.SetOffset(0.3)
 	bottomSection := container.NewHSplit(bottomleft, bottomright)
 	bottomSection.SetOffset(0.4)
-	mainLayout := container.NewVSplit(topSection, bottomSection)
-	mainLayout.SetOffset(0.5)
+	mainLayout := container.NewBorder(nil, nil, nil, nil, container.NewVBox(topSection, bottomSection))
+	//mainLayout.SetOffset(0.5)
 	return mainLayout
 }
 
